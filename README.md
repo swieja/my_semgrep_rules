@@ -1,8 +1,3 @@
 # my semgrep rules 
 
-vulns:
-rce
-serialize
-ssti
-ssrf
-xxe
+vulns: rce, serialize, ssti, ssrf, xxe.
