@@ -7,7 +7,7 @@ classic rce \
 seralization \
 lfi \
 ssrf \
-
+sqli \ 
 
 
 
