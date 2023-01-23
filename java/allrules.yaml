@@ -1,2 +1,0 @@
-rules:
-  - !include /home/rtz/github_vuln_research/semgrep-rules/java/jax-rs/security/insecure-resteasy.yaml
