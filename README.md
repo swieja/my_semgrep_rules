@@ -3,6 +3,10 @@ semgrep command to run all rules from `java` directory to scan vespa source code
 python3 -m semgrep --config /home/rtz/github_vuln_research/my_semgrep_rules/java /home/rtz/github_vuln_research/vespa
 
 
+testing:
+python3 -m semgrep --config /home/rtz/github_vuln_research/my_semgrep_rules/java/find-sql-string-concatenation.yaml /home/rtz/github_vuln_research/vespa 
+
+
 classic rce \
 seralization \
 lfi \
@@ -14,6 +18,8 @@ sqli \
 
 
 
+
+    
 
 
 
