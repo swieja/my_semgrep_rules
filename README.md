@@ -16,17 +16,14 @@ sqli \
 
 ```console
 cd /home/rtz/github_vuln_research/semgrep-rules/java ; find `pwd` -name *.yaml  | tee /home/rtz/github_vuln_research/my_semgrep_rules/java/full_list.txt > /dev/null
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/java/full_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/java/rule_list.txt  > /dev/null
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/java/full_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/java/rule_list.txt 
 while read p ; do cp $p /home/rtz/github_vuln_research/my_semgrep_rules/java/; done < /home/rtz/github_vuln_research/my_semgrep_rules/java/rule_list.txt 
 rm /home/rtz/github_vuln_research/my_semgrep_rules/java/full_list.txt /home/rtz/github_vuln_research/my_semgrep_rules/java/rule_list.txt 
 cd /home/rtz/github_vuln_research/my_semgrep_rules/java
 ```
 
 
-
-
-    
-
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Java created:>2017-10-11 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/java_repo_list.txt
 
 
 
