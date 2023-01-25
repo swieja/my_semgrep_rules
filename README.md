@@ -22,7 +22,13 @@ rm /home/rtz/github_vuln_research/my_semgrep_rules/ruby/full_list.txt /home/rtz/
 cd /home/rtz/github_vuln_research/my_semgrep_rules/ruby
 ```
 
-python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Ruby  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/ruby_repo_list.txt -s 1000
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Java  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/java_repo_list.txt -s 10000
+
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:PHP  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/php_repo_list.txt -s 10000
+
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Ruby  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/ruby_repo_list.txt -s 10000
+
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Go  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/go_repo_list.txt -s 10000
 
 
 

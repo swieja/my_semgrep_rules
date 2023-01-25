@@ -1,0 +1,15 @@
+https://github.com/bridgetownrb/bridgetown
+https://github.com/Homebrew/formulae.brew.sh
+https://github.com/rubocop/rubocop-rails
+https://github.com/GoogleCloudPlatform/click-to-deploy
+https://github.com/github/explore
+https://github.com/pupilfirst/pupilfirst
+https://github.com/stimulusreflex/cable_ready
+https://github.com/dependabot/dependabot-core
+https://github.com/ruby-formatter/rufo
+https://github.com/hdm/mac-ages
+https://github.com/joemasilotti/railsdevs.com
+https://github.com/sorbet/sorbet
+https://github.com/david942j/one_gadget
+https://github.com/hahwul/WebHackersWeapons
+https://github.com/athityakumar/colorls
