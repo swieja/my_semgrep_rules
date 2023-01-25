@@ -30,6 +30,10 @@ python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars
 
 python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Go  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/go_repo_list.txt -s 10000
 
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:C#  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/csharp_repo_list.txt -s 10000
+
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Python  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/csharp_repo_list.txt -s 10000
+
 
 
 curl \
