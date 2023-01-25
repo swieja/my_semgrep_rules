@@ -23,7 +23,7 @@ cd /home/rtz/github_vuln_research/my_semgrep_rules/java
 ```
 
 
-python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Java created:>2017-10-11 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/java_repo_list.txt
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Go  created:>2017-10-11 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/go_repo_list.txt
 
 
 
