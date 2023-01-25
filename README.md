@@ -32,7 +32,7 @@ python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars
 
 python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:C#  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/csharp_repo_list.txt -s 10000
 
-python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..10000 language:Python  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/csharp_repo_list.txt -s 10000
+python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars:500..5000 language:Python  created:>2017-01-01 sort:updated" -f /home/rtz/github_vuln_research/my_semgrep_rules/python_repo_list.txt -s 20000
 
 
 
