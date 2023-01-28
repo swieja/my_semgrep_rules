@@ -52,7 +52,7 @@ curl \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: Bearer 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"\
   -H "X-GitHub-Api-Version: 2022-11-28" \
-  "https://api.github.com/search/repositories?q=repo:returntocorp/semgrep"
+  "https://api.github.com/repos/returntocorp/semgrep"
 
 
 
@@ -71,6 +71,11 @@ python3 -m semgrep --config=/home/rtz/github_vuln_research/my_semgrep_rules/java
 
 python3 -m semgrep --config=/home/rtz/github_vuln_research/my_semgrep_rules/java /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/openmrs.openmrs-core > test.txt 2>&1
 
+
+
+
+
+repoURL, technology, stars, size, findingsCount
 
 
 
