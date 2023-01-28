@@ -48,6 +48,23 @@ python3 /home/rtz/github_vuln_research/repo-finding-tool/find_repos.py -q "stars
 
 stars:500..10000 language:Go  created:>2017-01-01 sort:updated
 
+curl \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer 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"\
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  "https://api.github.com/search/repositories?q=repo:returntocorp/semgrep"
+
+
+
+```python
+ 
+```
+
+
+
+
+
+
 
 # Unrelevant
 
