@@ -61,6 +61,15 @@ curl \
 ```
 
 
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py
+
+
+
+git clone -v --progress https://github.com/openmrs/openmrs-core /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/openmrs.openmrs-core
+python3 -m semgrep --config=/home/rtz/github_vuln_research/my_semgrep_rules/java /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/openmrs.openmrs-core | tee /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/semgrep_resutl_openmrs.openmrs-core ; rm -rf /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/openmrs.openmrs-core
+
+
+python3 -m semgrep --config=/home/rtz/github_vuln_research/my_semgrep_rules/java /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/openmrs.openmrs-core > test.txt 2>&1
 
 
 
