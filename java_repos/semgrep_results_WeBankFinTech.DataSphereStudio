@@ -1,0 +1,239 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-datachecker-appconn/src/main/java/com/webank/wedatasphere/dss/appconn/datachecker/utils/HttpUtils.java 
+     java.log4j-message-lookup-injection
+        Possible Lookup injection into Log4j messages. Lookups provide a way to add values to the
+        Log4j messages at arbitrary places. If the message parameter contains an attacker controlled
+        string, the attacker could inject arbitrary lookups, for instance '${java:runtime}'. This
+        could lead to information disclosure or even remote code execution if
+        'log4j2.formatMsgNoLookups' is enabled. This was enabled by default until version 2.15.0.
+
+         48┆ logger.info("access mask URL is:"+maskUrl);
+          ⋮┆----------------------------------------
+         55┆ logger.info("mask interface response code：" + response.code());
+          ⋮┆----------------------------------------
+         64┆ logger.info("mask interface return message：" + returnData);
+          ⋮┆----------------------------------------
+         85┆ logger.info("interface return message：" + returnData);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-eventchecker-appconn/src/main/java/com/webank/wedatasphere/dss/appconn/eventchecker/connector/EventDruidFactory.java 
+     java.log4j-message-lookup-injection
+        Possible Lookup injection into Log4j messages. Lookups provide a way to add values to the
+        Log4j messages at arbitrary places. If the message parameter contains an attacker controlled
+        string, the attacker could inject arbitrary lookups, for instance '${java:runtime}'. This
+        could lead to information disclosure or even remote code execution if
+        'log4j2.formatMsgNoLookups' is enabled. This was enabled by default until version 2.15.0.
+
+         36┆ log.info("EVENT_DRUID_USERNAME：" + eventDruidUsername+ "");
+          ⋮┆----------------------------------------
+         37┆ log.info("EVENT_DRUID_URL：" + eventDruidUrl + "");
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-eventchecker-appconn/src/main/java/com/webank/wedatasphere/dss/appconn/eventchecker/service/DefaultEventcheckReceiver.java 
+     java.log4j-message-lookup-injection
+        Possible Lookup injection into Log4j messages. Lookups provide a way to add values to the
+        Log4j messages at arbitrary places. If the message parameter contains an attacker controlled
+        string, the attacker could inject arbitrary lookups, for instance '${java:runtime}'. This
+        could lead to information disclosure or even remote code execution if
+        'log4j2.formatMsgNoLookups' is enabled. This was enabled by default until version 2.15.0.
+
+         62┆ log.error("executeType error {} " + executeType.toString());
+          ⋮┆----------------------------------------
+         66┆ log.error("EventChecker failed to receive the message {}" + e);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-eventchecker-appconn/src/main/java/com/webank/wedatasphere/dss/appconn/eventchecker/service/EventCheckSender.java 
+     java.log4j-message-lookup-injection
+        Possible Lookup injection into Log4j messages. Lookups provide a way to add values to the
+        Log4j messages at arbitrary places. If the message parameter contains an attacker controlled
+        string, the attacker could inject arbitrary lookups, for instance '${java:runtime}'. This
+        could lead to information disclosure or even remote code execution if
+        'log4j2.formatMsgNoLookups' is enabled. This was enabled by default until version 2.15.0.
+
+         55┆ log.info("Send msg success!");
+          ⋮┆----------------------------------------
+         57┆ log.error("Send msg failed for update database!");
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-eventchecker-appconn/src/main/java/com/webank/wedatasphere/dss/appconn/eventchecker/service/EventCheckerService.java 
+     java.log4j-message-lookup-injection
+        Possible Lookup injection into Log4j messages. Lookups provide a way to add values to the
+        Log4j messages at arbitrary places. If the message parameter contains an attacker controlled
+        string, the attacker could inject arbitrary lookups, for instance '${java:runtime}'. This
+        could lead to information disclosure or even remote code execution if
+        'log4j2.formatMsgNoLookups' is enabled. This was enabled by default until version 2.15.0.
+
+         41┆ log.error("create EventCheckSender failed {}");
+          ⋮┆----------------------------------------
+         57┆ log.error("create EventCheckSender failed {}");
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-eventchecker-appconn/src/main/java/com/webank/wedatasphere/dss/appconn/eventchecker/utils/Props.java 
+     java.log4j-message-lookup-injection
+        Possible Lookup injection into Log4j messages. Lookups provide a way to add values to the
+        Log4j messages at arbitrary places. If the message parameter contains an attacker controlled
+        string, the attacker could inject arbitrary lookups, for instance '${java:runtime}'. This
+        could lead to information disclosure or even remote code execution if
+        'log4j2.formatMsgNoLookups' is enabled. This was enabled by default until version 2.15.0.
+
+        778┆ logger.info(comment);
+          ⋮┆----------------------------------------
+        781┆ logger.info("  key=" + key + " value=" + get(key));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-appconn/appconns/dss-sendemail-appconn/sendemail-appconn-core/src/main/java/com/webank/wedatasphere/dss/appconn/sendemail/hook/HttpClientUtil.java 
+     java.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+         58┆ @Override
+         59┆ public void checkClientTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+         60┆ 		throws CertificateException {
+         61┆ }
+          ⋮┆----------------------------------------
+         62┆ @Override
+         63┆ public void checkServerTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+         64┆ 		throws CertificateException {
+         65┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-apps/dss-apiservice-server/src/main/java/com/webank/wedatasphere/dss/apiservice/core/util/HttpClientUtil.java 
+     java.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+         57┆ @Override
+         58┆ public void checkClientTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+         59┆ 		throws CertificateException {
+         60┆ }
+          ⋮┆----------------------------------------
+         61┆ @Override
+         62┆ public void checkServerTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+         63┆ 		throws CertificateException {
+         64┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-apps/dss-data-api/dss-data-api-server/src/main/java/com/webank/wedatasphere/dss/data/api/server/util/CryptoUtils.java 
+     java.bad-hexa-conversion
+        'Integer.toHexString()' strips leading zeroes from each byte if read byte-by-byte. This
+        mistake weakens the hash value computed since it introduces more collisions. Use
+        'String.format("%02X", ...)' instead.
+
+         44┆ public static String md5(String source, String salt, int iterator) {
+         45┆     StringBuilder token = new StringBuilder();
+         46┆ 
+         47┆     try {
+         48┆         MessageDigest digest = MessageDigest.getInstance("md5");
+         49┆         if (StringUtils.isNotEmpty(salt)) {
+         50┆             digest.update(salt.getBytes("UTF-8"));
+         51┆         }
+         52┆ 
+         53┆         byte[] result = digest.digest(source.getBytes());
+           [hid 24 additional lines, adjust with --max-lines-per-finding] 
+     java.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+         34┆ ObjectInputStream ois = new ObjectInputStream(bis);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-apps/dss-data-governance/dss-data-governance-common/src/main/java/com/webank/wedatasphere/dss/data/common/utils/HttpClientUtil.java 
+     java.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+         49┆ @Override
+         50┆ public void checkClientTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+         51┆ 		throws CertificateException {
+         52┆ }
+          ⋮┆----------------------------------------
+         53┆ @Override
+         54┆ public void checkServerTrusted(java.security.cert.X509Certificate[] arg0, String arg1)
+         55┆ 		throws CertificateException {
+         56┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-commons/dss-common/src/main/java/com/webank/wedatasphere/dss/common/utils/ZipHelper.java 
+     java.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+         67┆ ProcessBuilder processBuilder = new ProcessBuilder(list);
+          ⋮┆----------------------------------------
+        131┆ ProcessBuilder processBuilder = new ProcessBuilder(list);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-framework/dss-framework-admin-service/src/main/java/com/webank/wedatasphere/dss/framework/admin/restful/DssProxyUserController.java 
+     java.cookie-missing-httponly
+        A cookie was detected without setting the 'HttpOnly' flag. The 'HttpOnly' flag for cookies
+        instructs the browser to forbid client-side scripts from reading the cookie. Set the
+        'HttpOnly' flag by calling 'cookie.setHttpOnly(true);'
+
+         67┆ resp.addCookie(cookie);
+          ⋮┆----------------------------------------
+         78┆ resp.addCookie(cookie);
+          ⋮┆----------------------------------------
+     java.cookie-missing-secure-flag
+        A cookie was detected without setting the 'secure' flag. The 'secure' flag for cookies
+        prevents the client from transmitting the cookie over insecure channels such as HTTP. Set
+        the 'secure' flag by calling 'cookie.setSecure(true);'
+
+         67┆ resp.addCookie(cookie);
+          ⋮┆----------------------------------------
+         78┆ resp.addCookie(cookie);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-framework/dss-framework-admin-service/src/main/java/com/webank/wedatasphere/dss/framework/admin/service/impl/LdapServiceImpl.java 
+     java.ldap-injection
+        Detected non-constant data passed into an LDAP query. If this data can be controlled by an
+        external user, this is an LDAP injection. Ensure data passed to an LDAP query is not
+        controllable; or properly sanitize the data.
+
+         44┆ @Override
+         45┆ public boolean exist(String adminName,String adminPassword,String ldapUrl,String baseDN,String userName) throws NamingException {
+         46┆     LdapContext ctx = LdapUtils.connectLDAP(adminName, adminPassword, ldapUrl);
+         47┆     SearchControls searchCtls = new SearchControls();
+         48┆     searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
+         49┆     String searchFilter = "uid="+userName;
+         50┆     String searchBase = baseDN;
+         51┆     String returnedAtts[] = { "cn" };
+         52┆     searchCtls.setReturningAttributes(returnedAtts);
+         53┆     boolean exist = false;
+           [hid 9 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/WeBankFinTech.DataSphereStudio/dss-standard/sso-standard/sso-integration-standard/src/main/java/com/webank/wedatasphere/dss/standard/sso/utils/SSOHelper.java 
+     java.cookie-missing-httponly
+        A cookie was detected without setting the 'HttpOnly' flag. The 'HttpOnly' flag for cookies
+        instructs the browser to forbid client-side scripts from reading the cookie. Set the
+        'HttpOnly' flag by calling 'cookie.setHttpOnly(true);'
+
+        117┆ response.addCookie(workspaceIdCookie);
+          ⋮┆----------------------------------------
+        118┆ response.addCookie(workspaceNameCookie);
+          ⋮┆----------------------------------------
+     java.cookie-missing-secure-flag
+        A cookie was detected without setting the 'secure' flag. The 'secure' flag for cookies
+        prevents the client from transmitting the cookie over insecure channels such as HTTP. Set
+        the 'secure' flag by calling 'workspaceIdCookie.setSecure(true);'
+
+        117┆ response.addCookie(workspaceIdCookie);
+          ⋮┆----------------------------------------
+     java.cookie-missing-secure-flag
+        A cookie was detected without setting the 'secure' flag. The 'secure' flag for cookies
+        prevents the client from transmitting the cookie over insecure channels such as HTTP. Set
+        the 'secure' flag by calling 'workspaceNameCookie.setSecure(true);'
+
+        118┆ response.addCookie(workspaceNameCookie);

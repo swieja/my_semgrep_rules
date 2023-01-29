@@ -77,7 +77,7 @@ python3 -m semgrep --config=/home/rtz/github_vuln_research/my_semgrep_rules/java
 
 repoURL, technology, stars, size, findingsCount
 
-
+column -s, -t < /home/rtz/github_vuln_research/my_semgrep_rules/repos_report.csv | less -#2 -N -S 
 
 
 # Unrelevant

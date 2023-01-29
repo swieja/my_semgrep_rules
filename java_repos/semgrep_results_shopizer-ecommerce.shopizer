@@ -1,0 +1,154 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/.mvn/wrapper/MavenWrapperDownloader.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-core/.mvn/wrapper/MavenWrapperDownloader.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-core/src/main/java/com/salesmanager/core/business/modules/integration/shipping/impl/UPSShippingQuote.java 
+     java.owasp.java.xxe.org.apache.commons.digester3.Digester
+        Digester being instantiated without calling the setFeature functions that are generally used
+        for disabling entity processing
+
+        414┆ Digester digester = new Digester();
+        415┆ digester.push(parsed);
+        416┆ digester.addCallMethod(
+        417┆ 		"RatingServiceSelectionResponse/Response/Error",
+        418┆ 		"setErrorCode", 0);
+        419┆ digester.addCallMethod(
+        420┆ 		"RatingServiceSelectionResponse/Response/ErrorDescriprion",
+        421┆ 		"setError", 0);
+        422┆ digester
+        423┆ 		.addCallMethod(
+           [hid 49 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-core/src/main/java/com/salesmanager/core/business/modules/integration/shipping/impl/USPSShippingQuote.java 
+     java.owasp.java.xxe.org.apache.commons.digester3.Digester
+        Digester being instantiated without calling the setFeature functions that are generally used
+        for disabling entity processing
+
+        474┆ Digester digester = new Digester();
+        475┆ digester.push(parsed);
+        476┆ 
+        477┆ if(store.getCountry().getIsoCode().equals(delivery.getCountry().getIsoCode())) {
+        478┆ 
+        479┆ 	digester.addCallMethod("Error/Description",
+        480┆ 			"setError", 0);
+        481┆ 	digester.addCallMethod("RateV3Response/Package/Error/Description",
+        482┆ 			"setError", 0);
+        483┆ 	digester
+           [hid 64 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-core-model/.mvn/wrapper/MavenWrapperDownloader.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-core-modules/.mvn/wrapper/MavenWrapperDownloader.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-shop/.mvn/wrapper/MavenWrapperDownloader.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-shop/src/main/java/com/salesmanager/shop/utils/FilePathUtils.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        214┆ public boolean isValidURL(String urlString)
+        215┆ {
+        216┆     try
+        217┆     {
+        218┆         URL url = new URL(urlString);
+        219┆         url.toURI();
+        220┆         return true;
+        221┆     } catch (Exception exception)
+        222┆     {
+        223┆         return false;
+           [hid 2 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-shop/src/main/resources/application.properties 
+     java.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+         48┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/shopizer-ecommerce.shopizer/sm-shop-model/.mvn/wrapper/MavenWrapperDownloader.java 
+     java.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
