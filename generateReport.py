@@ -68,5 +68,9 @@ for URL in repoList:
     with open("/home/rtz/github_vuln_research/my_semgrep_rules/repos_report.csv","a") as file:
         file.write(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
 
+    cmd = f"rm -rf /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/{fullNameRepo}"
+    subprocess.run(cmd,shell=True)
+
+    print(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
     sleep(60)
-    #sys.exit(1)
+    
