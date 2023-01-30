@@ -78,7 +78,7 @@ repoURL, technology, stars, size, findingsCount
 column -s, -t < /home/rtz/github_vuln_research/my_semgrep_rules/repos_report.csv | less -#2 -N -S 
 
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/java_repo_list.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/java_repos -r /home/rtz/github_vuln_research/my_semgrep_rules/java -s /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_results.txt /home/rtz/github_vuln_research/my_semgrep_rules/results.csv
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_list_of_repos.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/java_repos -r /home/rtz/github_vuln_research/my_semgrep_rules/java -s /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/results.csv
 
 
 

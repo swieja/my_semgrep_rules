@@ -30,6 +30,7 @@ def get_args(prog):
     parser.add_argument('-r','--rules',dest="directoryRules",action='store',type=str,required=True)
     parser.add_argument('-s','--save',dest="semgrepResults",action='store',type=str,required=True)
     parser.add_argument('-c','--csv',dest="csvStore",action='store',type=str,required=True)
+    return parser.parse_args()
 
 
 
@@ -66,7 +67,7 @@ if __name__ == "__main__":
         cmd = f"python3 -m semgrep --config={args.directoryRules} {args.directoryRepos}/{fullNameRepo}"
         output = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         stdout,stderr = output.communicate()
-        with open(f"{args.semgrepResults}_{fullNameRepo}.txt","a") as file:
+        with open(f"{fullNameRepo}_{args.semgrepResults}","a") as file:
             file.write(str(stdout,'utf-8'))
 
         # get amount of findings 
