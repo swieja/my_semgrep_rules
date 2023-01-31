@@ -1,0 +1,145 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/application/clicommands/WebCommand.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.backticks-use
+        Backticks use may lead to command injection vulnerabilities.
+
+         70┆ `killall $prog`;
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+         60┆ pcntl_exec(
+         61┆     readlink('/proc/self/exe'),
+         62┆     ['-S', $socket, '-t', $documentRoot, Icinga::app()->getLibraryDir('/Icinga/Application/webrouter.php')]
+         63┆ );
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/application/forms/Config/Resource/SshResourceForm.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        114┆ unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/library/Icinga/Application/Modules/Manager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        367┆ if (! @unlink($link)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/library/Icinga/Application/webrouter.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        101┆ } elseif (file_exists($baseDir . '/' . $path) && is_file($baseDir . '/' . $path)) {
+          ⋮┆----------------------------------------
+        101┆ } elseif (file_exists($baseDir . '/' . $path) && is_file($baseDir . '/' . $path)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/library/Icinga/File/Storage/LocalFileStorage.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        108┆ unlink($resolvedPath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/library/Icinga/File/Storage/TemporaryLocalFileStorage.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         53┆ unlink($path);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/library/Icinga/Legacy/DashboardConfig.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        133┆ @unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/library/Icinga/Web/JavaScript.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        130┆ header('ETag: "' . $etag . '"');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/modules/migrate/application/clicommands/NavigationCommand.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        161┆ unlink($config->getConfigFile());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/modules/monitoring/library/Monitoring/Command/Transport/RemoteCommandFile.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+        417┆ $this->sshProcess = proc_open($this->sshCommand(), $descriptors, $this->sshPipes);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/modules/setup/library/Setup/WebWizard.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        415┆ @unlink($tokenPath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Icinga.icingaweb2/modules/translation/library/Translation/Util/GettextTranslationHelper.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+        206┆ shell_exec(sprintf(
+        207┆     '%s --update --backup=none %s %s 2>&1',
+        208┆     $this->getConfig()->get('translation', 'msgmerge', '/usr/bin/env msgmerge'),
+        209┆     $this->tablePath,
+        210┆     $this->templatePath
+        211┆ ));
+          ⋮┆----------------------------------------
+        230┆ shell_exec(
+        231┆     implode(
+        232┆         ' ',
+        233┆         array(
+        234┆             $this->getConfig()->get('translation', 'xgettext', '/usr/bin/env xgettext'),
+        235┆             '--language=PHP',
+        236┆             '--keyword=translate',
+        237┆             '--keyword=translate:1,2c',
+        238┆             '--keyword=translateInDomain:2',
+        239┆             '--keyword=translateInDomain:2,3c',
+           [hid 22 additional lines, adjust with --max-lines-per-finding] 
+        362┆ shell_exec(sprintf(
+        363┆     "sed -i 's;%s;../../../..;g' %s",
+        364┆     $this->moduleDir,
+        365┆     $path
+        366┆ ));
+          ⋮┆----------------------------------------
+        431┆ shell_exec(
+        432┆     implode(
+        433┆         ' ',
+        434┆         array(
+        435┆             $this->getConfig()->get('translation', 'msgfmt', '/usr/bin/env msgfmt'),
+        436┆             '-o ' . $targetPath,
+        437┆             $this->tablePath
+        438┆         )
+        439┆     )
+        440┆ );
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        114┆ unlink($this->catalogPath);
+          ⋮┆----------------------------------------
+        118┆ unlink($this->templatePath);

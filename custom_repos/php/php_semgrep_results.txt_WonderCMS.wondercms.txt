@@ -1,0 +1,48 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/WonderCMS.wondercms/index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        167┆ header($this->headerResponse);
+          ⋮┆----------------------------------------
+       2046┆ header('Location: ' . self::url($location));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.php-ssrf
+        The web server receives a URL or similar request from an upstream component and retrieves
+        the contents of this URL, but it does not sufficiently ensure that the request is being sent
+        to the expected destination. Dangerous function curl_setopt with payload
+        $_REQUEST['installModule']
+
+       1517┆ $url = $_REQUEST['installModule'];
+       1518┆ $folderName = $_REQUEST['directoryName'];
+       1519┆ $type = $_REQUEST['type'];
+       1520┆ 
+       1521┆ $path = sprintf('%s/%s/', $this->rootDir, $type);
+       1522┆ 
+       1523┆ if (in_array($type, self::VALID_DIRS, true)) {
+       1524┆ 	$zipFile = $this->filesPath . '/ZIPFromURL.zip';
+       1525┆ 	$zipResource = fopen($zipFile, 'w');
+       1526┆ 	$ch = curl_init();
+           [hid 30 additional lines, adjust with --max-lines-per-finding] 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        940┆ if (!is_dir($this->rootDir . '/' . $_REQUEST['type'] . '/' . $theme)) {
+          ⋮┆----------------------------------------
+       1548┆ if (!is_dir($moduleFolder)) {
+          ⋮┆----------------------------------------
+       1551┆ if (is_dir($moduleFolder) && !rename($moduleFolder, $path . $folderName)) {
+          ⋮┆----------------------------------------
+       2129┆ if ($fieldname === 'theme' && !is_dir($this->rootDir . '/themes/' . $content)) {
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+       2029┆ $dirFile->isDir() ? $this->recursiveDelete($dirFile->getPathname()) : unlink($dirFile->getPathname());
+          ⋮┆----------------------------------------
+       2034┆ unlink($file);

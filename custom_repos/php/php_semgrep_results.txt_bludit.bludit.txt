@@ -1,0 +1,105 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-kernel/boot/rules/99.header.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+          3┆ header('HTTP/1.0 '.$url->httpCode().' '.$url->httpMessage());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-kernel/functions.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+       1209┆ header('Content-Disposition: attachment; filename="'.basename($file).'"');
+          ⋮┆----------------------------------------
+       1213┆ header('Content-Length: ' . filesize($file));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-kernel/helpers/filesystem.class.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         74┆ return unlink($filename);
+          ⋮┆----------------------------------------
+        140┆ unlink($item);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-kernel/helpers/redirect.class.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+          8┆ header("Location:".$url, TRUE, $httpCode);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-kernel/helpers/simple-image.class.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        323┆ header('Content-Length: ' . strlen($image['data']));
+          ⋮┆----------------------------------------
+        326┆ header("Content-Disposition: attachment; filename=\"$filename\"");
+          ⋮┆----------------------------------------
+        364┆ header('Content-Type: ' . $image['mimeType']);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-kernel/pages.class.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        293┆ unlink(PATH_UPLOADS_PAGES.$key);
+          ⋮┆----------------------------------------
+        356┆ unlink(PATH_UPLOADS_PAGES.$key);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-plugins/api/plugin.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        400┆ header('HTTP/1.1 '.$code.' '.$message);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.php-permissive-cors
+        Access-Control-Allow-Origin response header is set to "*". This will disable CORS Same
+        Origin Policy restrictions.
+
+        401┆ header('Access-Control-Allow-Origin: *');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/bl-plugins/sitemap/plugin.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        133┆ header('Content-length: '.$sitemapSize);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         15┆ header('Location:'.$base.'/install.php');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/bludit.bludit/install.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        672┆ header("Location:" . $url, TRUE, 302);

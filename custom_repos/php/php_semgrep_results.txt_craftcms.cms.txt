@@ -1,0 +1,146 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/bootstrap/bootstrap.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
+        Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
+        file inclusion (RFI) if user input reaches this statement. LFI and RFI could lead to
+        sensitive files being obtained by attackers. Instead, explicitly specify what to include. If
+        that is not a viable solution, validate user input thoroughly.
+
+        238┆ $config = ArrayHelper::merge(
+        239┆     [
+        240┆         'vendorPath' => $vendorPath,
+        241┆         'env' => $environment,
+        242┆         'components' => $components,
+        243┆     ],
+        244┆     require $srcPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'app.php',
+        245┆     require $srcPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . "app.{$appType}.php",
+        246┆     $configService->getConfigFromFile('app'),
+        247┆     $configService->getConfigFromFile("app.{$appType}")
+           [hid 1 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/bootstrap/router.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
+        Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
+        file inclusion (RFI) if user input reaches this statement. LFI and RFI could lead to
+        sensitive files being obtained by attackers. Instead, explicitly specify what to include. If
+        that is not a viable solution, validate user input thoroughly.
+
+         16┆ include $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'index.php';
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/Craft.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.eval-use
+        Evaluating non-constant commands. This can lead to command injection.
+
+        338┆ eval(preg_replace('/^<\?php\s*/', '', $fileContents));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/console/controllers/DbController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        207┆ unlink($checkPath);
+          ⋮┆----------------------------------------
+        215┆ unlink($path);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/console/controllers/ProjectConfigController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        487┆ unlink($path);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/console/controllers/ResaveController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.eval-use
+        Evaluating non-constant commands. This can lead to command injection.
+
+         76┆ return eval($php);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/controllers/UtilitiesController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        237┆ unlink($backupPath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/db/Connection.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        474┆ @unlink($schema->tempMyCnfPath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/debug/LogTarget.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+         76┆ return array_reverse(unserialize($content), true);
+          ⋮┆----------------------------------------
+         92┆ $data = unserialize($this->module->fs->read($dataFile));
+          ⋮┆----------------------------------------
+         97┆ $panel->load(unserialize($data[$id]));
+          ⋮┆----------------------------------------
+        171┆ $manifest = unserialize($this->module->fs->read($indexFile));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/fs/Local.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        284┆ if (!unlink($this->prefixPath($path))) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/helpers/FileHelper.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        747┆ @unlink($thisFile);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/imagetransforms/ImageTransformer.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        733┆ unlink($imageCopy);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/services/ProjectConfig.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+       1522┆ @unlink($thisFile);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+       1754┆ $data = unserialize($config, ['allowed_classes' => false]);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/utilities/PhpInfo.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.phpinfo-use
+        The 'phpinfo' function may reveal sensitive information about your environment.
+
+         81┆ phpinfo(INFO_ALL);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/craftcms.cms/src/web/CsvResponseFormatter.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        132┆ unlink($file);

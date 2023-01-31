@@ -1,0 +1,18 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/michaelliao.itranswarp/.mvn/wrapper/MavenWrapperDownloader.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+         97┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+         98┆     if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
+         99┆         String username = System.getenv("MVNW_USERNAME");
+        100┆         char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
+        101┆         Authenticator.setDefault(new Authenticator() {
+        102┆             @Override
+        103┆             protected PasswordAuthentication getPasswordAuthentication() {
+        104┆                 return new PasswordAuthentication(username, password);
+        105┆             }
+        106┆         });
+           [hid 9 additional lines, adjust with --max-lines-per-finding] 

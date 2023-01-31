@@ -1,0 +1,299 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/.github/txp-index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+        107┆ $txt = shell_exec('grep --exclude-dir={.github,sites} --include=\*.php -rn . -e "'.escapeshellcmd($search).'("');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/rpc/TXP_RPCServer.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        293┆ header('Content-Length: '.$length);
+          ⋮┆----------------------------------------
+        294┆ header('Content-Type: text/xml charset='.$enc);
+          ⋮┆----------------------------------------
+        295┆ header('Date: '.date('r'));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/sites/site1/admin/setup/index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        138┆ unlink($symlink_relpath.$symlink_local);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/include/txp_diag.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.phpinfo-use
+        The 'phpinfo' function may reveal sensitive information about your environment.
+
+         85┆ phpinfo();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/include/txp_file.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.extract-user-data
+        Do not call 'extract()' on user-controllable data.  If you must, then you must also provide
+        the EXTR_SKIP flag to prevent overwriting existing variables.
+
+        919┆ extract($file);
+          ⋮┆----------------------------------------
+       1028┆ extract($file);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        955┆ unlink(realpath($tmp_name));
+          ⋮┆----------------------------------------
+       1056┆ unlink(realpath($file));
+          ⋮┆----------------------------------------
+       1069┆ unlink(realpath($newpath.'.tmp'));
+          ⋮┆----------------------------------------
+       1234┆ $ul = unlink(realpath($filepath));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/include/txp_image.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        817┆ unlink(realpath($file['tmp_name']));
+          ⋮┆----------------------------------------
+        891┆ unlink(realpath($file['tmp_name']));
+          ⋮┆----------------------------------------
+       1050┆ $ul = unlink(realpath(IMPATH.$id.$ext));
+          ⋮┆----------------------------------------
+       1054┆ $ult = unlink(realpath(IMPATH.$id.'t'.$ext));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/include/txp_plugin.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.extract-user-data
+        Do not call 'extract()' on user-controllable data.  If you must, then you must also provide
+        the EXTR_SKIP flag to prevent overwriting existing variables.
+
+        770┆ extract(pathinfo($target));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        658┆ unlink($source);
+          ⋮┆----------------------------------------
+        685┆ unlink($target_path);
+          ⋮┆----------------------------------------
+        706┆ unlink($target_path);
+          ⋮┆----------------------------------------
+        713┆ unlink($source);
+          ⋮┆----------------------------------------
+        778┆ unlink($target);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        247┆ header('X-Textpattern-'.preg_replace('/[^\w]+/', '', $key).': '.$value);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/lib/IXRClass.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        504┆ header('Content-Length: '.$length);
+          ⋮┆----------------------------------------
+        506┆ header('Date: '.date('r'));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/lib/class.thumb.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        653┆ if (unlink(IMPATH.$this->m_id.'t'.$this->m_ext)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/lib/txplib_admin.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        685┆ unlink($file);
+          ⋮┆----------------------------------------
+       1173┆ unlink($tf);
+          ⋮┆----------------------------------------
+       1288┆ unlink($f);
+          ⋮┆----------------------------------------
+       1299┆ unlink($f);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/lib/txplib_head.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         57┆ header('Content-Security-Policy: '.str_replace('{TEXTPATTERN_CSP_NONCE}', (string)$csp_nonce, CONTENT_SECURITY_POLICY));
+          ⋮┆----------------------------------------
+         58┆ header('X-Frame-Options: '.X_FRAME_OPTIONS);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/lib/txplib_misc.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+       3973┆ header($name ? $name.': '.$header : $header);
+          ⋮┆----------------------------------------
+       3976┆ header($name ? $name.': '.$header : $header);
+          ⋮┆----------------------------------------
+       4004┆ header("Last-Modified: $last");
+          ⋮┆----------------------------------------
+       4007┆ header('ETag: "' . $etag . '"');
+          ⋮┆----------------------------------------
+       4599┆ header("Status: $status");
+          ⋮┆----------------------------------------
+       4601┆ header("HTTP/1.0 $status");
+          ⋮┆----------------------------------------
+       4603┆ header("HTTP/1.1 $status");
+          ⋮┆----------------------------------------
+       4665┆ header("Location: $url", true, $code);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/publish/comment.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        277┆ header('Location: '.$backpage.'#txpCommentInputForm');
+          ⋮┆----------------------------------------
+        279┆ header('Location: '.$backpage.'#c'.sprintf("%06s", $commentid));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/publish/taghandlers.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.eval-use
+        Evaluating non-constant commands. This can lead to command injection.
+
+       2824┆ eval($thing);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/publish.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        760┆ @header('Content-Type: '.$mimetype.'; charset=utf-8');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/setup/setup_lib.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.md5-loose-equality
+        Make sure comparisons involving md5 values are strict (use `===` not `==`) to avoid type
+        juggling issues
+
+         55┆ if (!empty($pretext_data[0]) && trim($pretext_data[0]) == md5("/{$s}/?txpcleantest=1")) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/update/_to_4.6.0.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        118┆ unlink(txpath.DS.'include'.DS.'import'.DS.$file);
+          ⋮┆----------------------------------------
+        124┆ unlink(txpath.DS.'include'.DS.'txp_import.php');
+          ⋮┆----------------------------------------
+        181┆ unlink($file);
+          ⋮┆----------------------------------------
+        192┆ unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/Textpattern/Admin/Tools.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         80┆ $result &= unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/Textpattern/Password/Random.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.mcrypt-use
+        Mcrypt functionality has been deprecated and/or removed in recent PHP versions. Consider
+        using Sodium or OpenSSL.
+
+         79┆ $random = mcrypt_create_iv($bytes, MCRYPT_DEV_URANDOM);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/Textpattern/Plugin/Plugin.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        206┆ unserialize($plugin, array('allowed_classes' => false)) :
+          ⋮┆----------------------------------------
+        207┆ unserialize($plugin);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/Textpattern/Server/Files.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        110┆ unlink($tmp_name);
+          ⋮┆----------------------------------------
+        123┆ unlink($tmpfile);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/Textpattern/Skin/AssetBase.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        534┆ unlink($file->getPathname()) or $notRemoved[] = $name;
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/Textpattern/Skin/Skin.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        944┆ if (file_exists($filePath) && !unlink($filePath)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/phpmailer/phpmailer/get_oauth_token.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        163┆ header('Location: ' . $authUrl);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/textpattern.textpattern/textpattern/vendors/phpmailer/phpmailer/src/PHPMailer.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+       1761┆ $mail = @popen($sendmail, 'w');
+          ⋮┆----------------------------------------
+       1787┆ $mail = @popen($sendmail, 'w');
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+       3062┆ @unlink($file);
+          ⋮┆----------------------------------------
+       3065┆ @unlink($signed);
+          ⋮┆----------------------------------------
+       3071┆ @unlink($signed);

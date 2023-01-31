@@ -1,0 +1,705 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/config/session.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.laravel-cookie-long-timeout
+        Found a configuration file where the lifetime attribute  is over 30 minutes.
+
+         32┆ 'lifetime' => 120,
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/public/index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         41┆ header ("Content-length: $size");
+          ⋮┆----------------------------------------
+         42┆ header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', filemtime($favicon_path)));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/server.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+         17┆ if ($uri !== '/' && file_exists(__DIR__.'/'.$uri)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Admin/Http/Controllers/AdminEditorToolsController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+        308┆ $layout = execute_document_ready($layout);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        211┆ if (is_file($custom_live_edit)) {
+          ⋮┆----------------------------------------
+        213┆ $custom_live_editmtime = filemtime($custom_live_edit);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/App/Http/Controllers/ApiController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+       1123┆ $res = execute_document_ready($res);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
+        Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
+        file inclusion (RFI) if user input reaches this statement. LFI and RFI could lead to
+        sensitive files being obtained by attackers. Instead, explicitly specify what to include. If
+        that is not a viable solution, validate user input thoroughly.
+
+        891┆ include $try_config_file;
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        890┆ if (is_file($try_config_file)) {
+          ⋮┆----------------------------------------
+       1011┆ if (is_file($possible_layout)) {
+          ⋮┆----------------------------------------
+       1023┆ if (is_file($possible_layout)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/App/Http/Controllers/FrontendController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+       1289┆ $l = execute_document_ready($l);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+       1426┆ header('Content-Length: ' . filesize($map));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+       1197┆ if (is_file($custom_live_edit)) {
+          ⋮┆----------------------------------------
+       1198┆ $custom_live_editmtime = filemtime($custom_live_edit);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/App/Providers/AppServiceProvider.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        437┆ if(is_dir(config_path($domain)) and is_file(config_path($domain) . '/microweber.php')) {
+          ⋮┆----------------------------------------
+        437┆ if(is_dir(config_path($domain)) and is_file(config_path($domain) . '/microweber.php')) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/App/Utils/Adapters/Cache/Storage/FileStorage.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        289┆ @unlink($f);
+          ⋮┆----------------------------------------
+        293┆ @unlink($file);
+          ⋮┆----------------------------------------
+        493┆ @unlink($path);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+         76┆ $this->memory[ $key ] = @unserialize(substr($contents, 10));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/App/functions/api_callbacks.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        187┆ $command = @unserialize($payload['data']['command']);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Backup/Http/Controllers/Admin/BackupController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        125┆ header('Content-Disposition: attachment; filename=' . basename($filename));
+          ⋮┆----------------------------------------
+        126┆ header('Content-Length: ' . filesize($filename));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        164┆ @unlink($checkFile);
+          ⋮┆----------------------------------------
+        235┆ unlink($filename);
+          ⋮┆----------------------------------------
+        242┆ unlink($filename);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Cache/CacheFileHandler/CacheFileHandler.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        157┆ if (@unlink($file)) { // @ - file may not already exist
+          ⋮┆----------------------------------------
+        179┆ @unlink($file); // @ - file may not already exist
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        139┆ $meta = unserialize($meta);
+          ⋮┆----------------------------------------
+        190┆ return empty($meta[self::META_SERIALIZED]) ? $data : unserialize($data);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Cache/TaggableFileStore.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        182┆ $data = unserialize(substr($contents, 10));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Console/Commands/ResetCommand.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        144┆ @unlink($fileOrDir);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Content/ContentManager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+       1934┆ if (is_file($use_default_layouts)) {
+          ⋮┆----------------------------------------
+       1955┆ if (is_file($template_view) == true) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Content/ContentManagerCrud.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
+        User data flows into this manually-constructed SQL string. User data can be safely inserted
+        into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
+        constructed SQL strings is a possible indicator of SQL injection, which could let an
+        attacker steal or manipulate data from the database. Instead, use prepared statements
+        (`$mysqli->prepare("INSERT INTO test(id, label) VALUES (?, ?)");`) or a safe library.
+
+       1213┆ $get_max_pos = "SELECT max(position) AS maxpos FROM $table  WHERE id IN ($ids_implode) ";
+          ⋮┆----------------------------------------
+       1228┆ $this->app->cache_manager->delete('content/' . $id);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/CustomField/FieldsManager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        623┆ $it['values'] = unserialize($try);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Export/Formats/Helpers/SpreadsheetHelper.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        437┆ header("Content-Type: {$contentType}");
+          ⋮┆----------------------------------------
+        442┆ header("Content-Disposition: attachment; filename={$filename}{$extension}; filename*=UTF-8''{$filename}{$extension};");
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Export/Http/Controllers/Admin/BackupController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        135┆ header('Content-Disposition: attachment; filename=' . basename($filename));
+          ⋮┆----------------------------------------
+        136┆ header('Content-Length: ' . filesize($filename));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        166┆ @unlink($checkFile);
+          ⋮┆----------------------------------------
+        280┆ unlink($filename);
+          ⋮┆----------------------------------------
+        287┆ unlink($filename);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Export/SessionStepper.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        131┆ return unlink(self::sessionFilepath());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/FileManager/Http/Controllers/Api/FileManagerApiController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        218┆ unlink($targetPath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/FileManager/Http/Controllers/PluploadController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        332┆ if (!is_dir($targetDir)) {
+          ⋮┆----------------------------------------
+        371┆ if ($chunks < 2 && file_exists($targetDir . DIRECTORY_SEPARATOR . $fileName)) {
+          ⋮┆----------------------------------------
+        380┆ while (file_exists($targetDir . DIRECTORY_SEPARATOR . $fileName_a . '_' . $count . $fileName_b)) {
+          ⋮┆----------------------------------------
+        391┆ if (!is_dir($targetDir)) {
+          ⋮┆----------------------------------------
+        397┆ if (!is_file($has_index)) {
+          ⋮┆----------------------------------------
+        398┆ @touch($has_index);
+          ⋮┆----------------------------------------
+        402┆ if ($cleanupTargetDir && is_dir($targetDir) && ($dir = opendir($targetDir))) {
+          ⋮┆----------------------------------------
+        407┆ if (preg_match('/\.part$/', $file) && (filemtime($tmpfilePath) < time() - $maxFileAge) && ($tmpfilePath != "{$filePath}.part")) {
+          ⋮┆----------------------------------------
+        408┆ @unlink($tmpfilePath);
+          ⋮┆----------------------------------------
+        460┆ $out = fopen("{$filePath}.part", $chunk == 0 ? 'wb' : 'ab');
+          ⋮┆----------------------------------------
+        490┆ $out = fopen("{$filePath}.part", $chunk == 0 ? 'wb' : 'ab');
+          ⋮┆----------------------------------------
+        527┆ if (is_file($newfile)) {
+          ⋮┆----------------------------------------
+        538┆ if (is_file($filePath) and !$chunks || $chunk == $chunks - 1) {
+          ⋮┆----------------------------------------
+        543┆ $mime = @finfo_file($finfo, $filePath);
+          ⋮┆----------------------------------------
+        564┆ $imgCreatedFromJpeg = @imagecreatefromjpeg($filePath);
+          ⋮┆----------------------------------------
+        571┆ $imgCreatedFromPng = @imagecreatefrompng($filePath);
+          ⋮┆----------------------------------------
+        586┆ $imgCreatedFromGif = @imagecreatefromgif($filePath);
+          ⋮┆----------------------------------------
+        600┆ if (is_file($filePath)) {
+          ⋮┆----------------------------------------
+        603┆ $dirtySVG = file_get_contents($filePath);
+          ⋮┆----------------------------------------
+        613┆ file_put_contents($filePath, $cleanSVG);
+          ⋮┆----------------------------------------
+        624┆ @unlink($filePath);
+          ⋮┆----------------------------------------
+        635┆ $size = getimagesize($filePath);
+          ⋮┆----------------------------------------
+        637┆ $filesize = filesize($filePath);
+          ⋮┆----------------------------------------
+        671┆ $src = imagecreatefromstring(file_get_contents($fn));
+          ⋮┆----------------------------------------
+        700┆ @unlink($filePath);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        408┆ @unlink($tmpfilePath);
+          ⋮┆----------------------------------------
+        477┆ @unlink($_FILES['file']['tmp_name']);
+          ⋮┆----------------------------------------
+        593┆ unlink($filePathOld);
+          ⋮┆----------------------------------------
+        624┆ @unlink($filePath);
+          ⋮┆----------------------------------------
+        700┆ @unlink($filePath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Form/Validators/ImageValidator.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         69┆ @unlink($filePath);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Helper/Format.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+       1054┆ return unserialize($serialized);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Helper/UrlManager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        203┆ $the_param1 = unserialize($the_param1);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Helper/functions/filesystem.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        177┆ @unlink($path);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Import/Http/Controllers/Admin/BackupController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        135┆ header('Content-Disposition: attachment; filename=' . basename($filename));
+          ⋮┆----------------------------------------
+        136┆ header('Content-Length: ' . filesize($filename));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        166┆ @unlink($checkFile);
+          ⋮┆----------------------------------------
+        280┆ unlink($filename);
+          ⋮┆----------------------------------------
+        287┆ unlink($filename);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Install/Http/Controllers/InstallController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        585┆ @unlink($log_file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Media/MediaManager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+       1141┆ header('Content-Type: image/' . $ext);
+          ⋮┆----------------------------------------
+       1144┆ header('Content-Length: ' . filesize($cache_path));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        692┆ if (!file_exists($cachefile)) {
+          ⋮┆----------------------------------------
+        710┆ $fp = fopen($cachefile, 'rb');
+          ⋮┆----------------------------------------
+        714┆ $fp = fopen($cachefile, 'rb');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Module/Http/Controllers/Api/ModuleApiController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         82┆ @unlink($cacheModuleDir . 'uploaded-file.zip');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Module/Http/Controllers/ModuleController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+        505┆ $res = execute_document_ready($res);
+          ⋮┆----------------------------------------
+        804┆ $layout = execute_document_ready($layout);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
+        Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
+        file inclusion (RFI) if user input reaches this statement. LFI and RFI could lead to
+        sensitive files being obtained by attackers. Instead, explicitly specify what to include. If
+        that is not a viable solution, validate user input thoroughly.
+
+        300┆ include $try_config_file;
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        299┆ if (is_file($try_config_file)) {
+          ⋮┆----------------------------------------
+        405┆ if (is_file($possible_layout)) {
+          ⋮┆----------------------------------------
+        699┆ if (is_file($custom_live_edit)) {
+          ⋮┆----------------------------------------
+        701┆ $custom_live_editmtime = filemtime($custom_live_edit);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Option/OptionManager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+         81┆ $get[$key]['field_values'] = unserialize(base64_decode($get[$key]['field_values']));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Package/MicroweberComposerClient.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        192┆ @unlink($packageFileDestination . $packageFileName);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Queue/Http/Controllers/ProcessQueueController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+         32┆ $command = @unserialize($payload['data']['command']);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Template/Adapters/AdminTemplateStyle.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         33┆ @unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Template/Adapters/TemplateCssParser.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        124┆ @unlink($compileFile);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Template/Http/Controllers/Api/TemplateApiController.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        145┆ @unlink($cacheTemplateDir . 'uploaded-file.zip');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Template/LayoutsManager.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        794┆ if (!is_dir($template_folder)) {
+          ⋮┆----------------------------------------
+        808┆ if (is_file($live_edit_css)) {
+          ⋮┆----------------------------------------
+        809┆ $fcont = file_get_contents($live_edit_css);
+          ⋮┆----------------------------------------
+        953┆ file_put_contents($live_edit_css, $css_cont_new);
+          ⋮┆----------------------------------------
+        956┆ file_put_contents($live_edit_css, '');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Template/Template.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        133┆ @unlink($file);
+          ⋮┆----------------------------------------
+        521┆ @unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/Media/Adapters/Unsplash.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         56┆ @unlink($filename);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/Misc/ContentExport.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         90┆ header('Content-Disposition: attachment; filename=' . basename($exportPath));
+          ⋮┆----------------------------------------
+         91┆ header('Content-Length: ' . filesize($exportPath));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/Misc/License.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         67┆ return unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/System/Files.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        480┆ header('Content-Disposition: attachment; filename=' . $name);
+          ⋮┆----------------------------------------
+        481┆ header('Content-Length: ' . filesize($filename));
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         78┆ $path->isDir() && !$path->isLink() ? rmdir($path->getPathname()) : unlink($path->getPathname());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/ThirdPartyLibs/PHPImageMagician/classPhpPsdReader.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        192┆ if (isset($this->tempFileName)) unlink($this->tempFileName);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/ThirdPartyLibs/pclzip.lib.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+       2239┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       2267┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       2322┆ @unlink($this->zipname);
+          ⋮┆----------------------------------------
+       2896┆ @unlink($v_gzip_temp_name);
+          ⋮┆----------------------------------------
+       4030┆ @unlink($v_gzip_temp_name);
+          ⋮┆----------------------------------------
+       4853┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       4868┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       4886┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       4897┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       4913┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       4939┆ @unlink($v_zip_temp_name);
+          ⋮┆----------------------------------------
+       4951┆ @unlink($this->zipname);
+          ⋮┆----------------------------------------
+       5215┆ @unlink($this->zipname);
+          ⋮┆----------------------------------------
+       5628┆ else if (!@unlink($p_src)) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/Zip/Zip.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        554┆ header('Last-Modified: '.gmdate('D, d M Y H:i:s T'));
+          ⋮┆----------------------------------------
+        558┆ header('Content-Type: '.$contentType);
+          ⋮┆----------------------------------------
+        559┆ header('Content-Disposition: attachment; filename="'.$fileName.'";');
+          ⋮┆----------------------------------------
+        561┆ header('Content-Length: '.$this->getArchiveSize());
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        139┆ unlink($fileName);
+          ⋮┆----------------------------------------
+        396┆ unlink($this->streamFile);
+          ⋮┆----------------------------------------
+        452┆ unlink($tempzip);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/src/MicroweberPackages/Utils/Zip/ZipStream.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         81┆ header('Last-Modified: '.gmdate('D, d M Y H:i:s T'));
+          ⋮┆----------------------------------------
+         85┆ header('Content-Type: '.$contentType);
+          ⋮┆----------------------------------------
+         86┆ header('Content-Disposition: attachment; filename="'.$archiveName.'";');
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        362┆ unlink($this->streamFile);
+          ⋮┆----------------------------------------
+        414┆ unlink($tempzip);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/userfiles/modules/admin/developer_tools/template_exporter/Worker.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        886┆ @unlink($check);
+          ⋮┆----------------------------------------
+        971┆ unlink($filename);
+          ⋮┆----------------------------------------
+        977┆ unlink($filename);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/userfiles/modules/admin/import_export_tool/src/ExportFeedFromDatabase.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         87┆ unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/userfiles/modules/admin/import_export_tool/src/Models/ImportFeed.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        272┆ unlink($filename);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/userfiles/modules/help/read.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+          4┆ if (!is_file($readmeMd)) {
+          ⋮┆----------------------------------------
+          8┆ $readmeMd = file_get_contents($readmeMd);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/userfiles/modules/microweber/api/libs/mw-ui/grunt/plugins/ui/css/main.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+         51┆ $cont1 = file_get_contents($theme_vars);
+          ⋮┆----------------------------------------
+         52┆ $cont2 = file_get_contents($theme_structure);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/microweber.microweber/userfiles/modules/users/login/index.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
+        Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
+        file inclusion (RFI) if user input reaches this statement. LFI and RFI could lead to
+        sensitive files being obtained by attackers. Instead, explicitly specify what to include. If
+        that is not a viable solution, validate user input thoroughly.
+
+        135┆ include($template_file);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        134┆ if (isset($template_file) and is_file($template_file) != false) {

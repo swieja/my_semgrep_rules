@@ -1,0 +1,1551 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore/OrchardCore.Data.YesSql/PoolingJsonContentSerializer.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         16┆ TypeNameHandling = TypeNameHandling.Auto,
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore/OrchardCore.Infrastructure/Documents/DefaultDocumentSerializer.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         20┆ TypeNameHandling = TypeNameHandling.Auto,
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore/OrchardCore.Mvc.Core/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         74┆ services.AddSingleton(new ApplicationPartManager());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Admin/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         39┆ services.AddNavigation();
+          ⋮┆----------------------------------------
+         79┆ services.Configure<RazorPagesOptions>((options) =>
+          ⋮┆----------------------------------------
+         92┆ services.AddSiteSettingsPropertyDeploymentStep<AdminSettings, DeploymentStartup>(S => S["Admin settings"], S => S["Exports the admin settings."]);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AdminDashboard/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         35┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AdminMenu/Deployment/AdminMenuDeploymentSource.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         34┆ var serializer = new JsonSerializer() { TypeNameHandling = TypeNameHandling.Auto };
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AdminMenu/Recipes/AdminMenuStep.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         32┆ var serializer = new JsonSerializer() { TypeNameHandling = TypeNameHandling.Auto };
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AdminMenu/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         34┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Alias/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddObjectGraphType<AliasPart, AliasQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Alias/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         29┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Apis.GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         38┆ services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+          ⋮┆----------------------------------------
+         93┆ app.UseMiddleware<GraphQLMiddleware>(serviceProvider.GetService<IOptions<GraphQLSettings>>().Value);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ArchiveLater/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         23┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AuditTrail/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         45┆ services.TryAddSingleton<ILookupNormalizer, UpperInvariantLookupNormalizer>();
+          ⋮┆----------------------------------------
+        164┆ services.AddSiteSettingsPropertyDeploymentStep<AuditTrailSettings, DeploymentStartup>(S => S["Audit Trail settings"], S => S["Exports the audit trail settings." ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AutoSetup/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         67┆ services.Configure<AutoSetupOptions>(configuration);
+          ⋮┆----------------------------------------
+        112┆ app.UseMiddleware<AutoSetupMiddleware>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Autoroute/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         17┆ services.AddInputObjectGraphType<AutoroutePart, AutorouteInputObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Autoroute/RemotePublishing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IMetaWeblogDriver, AutorouteMetaWeblogDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Autoroute/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         40┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        113┆ services.AddScoped<IRouteableContentTypeProvider, AutorouteContentTypeProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.BackgroundTasks/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         27┆ services
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentFields/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddScoped<IContentFieldProvider, ObjectGraphTypeFieldProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentFields/Media/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IShapeTableProvider, MediaShapes>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentFields/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         39┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        181┆ services.AddContentField<LocalizationSetContentPickerField>()
+          ⋮┆----------------------------------------
+        205┆ services.AddScoped<IDataMigration, Indexing.SQL.Migrations>();
+          ⋮┆----------------------------------------
+        231┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        264┆ services.AddScoped<IDataMigration, UserPickerMigrations>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentLocalization/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddInputObjectGraphType<LocalizationPart, LocalizationInputObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentLocalization/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         44┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+         85┆ services.AddLiquidFilter<SwitchCultureUrlFilter>("switch_culture_url");
+          ⋮┆----------------------------------------
+        110┆ services.AddScoped<ISitemapContentItemExtendedMetadataProvider, SitemapUrlHrefLangExtendedMetadataProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentPreview/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         21┆ services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentTypes/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         13┆ services.AddScoped<IContentTypeDefinitionDisplayDriver, GraphQLContentTypeSettingsDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ContentTypes/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         34┆ services.AddScoped<IPermissionProvider, Permissions>();
+          ⋮┆----------------------------------------
+        143┆ services.AddTransient<IDeploymentSource, ContentDefinitionDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/AuditTrail/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         39┆ services.AddDataMigration<Migrations>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         16┆ [Route("api/content")]
+         17┆ [ApiController]
+         18┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         19┆ public class ApiController : Controller
+         20┆ {
+         21┆     private static readonly JsonMergeSettings UpdateJsonMergeSettings = new() { MergeArrayHandling = MergeArrayHandling.Replace };
+         22┆ 
+         23┆     private readonly IContentManager _contentManager;
+         24┆     private readonly IContentDefinitionManager _contentDefinitionManager;
+         25┆     private readonly IAuthorizationService _authorizationService;
+           [hid 174 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Deployment/AddToDeploymentPlan/AddToDeploymentPlanStartup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         28┆ services.AddTransient<IDeploymentSource, ContentItemDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Deployment/Download/DownloadStartup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         25┆ services.AddScoped<IContentDisplayDriver, DownloadContentDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Deployment/ExportContentToDeploymentTarget/ExportContentToDeploymentTargetStartup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         19┆ services.AddScoped<INavigationProvider, ExportContentToDeploymentTargetAdminMenu>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddContentGraphQL();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Scripting/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddSingleton<IGlobalMethodProvider, ContentMethodsProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         73┆ services.AddSingleton<IAnchorTag, ContentAnchorTag>();
+          ⋮┆----------------------------------------
+        321┆ services.AddTransient<IDeploymentSource, AllContentDeploymentSource>();
+          ⋮┆----------------------------------------
+        338┆ services.AddSingleton<IAdminNodeProviderFactory>(new AdminNodeProviderFactory<ContentTypesAdminNode>());
+          ⋮┆----------------------------------------
+        349┆ services.AddFileContentDefinitionStore();
+          ⋮┆----------------------------------------
+        358┆ services.AddScoped<ISitemapSourceBuilder, ContentTypesSitemapSourceBuilder>();
+          ⋮┆----------------------------------------
+        374┆ services.AddScoped<IFeedItemBuilder, CommonFeedItemBuilder>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         17┆ services.AddActivity<ContentCreatedEvent, ContentCreatedEventDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Cors/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         32┆ app.UseCors();
+          ⋮┆----------------------------------------
+         46┆ services.AddScoped<INavigationProvider, AdminMenu>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.CustomSettings/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         21┆ services.AddScoped<INavigationProvider, AdminMenu>();
+          ⋮┆----------------------------------------
+         38┆ services.AddTransient<IDeploymentSource, CustomSettingsDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.DataProtection.Azure/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         44┆ services.AddDataProtection().PersistKeysToAzureBlobStorage(connectionString, GetBlobContainerName(connectionString), GetBlobName());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Demo/Controllers/ContentApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+          9┆ [Route("api/demo")]
+         10┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         11┆ [ApiController]
+         12┆ public class ContentApiController : Controller
+         13┆ {
+         14┆     private readonly IAuthorizationService _authorizationService;
+         15┆     private readonly IContentManager _contentManager;
+         16┆ 
+         17┆     public ContentApiController(IAuthorizationService authorizationService, IContentManager contentManager)
+         18┆     {
+           [hid 52 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Demo/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.Configure<GraphQLContentOptions>(options =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Demo/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         83┆ builder.UseMiddleware<NonBlockingMiddleware>();
+          ⋮┆----------------------------------------
+         89┆ services.AddScoped<ITestDependency, ClassFoo>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Deployment/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         35┆ services.AddDeploymentServices();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Deployment.Remote/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         28┆ services.AddScoped<INavigationProvider, AdminMenu>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Diagnostics/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.TryAddEnumerable(ServiceDescriptor.Singleton<IStartupFilter, DiagnosticsStartupFilter>());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.DynamicCache/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         28┆ services.AddScoped<IDynamicCacheService, DefaultDynamicCacheService>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Email/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         30┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Email/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddActivity<EmailTask, EmailTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Facebook/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         26┆ builder.UseMiddleware<ScriptsMiddleware>();
+          ⋮┆----------------------------------------
+         31┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Facebook/StartupLogin.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         25┆ services.AddScoped<INavigationProvider, AdminMenuLogin>();
+          ⋮┆----------------------------------------
+         51┆ services.AddScoped<IDisplayDriver<DeploymentStep>, FacebookLoginDeploymentStepDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Facebook/StartupWidgets.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ services.AddScoped<IDataMigration, WidgetMigrations>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Features/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         38┆ services.AddRecipeExecutionStep<FeatureStep>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Feeds/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         11┆ services.AddFeeds();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Flows/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddObjectGraphType<BagPart, BagPartQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Flows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         36┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Forms/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         13┆ services.AddObjectGraphType<FormPart, FormPartQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Forms/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         18┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Forms/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddActivity<ValidateAntiforgeryTokenTask, ValidateAntiforgeryTokenTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.GitHub/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         23┆ services.AddScoped<IPermissionProvider, Permissions>();
+          ⋮┆----------------------------------------
+         32┆ services.AddSingleton<IGitHubAuthenticationService, GitHubAuthenticationService>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Google/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         33┆ services.AddScoped<IPermissionProvider, Permissions.GoogleAuthentication>();
+          ⋮┆----------------------------------------
+         56┆ services.AddScoped<IPermissionProvider, Permissions.GoogleAnalytics>();
+          ⋮┆----------------------------------------
+         73┆ services.AddScoped<IPermissionProvider, Permissions.GoogleTagManager>();
+          ⋮┆----------------------------------------
+         91┆ services.AddSiteSettingsPropertyDeploymentStep<GoogleAuthenticationSettings, GoogleAuthenticationDeploymentStartup>(S => S["Google Authentication Settings"], S  ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+        101┆ services.AddSiteSettingsPropertyDeploymentStep<GoogleAnalyticsSettings, GoogleAnalyticsDeploymentStartup>(S => S["Google Analytics Settings"], S => S["Exports t ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+        111┆ services.AddSiteSettingsPropertyDeploymentStep<GoogleTagManagerSettings, GoogleTagManagerDeploymentStartup>(S => S["Google Tag Manager Settings"], S => S["Expor ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.HealthChecks/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         24┆ app.UseHealthChecks(healthCheckOptions.Url);
+          ⋮┆----------------------------------------
+         29┆ services.AddHealthChecks();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.HomeRoute/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         17┆ services.AddSingleton<HomeRouteTransformer>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Html/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         13┆ services.AddObjectGraphType<HtmlBodyPart, HtmlBodyQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Html/Media/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IShapeTableProvider, MediaShapes>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Html/RemotePublishing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IMetaWeblogDriver, HtmlBodyMetaWeblogDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Html/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ services.Configure<TemplateOptions>(o => o.MemberAccessStrategy.Register<HtmlBodyPartViewModel>());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Https/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         70┆ services.AddSiteSettingsPropertyDeploymentStep<HttpsSettings, DeploymentStartup>(S => S["Https settings"], S => S["Exports the Https settings."]);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Indexing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddScoped<IIndexingTaskManager, IndexingTaskManager>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Layers/Deployment/AllLayersDeploymentSource.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         17┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Layers/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddSingleton<ISchemaBuilder, SiteLayersQuery>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Layers/Recipes/LayerStep.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         22┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Layers/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         46┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Liquid/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         31┆ app.UseMiddleware<ScriptsMiddleware>();
+          ⋮┆----------------------------------------
+         36┆ services.AddScoped<ILiquidTemplateManager, LiquidTemplateManager>();
+          ⋮┆----------------------------------------
+         87┆ services.AddScoped<IShapeTableProvider, LiquidShapes>();
+          ⋮┆----------------------------------------
+        102┆ services.AddLiquidFilter<ShortcodeFilter>("shortcode");
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Lists/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddInputObjectGraphType<ContainedPart, ContainedInputObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Lists/RemotePublishing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         18┆ services.AddScoped<IXmlRpcHandler, MetaWeblogHandler>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Lists/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         50┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+         92┆ services.AddSingleton<IAdminNodeProviderFactory>(new AdminNodeProviderFactory<ListsAdminNode>());
+          ⋮┆----------------------------------------
+        103┆ services.AddScoped<IContentLocalizationPartHandler, ContainedPartLocalizationHandler>();
+          ⋮┆----------------------------------------
+        116┆ services.AddScoped<IFeedQueryProvider, ListFeedQuery>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Localization/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddSingleton<ISchemaBuilder, SiteCulturesQuery>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Localization/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         29┆ services.AddScoped<IDisplayDriver<ISite>, LocalizationSettingsDisplayDriver>();
+          ⋮┆----------------------------------------
+         57┆ app.UseRequestLocalization(requestLocalizationOptions);
+          ⋮┆----------------------------------------
+         67┆ services.AddSiteSettingsPropertyDeploymentStep<LocalizationSettings, LocalizationDeploymentStartup>(S => S["Culture settings"], S => S["Exports the culture sett ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+         76┆ services.Configure<RequestLocalizationOptions>(options => options.ApplyCurrentCultureToResponseHeaders = true);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Markdown/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddObjectGraphType<MarkdownBodyPart, MarkdownBodyQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Markdown/Media/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IShapeTableProvider, MediaShapes>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Markdown/RemotePublishing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IMetaWeblogDriver, MarkdownBodyMetaWeblogDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Markdown/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         38┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Media/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddSingleton<ISchemaBuilder, MediaAssetQuery>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Media/RemotePublishing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IMetaWeblogDriver, MediaMetaWeblogDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Media/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         73┆ services.AddSingleton<IAnchorTag, MediaAnchorTag>();
+          ⋮┆----------------------------------------
+        200┆ app.UseMiddleware<MediaFileStoreResolverMiddleware>();
+          ⋮┆----------------------------------------
+        363┆ services.AddScoped<IPermissionProvider, MediaCachePermissions>();
+          ⋮┆----------------------------------------
+        374┆ services.AddScoped<IMediaNameNormalizerService, SlugifyMediaNameNormalizerService>();
+          ⋮┆----------------------------------------
+        383┆ services.AddTransient<IDeploymentSource, MediaDeploymentSource>();
+          ⋮┆----------------------------------------
+        399┆ services.AddShortcode<ImageShortcodeProvider>("image", d =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Media.AmazonS3/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         37┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Media.Azure/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         55┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Menu/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddObjectGraphType<MenuItemsListPart, MenuItemsListQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Menu/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         37┆ services.AddDataMigration<Migrations>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Microsoft.Authentication/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         29┆ services.TryAddEnumerable(new ServiceDescriptor(typeof(IPermissionProvider), typeof(Permissions), ServiceLifetime.Scoped));
+          ⋮┆----------------------------------------
+         55┆ services.TryAddEnumerable(new ServiceDescriptor(typeof(IPermissionProvider), typeof(Permissions), ServiceLifetime.Scoped));
+          ⋮┆----------------------------------------
+         93┆ services.AddScoped<IDisplayDriver<DeploymentStep>, AzureADDeploymentStepDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.MiniProfiler/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         20┆ services.Configure<MvcOptions>((options) =>
+          ⋮┆----------------------------------------
+         34┆ app.UseMiniProfiler();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Navigation/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         19┆ services.AddNavigation();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Notifications/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         42┆ services.AddScoped<INotificationService, NotificationService>();
+          ⋮┆----------------------------------------
+         96┆ services.AddActivity<NotifyUserTask, NotifyUserTaskDisplayDriver>();
+          ⋮┆----------------------------------------
+        105┆ services.AddActivity<NotifyContentOwnerTask, NotifyContentOwnerTaskDisplayDriver>();
+          ⋮┆----------------------------------------
+        114┆ services.AddScoped<INotificationMethodProvider, EmailNotificationProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.OpenId/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         50┆ services.AddOpenIddict()
+          ⋮┆----------------------------------------
+         72┆ services.TryAddSingleton<IOpenIdClientService, OpenIdClientService>();
+          ⋮┆----------------------------------------
+        164┆ services.AddOpenIddict()
+          ⋮┆----------------------------------------
+        280┆ services.AddScoped<IDisplayDriver<DeploymentStep>, OpenIdServerDeploymentStepDriver>();
+          ⋮┆----------------------------------------
+        291┆ services.AddOpenIddict()
+          ⋮┆----------------------------------------
+        342┆ services.AddScoped<IDisplayDriver<DeploymentStep>, OpenIdValidationDeploymentStepDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Placements/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         36┆ services.AddScoped<IPermissionProvider, Permissions>();
+          ⋮┆----------------------------------------
+         91┆ services.RemoveAll<IPlacementStore>();
+          ⋮┆----------------------------------------
+        101┆ services.AddTransient<IDeploymentSource, PlacementsDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.PublishLater/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         23┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Queries/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+          9┆ [Route("api/queries")]
+         10┆ [ApiController]
+         11┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         12┆ public class ApiController : Controller
+         13┆ {
+         14┆     private readonly IAuthorizationService _authorizationService;
+         15┆     private readonly IQueryManager _queryManager;
+         16┆ 
+         17┆     public ApiController(
+         18┆         IAuthorizationService authorizationService,
+           [hid 35 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Queries/Sql/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         17┆ services.AddSingleton<ISchemaBuilder, SqlQueryFieldTypeProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Queries/Sql/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         18┆ services.AddScoped<IPermissionProvider, Permissions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Queries/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         42┆ services.AddScoped<INavigationProvider, AdminMenu>();
+          ⋮┆----------------------------------------
+        114┆ services.AddTransient<IDeploymentSource, QueryBasedContentDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ReCaptcha/Forms/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         15┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ReCaptcha/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ services.AddReCaptcha();
+          ⋮┆----------------------------------------
+         36┆ services.AddSiteSettingsPropertyDeploymentStep<ReCaptchaSettings, DeploymentStartup>(S => S["ReCaptcha settings"], S => S["Exports the ReCaptcha settings."]);
+          ⋮┆----------------------------------------
+         45┆ services.AddScoped<IRegistrationFormEvents, RegistrationFormEventHandler>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ReCaptcha/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddActivity<ValidateReCaptchaTask, ValidateReCaptchaTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Recipes/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         31┆ services.AddScoped<INavigationProvider, AdminMenu>();
+          ⋮┆----------------------------------------
+         64┆ services.AddRecipes();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Redis/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         41┆ services.Configure<RedisOptions>(options =>
+          ⋮┆----------------------------------------
+         65┆ services.AddStackExchangeRedisCache(o => { });
+          ⋮┆----------------------------------------
+         79┆ services.AddSingleton<IMessageBus, RedisBus>();
+          ⋮┆----------------------------------------
+         91┆ services.AddSingleton<IDistributedLock, RedisLock>();
+          ⋮┆----------------------------------------
+        103┆ services.AddTransient<IConfigureOptions<KeyManagementOptions>, RedisKeyManagementOptionsSetup>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Resources/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ serviceCollection.Configure<LiquidViewOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ResponseCompression/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         15┆ app.UseResponseCompression();
+          ⋮┆----------------------------------------
+         20┆ services.AddResponseCompression(options => options.EnableForHttps = true);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.ReverseProxy/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         26┆ app.UseForwardedHeaders();
+          ⋮┆----------------------------------------
+         31┆ services.AddScoped<INavigationProvider, AdminMenu>();
+          ⋮┆----------------------------------------
+         47┆ services.AddSiteSettingsPropertyDeploymentStep<ReverseProxySettings, DeploymentStartup>(S => S["Reverse Proxy settings"], S => S["Exports the Reverse Proxy sett ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Roles/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         38┆ services.AddScoped<RoleStore>();
+          ⋮┆----------------------------------------
+         84┆ services.AddTransient<IDeploymentSource, AllRolesDeploymentSource>();
+          ⋮┆----------------------------------------
+         95┆ services.AddScoped<RoleManager<IRole>>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Rules/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         17┆ services.AddOptions<ConditionOptions>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Scripting/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddJavaScriptEngine();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         28┆ services.AddTransient<IConfigureOptions<SearchSettings>, SearchSettingsConfiguration>();
+          ⋮┆----------------------------------------
+         48┆ services.AddTransient<IDeploymentSource, SearchSettingsDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Elasticsearch/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         12┆ [Route("api/elasticsearch")]
+         13┆ [ApiController]
+         14┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         15┆ public class ApiController : Controller
+         16┆ {
+         17┆     private readonly IAuthorizationService _authorizationService;
+         18┆     private readonly ElasticQuerySource _elasticQuerySource;
+         19┆ 
+         20┆     public ApiController(
+         21┆         IAuthorizationService authorizationService,
+           [hid 79 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Elasticsearch/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddSingleton<ISchemaBuilder, ElasticQueryFieldTypeProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Elasticsearch/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         60┆ services.Configure<ElasticConnectionOptions>(o => o.ConfigurationExists = true);
+          ⋮┆----------------------------------------
+        234┆ services.AddTransient<IDeploymentSource, ElasticIndexDeploymentSource>();
+          ⋮┆----------------------------------------
+        260┆ services.AddSingleton<IBackgroundTask, IndexingBackgroundTask>();
+          ⋮┆----------------------------------------
+        272┆ services.AddScoped<IContentPickerResultProvider, ElasticContentPickerResultProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Lucene/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         10┆ [Route("api/lucene")]
+         11┆ [ApiController]
+         12┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         13┆ public class ApiController : Controller
+         14┆ {
+         15┆     private readonly IAuthorizationService _authorizationService;
+         16┆     private readonly LuceneQuerySource _luceneQuerySource;
+         17┆ 
+         18┆     public ApiController(
+         19┆         IAuthorizationService authorizationService,
+           [hid 79 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Lucene/GraphQL/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddSingleton<ISchemaBuilder, LuceneQueryFieldTypeProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Lucene/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         48┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        133┆ services.AddTransient<IDeploymentSource, LuceneIndexDeploymentSource>();
+          ⋮┆----------------------------------------
+        156┆ services.AddSingleton<IBackgroundTask, IndexingBackgroundTask>();
+          ⋮┆----------------------------------------
+        165┆ services.AddScoped<IContentPickerResultProvider, LuceneContentPickerResultProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Security/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         21┆ services.AddScoped<IPermissionProvider, SecurityPermissions>();
+          ⋮┆----------------------------------------
+         34┆ builder.UseSecurityHeaders(options =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Seo/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         18┆ services.AddDataMigration<Migrations>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Settings/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         41┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Setup/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         37┆ services.AddPortableObjectLocalization(options => options.ResourcesPath = "Localization");
+          ⋮┆----------------------------------------
+         66┆ app.UseRequestLocalization(localizationOptions);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Shortcodes/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         33┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+         80┆ services.AddScoped<ShortcodeTemplatesManager>();
+          ⋮┆----------------------------------------
+        122┆ services.AddShortcode<LocaleShortcodeProvider>("locale", d =>
+          ⋮┆----------------------------------------
+        144┆ services.AddTransient<IDeploymentSource, AllShortcodeTemplatesDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Sitemaps/Deployment/AllSitemapsDeploymentSource.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         13┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Sitemaps/Recipes/SitemapsStep.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         19┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Sitemaps/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         44┆ services.AddDataMigration<Migrations>();
+          ⋮┆----------------------------------------
+        234┆ services.AddOptions<SitemapsRazorPagesOptions>();
+          ⋮┆----------------------------------------
+        244┆ services.AddSingleton<IBackgroundTask, SitemapCacheBackgroundTask>();
+          ⋮┆----------------------------------------
+        253┆ services.AddTransient<IDeploymentSource, AllSitemapsDeploymentSource>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Spatial/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Taxonomies/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         52┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        125┆ services.AddScoped<IContentsAdminListFilter, TaxonomyContentsAdminListFilter>();
+          ⋮┆----------------------------------------
+        139┆ services.AddSiteSettingsPropertyDeploymentStep<TaxonomyContentsAdminListSettings, ContentsAdminListDeploymentStartup>(S => S["Taxonomy Filters settings"], S =>  ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+        148┆ services.AddObjectGraphType<TaxonomyPart, TaxonomyPartQueryObjectType>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Templates/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         36┆ services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+          ⋮┆----------------------------------------
+        104┆ services.AddScoped<IShapeBindingResolver, AdminTemplatesShapeBindingResolver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Tenants/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         33┆ [Route("api/tenants")]
+         34┆ [ApiController]
+         35┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         36┆ public class ApiController : Controller
+         37┆ {
+         38┆     private readonly IShellHost _shellHost;
+         39┆     private readonly ShellSettings _currentShellSettings;
+         40┆     private readonly IShellRemovalManager _shellRemovalManager;
+         41┆     private readonly IAuthorizationService _authorizationService;
+         42┆     private readonly IShellSettingsManager _shellSettingsManager;
+           [hid 457 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Tenants/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         42┆ services.AddScoped<INavigationProvider, AdminMenu>();
+          ⋮┆----------------------------------------
+        101┆ services.AddSingleton<ITenantFileProvider>(serviceProvider =>
+          ⋮┆----------------------------------------
+        125┆ app.UseStaticFiles(new StaticFileOptions
+          ⋮┆----------------------------------------
+        150┆ services.AddSingleton<DistributedShellMarkerService>();
+          ⋮┆----------------------------------------
+        166┆ services.AddScoped<INavigationProvider, FeatureProfilesAdminMenu>();
+          ⋮┆----------------------------------------
+        214┆ services.AddTransient<IDeploymentSource, AllFeatureProfilesDeploymentSource>();
+          ⋮┆----------------------------------------
+        225┆ services.AddScoped<IShapeTableProvider, TenantFeatureShapeTableProvider>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Tenants/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddActivity<DisableTenantTask, DisableTenantTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Themes/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         36┆ services.AddRecipeExecutionStep<ThemesStep>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Title/RemotePublishing/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ services.AddScoped<IMetaWeblogDriver, TitleMetaWeblogDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Title/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ services.Configure<TemplateOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Twitter/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         30┆ services.AddScoped<IPermissionProvider, Permissions>();
+          ⋮┆----------------------------------------
+         39┆ services.AddScoped<IDisplayDriver<ISite>, TwitterSettingsDisplayDriver>();
+          ⋮┆----------------------------------------
+         63┆ services.AddScoped<INavigationProvider, AdminMenuSignin>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Twitter/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddActivity<UpdateTwitterStatusTask, UpdateTwitterStatusTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/AuditTrail/Registration/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddScoped<IRegistrationFormEvents, UserRegistrationEventHandler>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/AuditTrail/ResetPassword/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddScoped<IPasswordRecoveryFormEvents, UserResetPasswordEventHandler>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/AuditTrail/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         20┆ services.AddTransient<IConfigureOptions<AuditTrailOptions>, UserAuditTrailEventConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/CacheTicketStoreStartup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         15┆ services.ConfigureOptions<CookieAuthenticationOptionsConfigure>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+        144┆ builder.UseAuthorization();
+          ⋮┆----------------------------------------
+        149┆ services.Configure<UserOptions>(userOptions =>
+          ⋮┆----------------------------------------
+        242┆ services.AddScoped<IRoleRemovedEventHandler, UserRoleRemovedEventHandler>();
+          ⋮┆----------------------------------------
+        256┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        309┆ services.AddSiteSettingsPropertyDeploymentStep<LoginSettings, LoginDeploymentStartup>(S => S["Login settings"], S => S["Exports the Login settings."]);
+          ⋮┆----------------------------------------
+        338┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        354┆ services.AddSiteSettingsPropertyDeploymentStep<ChangeEmailDeploymentStartup, ChangeEmailDeploymentStartup>(S => S["Change Email settings"], S => S["Exports the  ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+        391┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        407┆ services.AddSiteSettingsPropertyDeploymentStep<RegistrationSettings, RegistrationDeploymentStartup>(S => S["Registration settings"], S => S["Exports the Registr ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+        449┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        465┆ services.AddSiteSettingsPropertyDeploymentStep<ResetPasswordSettings, ResetPasswordDeploymentStartup>(S => S["Reset Password settings"], S => S["Exports the Res ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+        474┆ services.AddScoped<IDisplayDriver<User>, CustomUserSettingsDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/TimeZone/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         22┆ services.AddScoped<ITimeZoneSelector, UserTimeZoneSelector>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Users/Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         16┆ services.AddActivity<RegisterUserTask, RegisterUserTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Widgets/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         33┆ services.AddScoped<IShapeTableProvider, ContentCardShapes>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Workflows/Http/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         27┆ services.Configure<MvcOptions>(o =>
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Workflows/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         45┆ services.Configure<TemplateOptions>(o =>
+          ⋮┆----------------------------------------
+        132┆ services.AddTransient<IDeploymentSource, AllWorkflowTypeDeploymentSource>();
+          ⋮┆----------------------------------------
+        143┆ services.AddActivity<CommitTransactionTask, CommitTransactionTaskDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Workflows/Timers/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         13┆ services.AddActivity<TimerEvent, TimerEventDisplayDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Workflows/UserTasks/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         15┆ services.AddScoped<IContentDisplayDriver, UserTaskEventContentDriver>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.XmlRpc/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         14┆ services.AddScoped<IXmlRpcReader, XmlRpcReader>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Themes/TheAdmin/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         21┆ services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Themes/TheAgencyTheme/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ serviceCollection.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Themes/TheBlogTheme/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ serviceCollection.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Themes/TheComingSoonTheme/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ serviceCollection.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Themes/TheTheme/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         12┆ serviceCollection.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/Templates/OrchardCore.ProjectTemplates/content/OrchardCore.Templates.Cms.Module/Startup.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-hsts-header
+        The HSTS HTTP response security header is missing, allowing interaction and communication to
+        be sent over the insecure HTTP protocol.
+
+         28┆ services.Configure<TemplateOptions>(o =>

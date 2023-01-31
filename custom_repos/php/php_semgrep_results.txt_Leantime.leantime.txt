@@ -1,0 +1,150 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/core/class.application.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        164┆ header("${key}: ${value}");
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/core/class.frontcontroller.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        304┆ header("Location:" . trim($url), true, $http_response_code);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/core/class.template.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.assert-use-audit
+        Calling assert with user input is equivalent to eval'ing.
+
+        604┆ assert($openingTag == $tagName); // check that tags are properly nested.
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        470┆ header("Location:" . trim($url));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/auth/services/class.auth.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        294┆ $this->settings = $user['settings'] ? unserialize($user['settings']) : array();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/canvas/controllers/class.export.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         73┆ header('Content-Disposition: attachment; filename="' . static::CANVAS_NAME . static::CANVAS_TYPE . '-' . $canvasId . '.xml"');
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/canvas/controllers/class.showCanvas.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        185┆ unlink($uploadfile);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/files/repositories/class.files.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+        205┆ unlink($file);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/ideas/repositories/class.ideas.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+         84┆ foreach (unserialize($values['value']) as $key => $label) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/notifications/services/class.messengers.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        140┆ $zulipWebhook = unserialize($zulipWebhookSerialized);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/pageparts/controllers/class.header.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        109┆ && (file_exists(ROOT . $themeLogoPathSettings) || str_starts_with($themeLogoPathSettings, "http"))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/projects/controllers/class.showProject.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+         97┆ $this->tpl->assign('zulipHook', unserialize($zulipWebhook));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/tickets/repositories/class.tickets.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
+        Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
+        Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
+
+        179┆ foreach (unserialize($values['value']) as $key => $status) {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/app/domain/timesheets/repositories/class.timesheets.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+        172┆ header('Content-Disposition: attachment; filename=' . $filename);
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
+        File name based on user input risks server-side request forgery.
+
+        196┆ file_put_contents($file, $content);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/public/backup.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
+        Executing non-constant commands. This can lead to command injection.
+
+         25┆ exec("mysqldump --user={$config->dbUser} --password={$config->dbPassword} --host={$config->dbHost} {$config->dbDatabase} --port={$config->dbPort} --result-file= ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
+        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
+        actor could use this to modify or access files they have no right to.
+
+         88┆ @unlink($config->dbBackupPath.$backupFile);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/Leantime.leantime/public/download.php 
+     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
+        Using user input when setting headers with `header()` is potentially dangerous. This could
+        allow an attacker to inject a new line and add a new header into the response. This is
+        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
+
+         73┆ header("Content-disposition: attachment; filename=\"".$realName.".".$ext."\"");
+          ⋮┆----------------------------------------
+         77┆ header('content-type: '. $mimes[$ext]);
+          ⋮┆----------------------------------------
+         78┆ header('content-disposition: inline; filename="'.$realName.".".$ext.'";');
+          ⋮┆----------------------------------------
+         84┆ header("Content-Disposition: filename=\"".$realName.".".$ext."\"");
+          ⋮┆----------------------------------------
+        152┆ header("Location:".$presignedUrl);

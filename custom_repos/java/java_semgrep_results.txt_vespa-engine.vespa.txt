@@ -1,0 +1,132 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/configserver/src/main/java/com/yahoo/vespa/config/server/filedistribution/ApplicationFileManager.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+         96┆ private File download(String uri, File tmpDir, Path path) {
+         97┆     File file = null;
+         98┆     FileOutputStream fos = null;
+         99┆     ReadableByteChannel rbc = null;
+        100┆     try {
+        101┆         file = new File(tmpDir, path.getRelative());
+        102┆         Files.createDirectories(file.getParentFile().toPath());
+        103┆         URL website = new URL(uri);
+        104┆         if ( ! List.of("http", "https").contains(website.getProtocol().toLowerCase(Locale.ROOT)))
+        105┆             throw new IllegalArgumentException("only HTTP(S) supported for URI type resources");
+           [hid 21 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/document/src/main/java/com/yahoo/vespaxmlparser/VespaXMLReader.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.owasp.java.xxe.javax.xml.stream.XMLInpu
+     tFactory
+        XMLInputFactory being instantiated without calling the setProperty functions that are
+        generally used for disabling entity processing
+
+         26┆ XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/http-utils/src/main/java/ai/vespa/util/http/AcceptAllHostnamesVerifier.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+         10┆ public class AcceptAllHostnamesVerifier implements HostnameVerifier {
+         11┆ 
+         12┆     private static final AcceptAllHostnamesVerifier INSTANCE = new AcceptAllHostnamesVerifier();
+         13┆ 
+         14┆     public static AcceptAllHostnamesVerifier instance() { return INSTANCE; }
+         15┆ 
+         16┆     private AcceptAllHostnamesVerifier() {}
+         17┆ 
+         18┆     @Override public boolean verify(String hostname, SSLSession session) { return true; }
+         19┆ 
+           [hid 1 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/http-utils/src/main/java/ai/vespa/util/http/hc4/VespaHttpClientBuilder.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+         20┆ import org.apache.http.conn.ssl.NoopHostnameVerifier;
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/node-admin/src/main/java/com/yahoo/vespa/hosted/node/admin/task/util/process/ProcessFactoryImpl.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+         43┆ ProcessBuilder processBuilder = new ProcessBuilder(arguments);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/searchlib/src/main/java/com/yahoo/searchlib/gbdt/XmlHelper.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.Docume
+     ntBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+         44┆ DocumentBuilderFactory factory = createDocumentBuilderFactory();
+         45┆ DocumentBuilder builder = factory.newDocumentBuilder();
+         46┆ Document doc = builder.parse(in);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/standalone-container/src/main/java/com/yahoo/application/container/impl/ClassLoaderOsgiFramework.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+         63┆ @Override
+         64┆ public List<Bundle> installBundle(String bundleLocation) {
+         65┆     if (bundleLocation != null && ! bundleLocation.isEmpty()) {
+         66┆         try {
+         67┆             URL url = new URL(bundleLocation);
+         68┆             bundleLocations.add(url);
+         69┆             bundleList.add(new JarBundleImpl(url));
+         70┆         } catch (IOException e) {
+         71┆             throw new RuntimeException(e);
+         72┆         }
+           [hid 4 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/vespa-athenz/src/main/java/com/yahoo/vespa/athenz/api/AthenzAccessToken.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.java-jwt-decode-without-verify
+        Detected the decoding of a JWT token without a verify step. JWT tokens must be verified
+        before use, otherwise the token's integrity is unknown. This means a malicious actor could
+        forge a JWT token with any claims. Call '.verify()' before using the token.
+
+         62┆ jwt = JWT.decode(this.value);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/vespa-feed-client-cli/src/main/java/ai/vespa/feed/client/impl/CliClient.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+        193┆ private static class AcceptAllHostnameVerifier implements HostnameVerifier {
+        194┆ 
+        195┆     static final AcceptAllHostnameVerifier INSTANCE = new AcceptAllHostnameVerifier();
+        196┆ 
+        197┆     @Override
+        198┆     public boolean verify(String hostname, SSLSession session) { return true; }
+        199┆ 
+        200┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/vespa-testrunner-components/src/main/java/com/yahoo/vespa/hosted/testrunner/TestRunner.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+         99┆ ProcessBuilder builder = new ProcessBuilder(command);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vespa-engine.vespa/vespajlib/src/main/java/com/yahoo/system/ProcessExecuter.java 
+     home.rtz.github_vuln_research.my_semgrep_rules.java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+         47┆ ProcessBuilder pb = new ProcessBuilder(command);
