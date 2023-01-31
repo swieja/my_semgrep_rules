@@ -17,5 +17,8 @@ sqli
 column -s, -t < /home/rtz/github_vuln_research/my_semgrep_rules/repos_report.csv | less -#2 -N -S 
 
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_list_of_repos.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/java_repos -r /home/rtz/github_vuln_research/my_semgrep_rules/java -s /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/results.csv
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_list_of_repos.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/java_repos -r /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/results.csv
+
+
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_java.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/java_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 ```

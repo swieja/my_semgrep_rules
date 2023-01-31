@@ -59,28 +59,38 @@ if __name__ == "__main__":
 
         # cloning the repo
         #cmd = f"git clone {URL} /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/{fullNameRepo}"
+        print(f"Cloning the repo: {URL}: ")
         cmd = f"git clone {URL} {args.directoryRepos}/{fullNameRepo}"
         subprocess.run(cmd,shell=True,capture_output=False)
 
         #running semgrep, saving results and basic repo info
         #cmd = f"python3 -m semgrep --config=/home/rtz/github_vuln_research/my_semgrep_rules/java /home/rtz/github_vuln_research/my_semgrep_rules/java_repos/{fullNameRepo}"
+        print(f'''Running semgrep on {fullNameRepo} located in {args.directoryRepos},
+        directory with rules: {args.directoryRules} ,
+        saving semgrep results to: {args.semgrepResults}_{fullNameRepo}.txt.
+        ''')
+        
+        print(f"python3 -m semgrep --config={args.directoryRules} {args.directoryRepos}/{fullNameRepo}")
         cmd = f"python3 -m semgrep --config={args.directoryRules} {args.directoryRepos}/{fullNameRepo}"
         output = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         stdout,stderr = output.communicate()
-        with open(f"{fullNameRepo}_{args.semgrepResults}","a") as file:
+        print(str(stdout,'utf-8'))
+        print(str(stderr,'utf-8'))
+        with open(f"{args.semgrepResults}_{fullNameRepo}.txt","a") as file:
             file.write(str(stdout,'utf-8'))
 
         # get amount of findings 
         findingCount = getFindingCount(stderr)
         
-
+        print(f"Saving csv: {args.csvStore}")
         #save to csv
         with open(f"{args.csvStore}","a") as file:
             file.write(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
-
+        
+        print(f"Deleting the directory: {args.directoryRepos}/{fullNameRepo}")
         cmd = f"rm -rf {args.directoryRepos}/{fullNameRepo}"
         subprocess.run(cmd,shell=True)
 
         print(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
-        sleep(60)
+        sleep(120)
         
