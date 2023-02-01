@@ -13,6 +13,7 @@ lfi \
 ssrf \
 sqli
 
+## general commands
 ```bash
 column -s, -t < /home/rtz/github_vuln_research/my_semgrep_rules/repos_report.csv | less -#2 -N -S 
 
@@ -43,11 +44,17 @@ code asd.txt
 ```
 
 
-generate rules
+## generate rules
 ```bash
 cd /home/rtz/github_vuln_research/semgrep-rules/python ; find `pwd` -name *.yaml  | tee /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/full_list.txt > /dev/null
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/rule_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/list.txt  > /dev/null
 while read p ; do cp $p /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/list.txt 
 rm /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/full_list.txt /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/rule_list.txt 
 cd /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules
+```
+
+
+## modified repo finding tool to add desc for each repo
+```
+
 ```
