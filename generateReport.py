@@ -74,8 +74,8 @@ if __name__ == "__main__":
         cmd = f"python3 -m semgrep --config={args.directoryRules} {args.directoryRepos}/{fullNameRepo}"
         output = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         stdout,stderr = output.communicate()
-        # print(str(stdout,'utf-8'))
-        # print(str(stderr,'utf-8'))
+        print(str(stdout,'utf-8'))
+        print(str(stderr,'utf-8'))
         with open(f"{args.semgrepResults}_{fullNameRepo}.txt","a") as file:
             file.write(str(stdout,'utf-8'))
 
@@ -85,12 +85,12 @@ if __name__ == "__main__":
         print(f"Saving csv: {args.csvStore}")
         #save to csv
         with open(f"{args.csvStore}","a") as file:
-            file.write(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
+            file.write(f"{URL},Python,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
         
         print(f"Deleting the directory: {args.directoryRepos}/{fullNameRepo}")
         cmd = f"rm -rf {args.directoryRepos}/{fullNameRepo}"
         subprocess.run(cmd,shell=True)
 
         #print(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
-        sleep(120)
+        sleep(10)
         
