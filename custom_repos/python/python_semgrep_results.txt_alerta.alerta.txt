@@ -1,0 +1,12 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/alerta.alerta/alerta/database/backends/postgres/base.py 
+     python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+        147┆ cursor.execute(f'DROP TABLE IF EXISTS {table}')
