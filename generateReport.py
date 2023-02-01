@@ -74,7 +74,7 @@ if __name__ == "__main__":
         cmd = f"python3 -m semgrep --config={args.directoryRules} {args.directoryRepos}/{fullNameRepo}"
         output = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         stdout,stderr = output.communicate()
-        print(str(stdout,'utf-8'))
+        #print(str(stdout,'utf-8'))
         print(str(stderr,'utf-8'))
         with open(f"{args.semgrepResults}_{fullNameRepo}.txt","a") as file:
             file.write(str(stdout,'utf-8'))
