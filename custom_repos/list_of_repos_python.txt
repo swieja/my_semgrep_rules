@@ -1,0 +1,3 @@
+https://github.com/alerta/alerta
+https://github.com/amfoss/cms
+https://github.com/indico/indico

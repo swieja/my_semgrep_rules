@@ -1,0 +1,12 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/amfoss.cms/framework/schema.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.password-empty-string
+        'newPassword' is the empty string and is being used to set the password on 'user'. If you
+        meant to set an unusable password, set the password to None or call
+        'set_unusable_password()'.
+
+        263┆ newPassword = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(10))
+        264┆ user.set_password(newPassword)
+        265┆ user.save()

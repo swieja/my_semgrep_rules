@@ -1,0 +1,188 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/bin/utils/apiProxy.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.ssrf-requests
+        Data from request object is passed to a new server-side request. This could lead to a
+        server-side request forgery (SSRF). To mitigate, ensure that schemes and hosts are validated
+        against an allowlist, do not forward the response to the user, and ensure proper
+        authentication and transport-layer security in the proxied request.
+
+         46┆ response = requests.request(method, app.config['INDICO_URL'] + path, verify=False, **request_args)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/bin/utils/db_log.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.avoid-pickle
+        Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When
+        unpickling, the serialized data could be manipulated to run arbitrary code. Instead,
+        consider serializing the relevant data as JSON or a similar text-based serialization format.
+
+         43┆ obj = pickle.loads(chunk)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/cli/database.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+         54┆ db.session.execute(f'DELETE FROM {table}')
+          ⋮┆----------------------------------------
+         56┆ db.session.execute(f'INSERT INTO {table} VALUES (:revision)', {'revision': revision})
+          ⋮┆----------------------------------------
+         92┆ db.session.execute(f'DROP TABLE alembic_version_plugin_{plugin}')
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/core/db/sqlalchemy/util/management.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+         94┆ row = conn.execute('''
+         95┆     SELECT 'DROP FUNCTION ' || ns.nspname || '.' || proname || '(' || oidvectortypes(proargtypes) || ')'
+         96┆     FROM pg_proc INNER JOIN pg_namespace ns ON (pg_proc.pronamespace = ns.oid)
+         97┆     WHERE ns.nspname = '{}'  order by proname;
+         98┆ '''.format(schema))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/core/emails.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.avoid-pickle
+        Avoid using `pickle`, which is known to lead to code execution vulnerabilities. When
+        unpickling, the serialized data could be manipulated to run arbitrary code. Instead,
+        consider serializing the relevant data as JSON or a similar text-based serialization format.
+
+        127┆ pickle.dump((email, log_entry.id if log_entry else None), f)
+          ⋮┆----------------------------------------
+        135┆ email, log_entry_id = pickle.load(f)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/legacy/pdfinterface/base.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.use-defused-xml
+        The Python documentation recommends using `defusedxml` instead of `xml` because the native
+        Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can
+        leak confidential data and "XML bombs" can cause denial of service.
+
+         13┆ import xml.sax.saxutils as saxutils
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/migrations/versions/20171124_1138_2af245be72a6_review_questions_models.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+         37┆ op.execute('ALTER TABLE {}.{} ALTER COLUMN "value" TYPE JSON USING to_json(value)'.format(schema,
+         38┆                                                                                           ratings_table))
+          ⋮┆----------------------------------------
+         44┆ op.execute('DELETE FROM {0}.{1} WHERE question_id IN(SELECT id FROM {0}.{2} '
+         45┆            "WHERE field_type != 'rating' OR NOT is_required)".format(schema, ratings_table, questions_table))
+          ⋮┆----------------------------------------
+         46┆ op.execute(f"DELETE FROM {schema}.{questions_table} WHERE field_type != 'rating'")
+          ⋮┆----------------------------------------
+         47┆ op.execute('ALTER TABLE {}.{} ALTER COLUMN "value" TYPE INT USING value::TEXT::INT'.format(schema,
+         48┆                                                                                            ratings_table))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/migrations/versions/20190118_1514_416f9c877300_add_reservationlink_table.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+         54┆ op.execute('''
+         55┆     WITH reserv_data AS (
+         56┆         SELECT nextval(pg_get_serial_sequence('roombooking.reservation_links', 'id')) AS new_link_id,
+         57┆         id AS reserv_id, event_id
+         58┆         FROM roombooking.reservations
+         59┆         WHERE event_id IS NOT NULL
+         60┆     ), link_ids_data AS (
+         61┆         INSERT INTO roombooking.reservation_links (id, event_id, linked_event_id, link_type)
+         62┆         SELECT new_link_id, event_id, event_id, {}
+         63┆         FROM reserv_data
+           [hid 7 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/migrations/versions/20200904_1543_f37d509e221c_add_user_profile_picture_source_column.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+         38┆ op.execute('''
+         39┆     UPDATE users.users
+         40┆     SET picture_metadata = picture_metadata || '{"lastmod": "%s"}'::jsonb
+         41┆     WHERE picture_source = 3 AND NOT (picture_metadata ? 'lastmod')
+         42┆ ''' % http_date(now_utc()))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/migrations/versions/20210224_1808_26806768cd3f_remove_flower_oauth_app.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.sqlalchemy-execute-raw-query
+        Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can
+        result in SQL Injection. In order to execute raw query safely, prepared statement should be
+        used. SQLAlchemy provides TextualSQL to easily used prepared statement with named
+        parameters. For complex SQL composition, use SQL Expression Language or Schema Definition
+        Language. In most cases, SQLAlchemy ORM will be a better option.
+
+         31┆ op.execute(f'''
+         32┆     INSERT INTO oauth.applications
+         33┆     (name, description, client_id, client_secret, allowed_scopes, redirect_uris, is_enabled, is_trusted,
+         34┆      system_app_type, allow_pkce_flow)
+         35┆     VALUES
+         36┆     ('Flower', '', '{uuid4()}', '{uuid4()}', '{{read:user}}', '{{}}', true, true, 2, false);
+         37┆ ''')
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/modules/events/editing/service.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.ssrf-requests
+        Data from request object is passed to a new server-side request. This could lead to a
+        server-side request forgery (SSRF). To mitigate, ensure that schemes and hosts are validated
+        against an allowlist, do not forward the response to the user, and ensure proper
+        authentication and transport-layer security in the proxied request.
+
+         45┆ resp = requests.get(url + '/info', allow_redirects=False)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/modules/events/export.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.avoid-pyyaml-load
+        Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`,
+        `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing
+        YAML. An attacker with control over the YAML input could create special YAML input that
+        allows the attacker to run arbitrary Python code. This would allow the attacker to steal
+        files, download and install malware, or otherwise take over the machine. Use
+        `yaml.safe_load` or `yaml.SafeLoader` instead.
+
+         ▶▶┆ Autofix ▶ s/unsafe_load/safe_load/1
+        414┆ self.data = yaml.unsafe_load(self.archive.extractfile('data.yaml'))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/modules/events/export_test.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.avoid-pyyaml-load
+        Detected a possible YAML deserialization vulnerability. `yaml.unsafe_load`, `yaml.Loader`,
+        `yaml.CLoader`, and `yaml.UnsafeLoader` are all known to be unsafe methods of deserializing
+        YAML. An attacker with control over the YAML input could create special YAML input that
+        allows the attacker to run arbitrary Python code. This would allow the attacker to steal
+        files, download and install malware, or otherwise take over the machine. Use
+        `yaml.safe_load` or `yaml.SafeLoader` instead.
+
+         ▶▶┆ Autofix ▶ s/unsafe_load/safe_load/1
+         90┆ data = yaml.unsafe_load(data_file)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/indico.indico/indico/util/mdx_latex.py 
+     home.rtz.github_vuln_research.my_semgrep_rules.python_semgrep_rules.use-defused-xml
+        The Python documentation recommends using `defusedxml` instead of `xml` because the native
+        Python `xml` library is vulnerable to XML External Entity (XXE) attacks. These attacks can
+        leak confidential data and "XML bombs" can cause denial of service.
+
+         82┆ from xml.etree import ElementTree as etree
