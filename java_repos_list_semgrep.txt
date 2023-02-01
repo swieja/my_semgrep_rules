@@ -1,0 +1,105 @@
+https://github.com/purplecabbage/phonegap-plugins: Plugins for use with PhoneGap. 
+https://github.com/stacksimplify/aws-eks-kubernetes-masterclass: AWS EKS Kubernetes - Masterclass | DevOps, Microservices
+https://github.com/devopshydclub/vprofile-project: None
+https://github.com/mongodb/docs: The MongoDB Documentation Project Source.
+https://github.com/jboss-developer/jboss-eap-quickstarts: The quickstarts demonstrate JBoss EAP, Jakarta EE 8 and a few additional technologies. They provide small, specific, working examples that can be used as a reference for your own project.
+https://github.com/wildfly/quickstart: Holds all versioned WildFly quickstarts
+https://github.com/apache/cxf: Apache CXF
+https://github.com/xamarin/docs-archive: Xamarin docs archive
+https://github.com/mercyblitz/geekbang-lessons: 极客时间课程工程
+https://github.com/CyanogenMod/android_frameworks_base: None
+https://github.com/Esri/arcgis-runtime-samples-android: ArcGIS Runtime SDK for Android Samples
+https://github.com/playgameservices/android-basic-samples: Google Play game services - Android samples
+https://github.com/apache/phoenix: Mirror of Apache Phoenix
+https://github.com/jenkinsci/git-plugin: Jenkins Git plugin 
+https://github.com/confluentinc/kafka-connect-jdbc: Kafka Connect connector for JDBC-compatible databases
+https://github.com/android-cn/android-open-project-demo: Demo of android open source project, 微信公众号:codekk, 网站:
+https://github.com/camunda-consulting/camunda-7-code-examples: Examples and demo applications built by the camunda consulting team
+https://github.com/eclipse-archived/smarthome: Eclipse SmartHome™ project
+https://github.com/pubnub/java: PubNub Java-based APIs for core Java, Android
+https://github.com/jammy928/CoinExchange_CryptoExchange_Java: The best Java open source crypto currency exchange platform, bitcoin exchange based on Java | BTC exchange | ETH exchange | digital currency exchange | trading platform | matching trading engine. This project is based on the development of Spring Cloud microservices and can be used to build and secondary development of digital currency exchanges. It has a complete source code for matching trading engines, back-end management (back-end + front-end), front-end (transaction page, activity page, personal center, etc.), Android APP source code, Apple APP source code, currency wallet RPC source code. Contact Email: 877070886@qq.com
+https://github.com/apache/ranger: Mirror of Apache Ranger
+https://github.com/halfkiss/ZjDroid: Android app dynamic reverse tool based on Xposed framework.
+https://github.com/hub4j/github-api: Java API for GitHub
+https://github.com/Swati4star/Images-to-PDF: An app to convert images to PDF file!
+https://github.com/adempiere/adempiere: ADempiere Business Suite ERP/CRM/MFG/SCM/POS done the Bazaar way in an open and unabated fashion. Focus is on the Community that includes Subject Matter Specialists, Implementors and End-Users.
+https://github.com/spring-cloud/spring-cloud-openfeign: Support for using OpenFeign in Spring Cloud apps
+https://github.com/good-life/PushTalk: 推聊是一个基于极光推送 (JPush) 的手机聊天系统。支持群聊与点对点聊天。当前包括 Android客户端、iOS客户端与 Java服务器端。3分钟就可以整套系统跑起来。
+https://github.com/aws-samples/aws-big-data-blog: None
+https://github.com/Lyokone/flutterlocation: A Flutter plugin to easily handle realtime location in iOS and Android. Provides settings for optimizing performance or battery.
+https://github.com/SonarSource/sonar-java: :coffee: SonarSource Static Analyzer for Java Code Quality and Security
+https://github.com/vogellacompany/codeexamples-android: Android examples from the vogella.com website
+https://github.com/spring-attic/spring-cloud-gcp: Integration for Google Cloud Platform APIs with Spring
+https://github.com/apache/jena: Apache Jena
+https://github.com/wso2/product-apim: Welcome to the WSO2 API Manager source code! For info on working with the WSO2 API Manager repository and contributing code, click the link below.
+https://github.com/apache/sqoop: Mirror of Apache Sqoop
+https://github.com/spring-projects/spring-data-neo4j: Provide support to increase developer productivity in Java when using Neo4j. Uses familiar Spring concepts such as a template classes for core API usage and lightweight repository style data access.
+https://github.com/OWASP-Benchmark/BenchmarkJava: OWASP Benchmark is a test suite designed to verify the speed and accuracy of software vulnerability detection tools. A fully runnable web app written in Java, it supports analysis by Static (SAST), Dynamic (DAST), and Runtime (IAST) tools that support Java. The idea is that since it is fully runnable and all the vulnerabilities are actually exploitable, it’s a fair test for any kind of vulnerability detection tool.  For more details on this project, please see the OWASP Benchmark Project home page.
+https://github.com/spring-cloud/spring-cloud-function: None
+https://github.com/floodlight/floodlight: Floodlight SDN OpenFlow Controller
+https://github.com/spring-cloud/spring-cloud-dataflow: A microservices-based Streaming and Batch data processing in Cloud Foundry and Kubernetes
+https://github.com/loiane/curso-java-basico: :coffee: [PT-BR] Código fonte apresentado no curso de Java gratuito do blog loiane.com [EN] Source code of my free Java training.
+https://github.com/aliyun/alicloud-android-demo: None
+https://github.com/mrdear/JavaWEB: JavaWEB学习之中的一些Demo(废弃)
+https://github.com/zaproxy/zap-extensions: OWASP ZAP Add-ons
+https://github.com/xuyisheng/AndroidHeroes: Source code of the book - Android群英传
+https://github.com/spring-projects/spring-data-commons: Spring Data Commons. Interfaces and code shared between the various datastore specific implementations.
+https://github.com/417511458/jbone: jbone基于Spring Cloud框架开发，旨在为中小企业提供稳定的微服务解决方案，为开发人员提供基础开发骨架，jbone包含微服务中所有常用组件，例如注册中心、服务管理、服务监控、JVM监控、内存分析、调用链跟踪、API网关等等。业务功能包括系统权限的统一管理、单点登录、CMS、电商平台、工作流平台、支付平台等等。
+https://github.com/dannytiehui/androidpn: An open source project to provide push notification support for Android -- a xmpp based notification server and a client tool kit.
+https://github.com/jeecgboot/jeewx-boot: JAVA版免费开源的微信管家平台。支持微信公众号、小程序、第三方平台等。平台已经实现了公众号基础管理、群发、系统权限、抽奖活动、小程序官网等功能，便于二次开发，可以快速搭建微信应用！
+https://github.com/spring-cloud/spring-cloud-stream: Framework for building Event-Driven Microservices
+https://github.com/spring-projects/spring-amqp: Spring AMQP - support for Spring programming model with AMQP, especially but not limited to RabbitMQ
+https://github.com/bluejoe2008/openwebflow: 基于Activiti的工作流引擎扩展，接管了Activiti对活动权限以及用户表的管理，并提供了催办、代办、加签（包括前加签/后加签）、自由跳转、分裂节点等功能
+https://github.com/chenhaoxiang/Java: Java的学习之路，学习JavaEE以及框架时候的一些项目，结合博客和源码，让你受益匪浅，适合Java初学者和刚入门开始学框架者
+https://github.com/gsh199449/spider: A configurable web spider with a easy-to-use web console
+https://github.com/fayson/cdhproject: hadoop各组件使用，持续更新
+https://github.com/58code/Argo: 58.com轻量级web框架
+https://github.com/spring-projects/spring-data-rest: Simplifies building hypermedia-driven REST web services on top of Spring Data repositories
+https://github.com/OpenNMS/opennms: Enterprise-Grade Open-Source Network Management Platform
+https://github.com/apache/metron: Apache Metron
+https://github.com/spring-cloud/spring-cloud-consul: Spring Cloud Consul
+https://github.com/winghc/hadoop2x-eclipse-plugin: eclipse plugin for hadoop 2.2.0 , 2.4.1
+https://github.com/0opslab/opslabJutil: Java utils
+https://github.com/KOHGYLW/kiftd-source: kiftd: An open source sky driver or cloud driver server application! 欢迎访问kiftd源代码资源库！您可以在此获取kiftd源代码，并自由地进行下载和查看。该源代码仓库同时也是开发仓库，因此其版本可能比发行版靠前（但绝不会滞后）。
+https://github.com/zccodere/study-imooc: 慕课网Java相关课程学习项目源码，博客地址：https://segmentfault.com/blog/zccoder
+https://github.com/LinkedInAttic/camus: LinkedIn's previous generation Kafka to HDFS pipeline.
+https://github.com/hazelcast/hazelcast-code-samples: Hazelcast Code Samples
+https://github.com/strongbox/strongbox: Strongbox is an artifact repository manager.
+https://github.com/DroidPlanner/Tower: Ground Control Station for Android Devices
+https://github.com/mapbox/mapbox-android-demo: Google Play demo app for the Mapbox Maps SDK for Android
+https://github.com/selendroid/selendroid: "Selenium for Android" (Test automate native or hybrid Android apps and the mobile web with Selendroid.) Join us on IRC #selendroid on freenode. Also confirm you have signed the CLA http://goo.gl/pAvxEI when making a Pull Request.
+https://github.com/xingag/app_spider: a spider on the apps
+https://github.com/apache/systemds: An open source ML system for the end-to-end data science lifecycle
+https://github.com/NLPchina/Word2VEC_java: word2vec java版本的一个实现
+https://github.com/newbee-ltd/newbee-mall-api: 🔥 🎉新蜂商城前后端分离版本-后端API源码
+https://github.com/apache/mina: Mirror of Apache MINA
+https://github.com/leelovejava/cloud2020: SpringCloud
+https://github.com/GeekZooStudio/ECMobile_Android: 基于ECShop的手机商城客户端
+https://github.com/apache/oozie: Mirror of Apache Oozie
+https://github.com/xwiki/xwiki-platform: The XWiki platform
+https://github.com/alibaba/simpleimage: None
+https://github.com/Shuyun123/LKShop: 开源商城
+https://github.com/Slimefun/Slimefun4: Slimefun 4 - A unique Spigot/Paper plugin that looks and feels like a modpack. We've been giving you backpacks, jetpacks, reactors and much more since 2013.
+https://github.com/dapr/quickstarts: Dapr quickstart code samples and tutorials showcasing core Dapr capabilities
+https://github.com/EiletXie/cloud2020: SpringCloud2020最新技术学习
+https://github.com/szvone/vmqApk: V免签监控端
+https://github.com/algorithm004-01/algorithm004-01: None
+https://github.com/JThink/SkyEye: 对java、scala等运行于jvm的程序进行实时日志采集、索引和可视化，对系统进行进程级别的监控，对系统内部的操作进行策略性的报警、对分布式的rpc调用进行trace跟踪以便于进行性能分析
+https://github.com/dotCMS/core: Headless/Hybrid Content Management System for Enterprises
+https://github.com/DiscordSRV/DiscordSRV: Discord bridging plugin for block game https://modrinth.com/plugin/discordsrv
+https://github.com/IQSS/dataverse: Open source research data repository software
+https://github.com/ym6745476/andbase: andbase快速开发框架@Deprecated
+https://github.com/atguigu01/Shopping: 硅谷商城[新]是一款按照企业级标准研发的项目。本套代码是目前国内市场第一套详细讲解商城类项目的免费代码。该代码中的内容包括但不仅限于，框架的搭建   、主页模块、分类模块、发现模块、购物车模块和个人中心模块。项目中讲解的主流技术包括且不限于RadioGroup + Fragment、OKHttp、FastJson、RecyclerView、   ScrollViewContainer、Banner、倒计时秒杀、自定义购物车、支付宝等技术。该项目中讲解的技术可应用在电商、新闻、旅游、医疗、在线教育等领域。
+https://github.com/hiteshsahu/ECommerce-App-Android: E-Commerce App for Android with Material Design Pattern
+https://github.com/sitewhere/sitewhere: SiteWhere is an industrial strength open-source application enablement platform for the Internet of Things (IoT). It provides a multi-tenant microservice-based infrastructure that includes device/asset management, data ingestion, big-data storage, and integration through a modern, scalable architecture.  SiteWhere provides REST APIs for all system functionality.  SiteWhere provides SDKs for many common device platforms including Android, iOS, Arduino, and any Java-capable platform such as Raspberry Pi rapidly accelerating the speed of innovation.
+https://github.com/zhangyd-c/OneBlog: :alien: OneBlog，一个简洁美观、功能强大并且自适应的Java博客 
+https://github.com/apache/solr: Apache Solr open-source search software
+https://github.com/apache/james-project: Emails at the heart of your business logic!
+https://github.com/joscha/play-authenticate: An authentication plugin for Play Framework 2.x (Java)
+https://github.com/facebookarchive/hadoop-20: Facebook's Realtime Distributed FS based on Apache Hadoop 0.20-append
+https://github.com/maxliaops/Java_Web_Examples: 《实战突击：Java Web项目整合开发》源码
+https://github.com/spring-cloud/spring-cloud-contract: Support for Consumer Driven Contracts in Spring
+https://github.com/Zephery/newblog: :octocat: 个人博客，个人网站，blog
+https://github.com/jpos/jPOS: jPOS Project
+https://github.com/AppiumTestDistribution/AppiumTestDistribution: A tool for running android and iOS appium tests in parallel across devices... U like it STAR it !
+https://github.com/funtl/spring-cloud-alibaba-my-shop: 利用 Spring Cloud Alibaba 微服务架构解决方案重构《走向单体地狱》阶段开发的 MyShop 项目，以便于我们更好的理解微服务架构，将知识点运用到实践中。

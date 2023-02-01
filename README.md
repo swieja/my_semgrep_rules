@@ -57,5 +57,8 @@ cd /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules
 ## modified repo finding tool to add desc for each repo
 I had to modify the script to add description for each repo so it better to filter which is usually needed anyway
 ```
-python3 find_repos_and_add_desc.py -q "NOT in:descritpion library NOT in:readme exercise stars:500..5000 language:Java" -f java_repos_semgrep.txt -s 10000
+python3 /home/rtz/github_vuln_research/find_repos_and_add_desc.py \
+    -q "NOT in:descritpion library NOT in:readme exercise stars:500..1000 language:Java" \
+    -f /home/rtz/github_vuln_research/my_semgrep_rules/java_repos_list_semgrep.txt \
+    -s 10000
 ```
