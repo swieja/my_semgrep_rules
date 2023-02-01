@@ -17,24 +17,33 @@ sqli
 column -s, -t < /home/rtz/github_vuln_research/my_semgrep_rules/repos_report.csv | less -#2 -N -S 
 
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_list_of_repos.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/java_repos -r /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/results.csv
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_java.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/java_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/java_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_php.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/php_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/php_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_php.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/php_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/php_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
+
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_csharp.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/csharp_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/php_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
 
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_python.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/python_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_go.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
+
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_js.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/js_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/js_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
+
 
 #count the number of occurrences
-cd /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos
-fgrep home.rtz.github_vuln_research.my_semgrep_rules. php/php_semgrep_results.txt_textpattern.textpattern.txt > lol.txt
-./count_words.sh lol.txt > asd.txt 
+cd /home/rtz/github_vuln_research/my_semgrep_rules/
+mkdir /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
+mv go_semgrep* /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
+cd /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
+fgrep home.rtz.github_vuln_research.my_semgrep_rules. * > lol.txt
+/home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/count_words.sh lol.txt > asd.txt 
 code asd.txt
 ```
 
 
-
+generate rules
 ```bash
 cd /home/rtz/github_vuln_research/semgrep-rules/python ; find `pwd` -name *.yaml  | tee /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/full_list.txt > /dev/null
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/rule_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/list.txt  > /dev/null

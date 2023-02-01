@@ -1,0 +1,193 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore/OrchardCore.Data.YesSql/PoolingJsonContentSerializer.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         16┆ TypeNameHandling = TypeNameHandling.Auto,
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore/OrchardCore.Infrastructure/Documents/DefaultDocumentSerializer.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         20┆ TypeNameHandling = TypeNameHandling.Auto,
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AdminMenu/Deployment/AdminMenuDeploymentSource.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         34┆ var serializer = new JsonSerializer() { TypeNameHandling = TypeNameHandling.Auto };
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.AdminMenu/Recipes/AdminMenuStep.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         32┆ var serializer = new JsonSerializer() { TypeNameHandling = TypeNameHandling.Auto };
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Contents/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         16┆ [Route("api/content")]
+         17┆ [ApiController]
+         18┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         19┆ public class ApiController : Controller
+         20┆ {
+         21┆     private static readonly JsonMergeSettings UpdateJsonMergeSettings = new() { MergeArrayHandling = MergeArrayHandling.Replace };
+         22┆ 
+         23┆     private readonly IContentManager _contentManager;
+         24┆     private readonly IContentDefinitionManager _contentDefinitionManager;
+         25┆     private readonly IAuthorizationService _authorizationService;
+           [hid 174 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Demo/Controllers/ContentApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+          9┆ [Route("api/demo")]
+         10┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         11┆ [ApiController]
+         12┆ public class ContentApiController : Controller
+         13┆ {
+         14┆     private readonly IAuthorizationService _authorizationService;
+         15┆     private readonly IContentManager _contentManager;
+         16┆ 
+         17┆     public ContentApiController(IAuthorizationService authorizationService, IContentManager contentManager)
+         18┆     {
+           [hid 52 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Layers/Deployment/AllLayersDeploymentSource.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         17┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Layers/Recipes/LayerStep.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         22┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Queries/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+          9┆ [Route("api/queries")]
+         10┆ [ApiController]
+         11┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         12┆ public class ApiController : Controller
+         13┆ {
+         14┆     private readonly IAuthorizationService _authorizationService;
+         15┆     private readonly IQueryManager _queryManager;
+         16┆ 
+         17┆     public ApiController(
+         18┆         IAuthorizationService authorizationService,
+           [hid 35 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Elasticsearch/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         12┆ [Route("api/elasticsearch")]
+         13┆ [ApiController]
+         14┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         15┆ public class ApiController : Controller
+         16┆ {
+         17┆     private readonly IAuthorizationService _authorizationService;
+         18┆     private readonly ElasticQuerySource _elasticQuerySource;
+         19┆ 
+         20┆     public ApiController(
+         21┆         IAuthorizationService authorizationService,
+           [hid 79 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Search.Lucene/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         10┆ [Route("api/lucene")]
+         11┆ [ApiController]
+         12┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         13┆ public class ApiController : Controller
+         14┆ {
+         15┆     private readonly IAuthorizationService _authorizationService;
+         16┆     private readonly LuceneQuerySource _luceneQuerySource;
+         17┆ 
+         18┆     public ApiController(
+         19┆         IAuthorizationService authorizationService,
+           [hid 79 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Sitemaps/Deployment/AllSitemapsDeploymentSource.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         13┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Sitemaps/Recipes/SitemapsStep.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.insecure-newtonsoft-deserialization
+        TypeNameHandling Auto is unsafe and can lead to arbitrary code execution in the context of
+        the process.  Use a custom SerializationBinder whenever using a setting other than
+        TypeNameHandling.None.
+
+         19┆ TypeNameHandling = TypeNameHandling.Auto
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/OrchardCMS.OrchardCore/src/OrchardCore.Modules/OrchardCore.Tenants/Controllers/ApiController.cs 
+     home.rtz.github_vuln_research.my_semgrep_rules.csharp_semgrep_rules.missing-or-broken-authorization
+        Anonymous access shouldn't be allowed unless explicit by design. Access control checks are
+        missing and potentially can be bypassed. This finding violates the principle of least
+        privilege or deny by default, where access should only be permitted for a specific set of
+        roles or conforms to a custom policy or users.
+
+         33┆ [Route("api/tenants")]
+         34┆ [ApiController]
+         35┆ [Authorize(AuthenticationSchemes = "Api"), IgnoreAntiforgeryToken, AllowAnonymous]
+         36┆ public class ApiController : Controller
+         37┆ {
+         38┆     private readonly IShellHost _shellHost;
+         39┆     private readonly ShellSettings _currentShellSettings;
+         40┆     private readonly IShellRemovalManager _shellRemovalManager;
+         41┆     private readonly IAuthorizationService _authorizationService;
+         42┆     private readonly IShellSettingsManager _shellSettingsManager;
+           [hid 457 additional lines, adjust with --max-lines-per-finding] 
