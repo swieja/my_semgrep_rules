@@ -1,14 +1,6 @@
 
 Findings:
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/statamic.cms/src/Assets/AssetContainerManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         60┆ unlink($tmp);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/statamic.cms/src/Console/Commands/Multisite.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.eval-use
         Evaluating non-constant commands. This can lead to command injection.
@@ -23,14 +15,6 @@ Findings:
          26┆ phpinfo(-1);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/statamic.cms/src/View/Antlers/Language/Runtime/Debugging/GlobalDebugManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        260┆ @unlink($lock);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/statamic.cms/src/View/Antlers/Language/Runtime/NodeProcessor.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.eval-use
         Evaluating non-constant commands. This can lead to command injection.
@@ -38,14 +22,6 @@ Findings:
        2224┆ eval('?>'.$buffer.'<?php ');
           ⋮┆----------------------------------------
        2256┆ eval('?>'.$phpBuffer.'<?php ');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/statamic.cms/src/View/Antlers/Language/Runtime/RuntimeParser.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        448┆ @unlink($tmpFile);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/statamic.cms/src/View/Antlers/Language/Utilities/StringUtilities.php 

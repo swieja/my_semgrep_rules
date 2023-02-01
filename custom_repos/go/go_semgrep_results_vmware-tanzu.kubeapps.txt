@@ -1,0 +1,60 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vmware-tanzu.kubeapps/cmd/kubeapps-apis/server/server.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.grpc-server-insecure-connection
+        Found an insecure gRPC server without 'grpc.Creds()' or options with credentials. This
+        allows for a connection without encryption to this server. A malicious attacker could tamper
+        with the gRPC message, which could compromise the machine. Include credentials derived from
+        an SSL certificate in order to create a secure gRPC connection. You can create credentials
+        using 'credentials.NewServerTLSFromFile("cert.pem", "cert.key")'.
+
+         76┆ grpcSrv := grpc.NewServer(grpc.ChainUnaryInterceptor(LogRequest))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vmware-tanzu.kubeapps/pkg/dbutils/dbutilstest/pgtest/pgtest.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         64┆ err := db.QueryRow(fmt.Sprintf("SELECT COUNT(*) FROM %s", table)).Scan(&count)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/vmware-tanzu.kubeapps/pkg/dbutils/postgresql_utils.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        158┆ 	_, err := m.DB.Exec(fmt.Sprintf(`
+        159┆ CREATE TABLE IF NOT EXISTS %s (
+        160┆ 	ID serial NOT NULL PRIMARY KEY,
+        161┆ 	namespace varchar NOT NULL,
+        162┆ 	name varchar NOT NULL,
+        163┆ 	checksum varchar,
+        164┆ 	last_update varchar,
+        165┆ 	UNIQUE(namespace, name)
+        166┆ )`, RepositoryTable))
+          ⋮┆----------------------------------------
+        171┆ 	_, err = m.DB.Exec(fmt.Sprintf(`
+        172┆ CREATE TABLE IF NOT EXISTS %s (
+        173┆ 	ID serial NOT NULL PRIMARY KEY,
+        174┆ 	repo_name varchar NOT NULL,
+        175┆ 	repo_namespace varchar NOT NULL,
+        176┆ 	chart_id varchar,
+        177┆ 	info jsonb NOT NULL,
+        178┆ 	UNIQUE(repo_name, repo_namespace, chart_id),
+        179┆ 	FOREIGN KEY (repo_name, repo_namespace) REFERENCES %s (name, namespace) ON DELETE CASCADE
+        180┆ )`, ChartTable, RepositoryTable))
+          ⋮┆----------------------------------------
+        185┆ 	_, err = m.DB.Exec(fmt.Sprintf(`
+        186┆ CREATE TABLE IF NOT EXISTS %s (
+        187┆ 	ID serial NOT NULL PRIMARY KEY,
+        188┆ 	chart_id varchar NOT NULL,
+        189┆ 	repo_name varchar NOT NULL,
+        190┆ 	repo_namespace varchar NOT NULL,
+        191┆ 	chart_files_ID varchar NOT NULL,
+        192┆ 	info jsonb NOT NULL,
+        193┆ 	UNIQUE(repo_namespace, chart_files_ID),
+        194┆ 	FOREIGN KEY (repo_name, repo_namespace) REFERENCES %s (name, namespace) ON DELETE CASCADE,
+           [hid 2 additional lines, adjust with --max-lines-per-finding] 
+        206┆ _, err := m.DB.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s", tables))

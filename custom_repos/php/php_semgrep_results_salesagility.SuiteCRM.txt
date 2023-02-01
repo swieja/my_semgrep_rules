@@ -1,28 +1,12 @@
 
 Findings:
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/Api/Core/app.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.php-permissive-cors
-        Access-Control-Allow-Origin response header is set to "*". This will disable CORS Same
-        Origin Policy restrictions.
-
-          3┆ header("Access-Control-Allow-Origin: *");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/Api/V8/Service/UserPreferencesService.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
 
          92┆ $preferences[$category] = unserialize(base64_decode($row['contents']));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/ModuleInstall/ExtensionManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        246┆ unlink("custom/$extPath/$targetFileName");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/ModuleInstall/ModuleInstaller.php 
@@ -34,32 +18,6 @@ Findings:
        2472┆ if (file_exists($backup_path)) {
           ⋮┆----------------------------------------
        2504┆ if (file_exists($backup_path)) {
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        343┆ unlink($to);
-          ⋮┆----------------------------------------
-       1174┆ unlink($filename);
-          ⋮┆----------------------------------------
-       1213┆ unlink($path);
-          ⋮┆----------------------------------------
-       1534┆ unlink("custom/Extension/application/Ext/TableDictionary/$fn");
-          ⋮┆----------------------------------------
-       1538┆ unlink("custom/metadata/{$rel_name}MetaData.php");
-          ⋮┆----------------------------------------
-       1620┆ unlink($pathname);
-          ⋮┆----------------------------------------
-       1626┆ unlink("custom/Extension/application/Ext/TableDictionary/{$this->id_name}.php");
-          ⋮┆----------------------------------------
-       1867┆ unlink("custom/$extpath/$name");
-          ⋮┆----------------------------------------
-       1898┆ unlink("custom/$extpath/$name");
-          ⋮┆----------------------------------------
-       2029┆ return(unlink($source));
-          ⋮┆----------------------------------------
-       2055┆ return(unlink($dest));
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/ModuleInstall/PackageManager/PackageController.php 
@@ -67,29 +25,9 @@ Findings:
         File name based on user input risks server-side request forgery.
 
         389┆ unlink($file);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        375┆ unlink($metafile);
-          ⋮┆----------------------------------------
-        389┆ unlink($file);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/ModuleInstall/PackageManager/PackageManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        592┆ @unlink($_FILES['upgrade_zip']['tmp_name']);
-          ⋮┆----------------------------------------
-        593┆ @unlink("upload://".$_FILES['upgrade_zip']['name']);
-          ⋮┆----------------------------------------
-        681┆ unlink(remove_file_extension($found->filename) . '-manifest.php');
-          ⋮┆----------------------------------------
-        682┆ unlink($found->filename);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
@@ -108,13 +46,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/campaign_tracker.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         81┆ header("Location: $redirect_URL");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -125,40 +56,7 @@ Findings:
          74┆ $query = "SELECT refer_url FROM campaigns WHERE tracker_key='$track'";
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/data/Relationships/RelationshipFactory.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         90┆ unlink($file);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/download.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        106┆ header('Location: ' . $focus->doc_url);
-          ⋮┆----------------------------------------
-        111┆ header('Location: ' . $focusRevision->doc_url);
-          ⋮┆----------------------------------------
-        156┆ header("Content-Length: " . filesize('include/SugarFields/Fields/Image/no_image.png'));
-          ⋮┆----------------------------------------
-        157┆ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
-          ⋮┆----------------------------------------
-        258┆ header("Content-Type: {$mime['mime']}");
-          ⋮┆----------------------------------------
-        263┆ header('Content-type: ' . $mime_type);
-          ⋮┆----------------------------------------
-        280┆ header('Content-Disposition: inline; filename="' . $name . '";');
-          ⋮┆----------------------------------------
-        282┆ header('Content-Disposition: attachment; filename="' . $name . '";');
-          ⋮┆----------------------------------------
-        288┆ header("Content-Length: " . filesize($local_location));
-          ⋮┆----------------------------------------
-        289┆ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
 
@@ -225,69 +123,6 @@ Findings:
         338┆ $obj = new $bean();
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/HTTP_WebDAV_Server/Server.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        112┆ header("X-Dav-Powered-By: PHP class: ".get_class($this));
-          ⋮┆----------------------------------------
-        114┆ header("X-Dav-Powered-By: ".$this->dav_powered_by);
-          ⋮┆----------------------------------------
-        125┆ header('WWW-Authenticate: Basic realm="'.($this->http_auth_realm).'"');
-          ⋮┆----------------------------------------
-        159┆ header("Allow: ".implode(", ", $this->_allow()));  // tell client what's allowed
-          ⋮┆----------------------------------------
-        442┆ header("DAV: "  .implode(",", $dav));
-          ⋮┆----------------------------------------
-        443┆ header("Allow: ".implode(", ", $allow));
-          ⋮┆----------------------------------------
-        825┆ header("Content-type: $options[mimetype]");
-          ⋮┆----------------------------------------
-        828┆ header("Last-modified: ".TimeDate::httpTime());
-          ⋮┆----------------------------------------
-        849┆ header("Content-length: $size");
-          ⋮┆----------------------------------------
-        850┆ header("Content-range: $range[start]-$range[end]/"
-        851┆        . (isset($options['size']) ? $options['size'] : "*"));
-          ⋮┆----------------------------------------
-        860┆ header("Content-length: ".($options['size'] - $range['start']));
-          ⋮┆----------------------------------------
-        861┆ header("Content-range: $start-$end/"
-        862┆        . (isset($options['size']) ? $options['size'] : "*"));
-          ⋮┆----------------------------------------
-        867┆ header("Content-length: ".$range['last']);
-          ⋮┆----------------------------------------
-        899┆ header("Content-length: ".$options['size']);
-          ⋮┆----------------------------------------
-        908┆ header("Content-length: ".strlen($options['data']));
-          ⋮┆----------------------------------------
-        974┆ header("Content-type: multipart/byteranges; boundary=".$this->multipart_separator);
-          ⋮┆----------------------------------------
-       1301┆ header("Lock-Token: <$options[locktoken]>");
-          ⋮┆----------------------------------------
-       1842┆ header("HTTP/1.1 $status");
-          ⋮┆----------------------------------------
-       1843┆ header("X-WebDAV-Status: $status", true);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/Imap/ImapHandlerFactory.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        155┆ unlink(__DIR__ . self::SETTINGS_KEY_FILE);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/Localization/Localization.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        836┆ unlink($this->invalidNameFormatUpgradeFilename);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/MVC/Controller/SugarController.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -308,17 +143,6 @@ Findings:
         862┆ $dashlet = new $dashletDefs[$id]['className'](
           ⋮┆----------------------------------------
         888┆ $dashlet = new $dashletDefs[$id]['className'](
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/MVC/SugarApplication.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        665┆ header("Location: " . $url);
-          ⋮┆----------------------------------------
-        683┆ header($header_URL);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/MVC/View/views/view.list.php 
@@ -439,16 +263,6 @@ Findings:
         217┆ $bean = new $class();
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/MVC/View/views/view.sugarpdf.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         80┆ header('Location:index.php?module='.(isset($_REQUEST['module']) ? $_REQUEST['module'] : null).'&action=DetailView&record='.(isset($_REQUEST['record']) ? $_REQUE ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/MySugar/MySugar.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -461,15 +275,6 @@ Findings:
         198┆ require_once($dashlets[$id]['fileLocation']);
           ⋮┆----------------------------------------
         390┆ require_once($dashletDefs[$id]['fileLocation']);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        186┆ header("Location: index.php?action=index&module=". $this->type);
-          ⋮┆----------------------------------------
-        203┆ header("Location: index.php?action=index&module=". $this->type);
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-object-instantiation
         <- A new object is created where the class name is based on user input. This could lead to
@@ -529,16 +334,6 @@ Findings:
         Evaluating non-constant commands. This can lead to command injection.
 
          94┆ eval("\$smarty_math_result = " . $equation . ";");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SubPanel/SubPanel.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        301┆ unlink('custom/Extension/modules/'. $panel->parent_bean->module_dir . "/Ext/Layoutdefs/$oldName1.php");
-          ⋮┆----------------------------------------
-        304┆ unlink('custom/Extension/modules/'. $panel->parent_bean->module_dir . "/Ext/Layoutdefs/$oldName2.php");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SubPanel/SubPanelDefinitions.php 
@@ -603,49 +398,9 @@ Findings:
         allowlist for approved hosts hardcode the correct host.
 
          45┆ $removeFile = "upload://{$_REQUEST[$field . '_record_id'] }_" . $field;
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         53┆ if (!unlink($removeFile)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SugarObjects/LanguageManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        180┆ unlink($file);
-          ⋮┆----------------------------------------
-        315┆ unlink($file);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SugarObjects/VardefManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        239┆ unlink($file);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SugarObjects/templates/file/File.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        161┆ if (!unlink($removeFile)) {
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SugarTheme/SugarTheme.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        406┆ unlink("$cachedir/pathCache.php");
-          ⋮┆----------------------------------------
-        409┆ unlink("$cachedir/spriteCache.php");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
@@ -656,27 +411,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/SugarTheme/getImage.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         67┆ header($_SERVER["SERVER_PROTOCOL"].' 404 Not Found');
-          ⋮┆----------------------------------------
-         73┆ header($_SERVER["SERVER_PROTOCOL"].' 404 Not Found');
-          ⋮┆----------------------------------------
-         84┆ header($_SERVER["SERVER_PROTOCOL"].' 404 Not Found');
-          ⋮┆----------------------------------------
-        100┆ header("Etag: $etag");
-          ⋮┆----------------------------------------
-        101┆ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
-          ⋮┆----------------------------------------
-        108┆ header($_SERVER["SERVER_PROTOCOL"].' 304 Not Modified');
-          ⋮┆----------------------------------------
-        112┆ header("Last-Modified: ".gmdate('D, d M Y H:i:s \G\M\T', $last_modified_time));
-          ⋮┆----------------------------------------
-        113┆ header('Content-Type: ' . $mime_type);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
 
@@ -691,74 +425,6 @@ Findings:
         121┆ readfile($filename);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/Sugarpdf/FontManager.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        334┆ unlink($this->fontPath.$this->filename);
-          ⋮┆----------------------------------------
-        336┆ unlink($this->fontPath.$this->getFilenameShort()."ctg.z");
-          ⋮┆----------------------------------------
-        339┆ unlink($this->fontPath.$this->getFilenameShort().".z");
-          ⋮┆----------------------------------------
-        376┆ unlink($font_file);
-          ⋮┆----------------------------------------
-        377┆ unlink($metric_file);
-          ⋮┆----------------------------------------
-        423┆ unlink($filename.".php");
-          ⋮┆----------------------------------------
-        426┆ unlink($filename.".ctg.z");
-          ⋮┆----------------------------------------
-        429┆ unlink($filename.".z");
-          ⋮┆----------------------------------------
-        447┆ return unlink($cachedfile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/TemplateHandler/TemplateHandler.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        114┆ unlink($cacheDir . $e);
-          ⋮┆----------------------------------------
-        140┆ unlink($tplDir . $e);
-          ⋮┆----------------------------------------
-        392┆ return unlink($this->cacheDir . $this->themeDir . $theme . '/' . $this->templateDir . $module . '/' . $view . '.tpl');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/UploadFile.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        207┆ if (!unlink($oldStyleSource)) {
-          ⋮┆----------------------------------------
-        535┆ unlink($new_destination);
-          ⋮┆----------------------------------------
-        564┆ return unlink("upload://$bean_id$file_name");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/UploadMultipleFiles.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        210┆ if (!unlink($oldStyleSource)) {
-          ⋮┆----------------------------------------
-        528┆ unlink($new_destination);
-          ⋮┆----------------------------------------
-        557┆ return unlink("upload://$bean_id$file_name");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/UploadStream.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        303┆ unlink(self::path($path));
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/connectors/component.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.eval-use
         Evaluating non-constant commands. This can lead to command injection.
@@ -766,29 +432,11 @@ Findings:
         243┆ eval($eval_code);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/connectors/utils/ConnectorUtils.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        495┆ if (file_exists($cachedfile = sugar_cached("modules/{$module}/DetailView.tpl")) && !unlink($cachedfile)) {
-          ⋮┆----------------------------------------
-        595┆ if (file_exists($cachedfile = sugar_cached("modules/{$module}/DetailView.tpl")) && !unlink($cachedfile)) {
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/database/DBManagerFactory.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.phpinfo-use
         The 'phpinfo' function may reveal sensitive information about your environment.
 
         274┆ phpinfo(INFO_MODULES);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/dir_inc.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        137┆ return(unlink($path));
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/export_utils.php 
@@ -799,19 +447,6 @@ Findings:
         that is not a viable solution, validate user input thoroughly.
 
         917┆ require_once($beanFiles[$bean]);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         84┆ header("Content-type: text/comma-separated-values; charset=" . $charset);
-          ⋮┆----------------------------------------
-         85┆ header("Content-Disposition: attachment; filename=\"{$name}.csv\"");
-          ⋮┆----------------------------------------
-         88┆ header("Last-Modified: " . TimeDate::httpTime());
-          ⋮┆----------------------------------------
-         90┆ header("Content-Length: " . mb_strlen($data, '8bit'));
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-object-instantiation
         <- A new object is created where the class name is based on user input. This could lead to
@@ -828,27 +463,6 @@ Findings:
 
         437┆  ... "(SELECT $currentTable.id AS current_id,'$currentModule' AS current_module,'$currentField' AS current_field,'$relatedModule' AS related_module,'$relatedField' A ... [0m
           [shortened a long line from output, adjust with --max-chars-per-line]
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/externalAPI/ExternalAPIFactory.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        189┆ unlink($cached);
-          ⋮┆----------------------------------------
-        193┆ unlink($cached);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/formbase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        247┆ header("Location: ". $_REQUEST['return_url']);
-          ⋮┆----------------------------------------
-        252┆ header($url);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/generic/DeleteRelationship.php 
@@ -891,14 +505,6 @@ Findings:
         156┆ require_once($metafiles[$module]['searchfields']);
           ⋮┆----------------------------------------
         158┆ require_once('modules/'.$module.'/metadata/SearchFields.php');
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        212┆ header("Location: index.php?sugar_body_only=1&module=".$_REQUEST['module']."&subpanel=".$_REQUEST['subpanel_module_name']."&action=SubPanelViewer&inline=$inline ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
@@ -983,17 +589,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/javascript/getYUIComboFile.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        104┆ header("Etag: $etag");
-          ⋮┆----------------------------------------
-        105┆ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + 2592000));
-          ⋮┆----------------------------------------
-        106┆ header("Content-Type: $contentType");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
 
@@ -1003,13 +598,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/language/getJSLanguage.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         96┆ header('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', time() + 31556940));
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
 
@@ -1025,15 +613,6 @@ Findings:
         Evaluating non-constant commands. This can lead to command injection.
 
         675┆ @eval($funcCall);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        326┆ header('Location: '.$this->externalWSDLURL);
-          ⋮┆----------------------------------------
-        876┆ header($hdr, false);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/nusoap/class.soapclient.php 
@@ -1046,14 +625,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/nusoap/class.wsdlcache.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        135┆ unlink($filename);
-          ⋮┆----------------------------------------
-        248┆ $ret = unlink($filename);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
@@ -1070,53 +641,6 @@ Findings:
        9906┆ eval($evalStr);
           ⋮┆----------------------------------------
        9908┆ eval("\$proxy = new nusoap_proxy_$r('');");
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-       5065┆ header('Location: '.$this->externalWSDLURL);
-          ⋮┆----------------------------------------
-       5626┆ header($hdr, false);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/parsecsv.lib.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        266┆ header('Content-Disposition: attachment; filename="'.$filename.'"');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/resource/Observers/SoapResourceObserver.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         72┆ header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/social/get_data.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         49┆ header("Location: " . $sugar_config['site_url'] . "?module=" . $_REQUEST['module'] . "&action=DetailView&record=" . $_REQUEST['record'] . "&");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/social/twitter/twitter_auth/callback.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         48┆ header('Location: ' .$sugar_config['site_url'] . '/index.php');
-          ⋮┆----------------------------------------
-         51┆ header('Location: ' .$sugar_config['site_url'] . '/index.php');
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/utils/autoloader.php 
@@ -1132,44 +656,11 @@ Findings:
         129┆ if (file_exists($basepath)) {
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/utils/file_utils.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        101┆ if (!$temp_dir || !unlink($temp_dir)) {
-          ⋮┆----------------------------------------
-        334┆ unlink($new_filename);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/utils/sugar_file_utils.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        222┆ @unlink($filename);
-          ⋮┆----------------------------------------
-        225┆ @unlink($temp);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/utils.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-       5660┆ header('ETag: ' . $etag);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.phpinfo-use
         The 'phpinfo' function may reveal sensitive information about your environment.
 
        4181┆ phpinfo($level);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-       3970┆ unlink($file);
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -1178,21 +669,6 @@ Findings:
        2280┆ $xsstags = unserialize(base64_decode($sugar_config['email_xss']));
           ⋮┆----------------------------------------
        5815┆ return unserialize($value);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/include/vCard.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        168┆ header("Content-Disposition: attachment; filename={$this->name}.vcf");
-          ⋮┆----------------------------------------
-        169┆ header("Content-Type: text/x-vcard; charset=".$locale->getExportCharset());
-          ⋮┆----------------------------------------
-        171┆ header("Last-Modified: " . TimeDate::httpTime());
-          ⋮┆----------------------------------------
-        177┆ header("Content-Length: ".strlen($content));
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/install/UploadLangFileCheck.php 
@@ -1227,26 +703,6 @@ Findings:
         432┆ if (is_file($zipFile)) {
           ⋮┆----------------------------------------
         433┆ if (!unlink($zipFile)) {
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        199┆ @unlink(getcwd().substr($fileFrom, strlen($unzip_dir), strlen($fileFrom)));
-          ⋮┆----------------------------------------
-        307┆ unlink($file);
-          ⋮┆----------------------------------------
-        423┆ if (!unlink($manifest)) {
-          ⋮┆----------------------------------------
-        433┆ if (!unlink($zipFile)) {
-          ⋮┆----------------------------------------
-       1928┆ @unlink($_FILES['language_pack']['tmp_name']);
-          ⋮┆----------------------------------------
-       1930┆ @unlink($manifest);
-          ⋮┆----------------------------------------
-       1935┆ @unlink($sugar_config['upload_dir'].$tmpZipFile);
-          ⋮┆----------------------------------------
-       1984┆ unlink($full_file); // remove tempFile
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/install/licensePrint.php 
@@ -1278,26 +734,6 @@ Findings:
         825┆ if (is_file($the_file)) {
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/jssource/minify_utils.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        404┆ unlink($bu_path);
-          ⋮┆----------------------------------------
-        481┆ unlink($bu_path);
-          ⋮┆----------------------------------------
-        489┆ unlink($from_path);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/lib/Robo/Plugin/Commands/BuildCommands.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        134┆ unlink($directory . $file . '/style.css');
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/lib/Search/AOD/LuceneSearchEngine.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -1306,29 +742,11 @@ Findings:
         105┆ $hits = unserialize(sugar_file_get_contents($cachePath));
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/lib/Search/UI/MVC/Controller.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        100┆ header("Location: $location");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/lib/Utility/AntiMalware/Providers/Sophos.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
         Executing non-constant commands. This can lead to command injection.
 
         119┆ $lineOutput = shell_exec($command);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ACLRoles/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         81┆ header("Location: index.php?module=ACLRoles&action=DetailView&record=". $role->id);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AM_ProjectTemplates/controller.php 
@@ -1355,32 +773,6 @@ Findings:
         allowlist for approved hosts hardcode the correct host.
 
         161┆ $srcFile = "upload://{$doc->document_revision_id}";
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOR_Charts/lib/pChart/class/pCache.class.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         46┆ unlink($this->CacheFolder."/".$this->CacheIndex);
-          ⋮┆----------------------------------------
-         50┆ unlink($this->CacheFolder."/".$this->CacheDB);
-          ⋮┆----------------------------------------
-         92┆ unlink($TemporaryFile);
-          ⋮┆----------------------------------------
-        177┆ unlink($Database);
-          ⋮┆----------------------------------------
-        178┆ unlink($Index);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOR_Charts/lib/pChart/class/pImage.class.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        341┆ unlink($StorageFolder."/".$UniqueID.".map");
-          ⋮┆----------------------------------------
-        530┆ unlink($StorageFolder."/".$UniqueID.".map");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOR_Conditions/conditionLines.php 
@@ -1542,43 +934,6 @@ Findings:
           [shortened a long line from output, adjust with --max-chars-per-line]
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOS_PDF_Templates/sendEmail.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        138┆ header('Location: index.php?action=ComposeViewWithPdfTemplate&module=Emails&return_module=' . $module_type . '&return_action=DetailView&return_id=' . $module->i ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOS_Quotes/converToInvoice.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        139┆ header('Location: index.php?module=AOS_Invoices&action=EditView&record='.$invoice->id);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOS_Quotes/createContract.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        128┆ header('Location: index.php?module=AOS_Contracts&action=EditView&record='.$contract->id);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOS_Quotes/createOpportunity.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         57┆ header('Location: index.php?module=Opportunities&action=EditView&record='.$opportunity->id);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/AOW_Conditions/conditionLines.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -1688,17 +1043,6 @@ Findings:
         557┆ $params = unserialize(base64_decode($aow_action->parameters));
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Accounts/AccountFormBase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        500┆ header("Location: index.php?$location");
-          ⋮┆----------------------------------------
-        551┆ header("Location: index.php?".http_build_query($urlData));
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Accounts/ShowDuplicates.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -1760,24 +1104,9 @@ Findings:
          75┆ if (file_exists($cachedfile = sugar_cached("diagnostic/".$_REQUEST['guid']."/".$_REQUEST['file'].".zip"))) {
           ⋮┆----------------------------------------
          76┆ unlink($cachedfile);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         76┆ unlink($cachedfile);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/DiagnosticDownload.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         68┆ header("Content-Disposition: attachment; filename=$guid.zip");
-          ⋮┆----------------------------------------
-         70┆ header("Content-Length: $filesize");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
 
@@ -1810,25 +1139,6 @@ Findings:
         The 'phpinfo' function may reveal sensitive information about your environment.
 
         351┆ phpinfo();
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        262┆ if (!unlink($dir.$obj)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/ExportCustomFieldStructure.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         58┆ header("Content-Type: text/txt; charset={$app_strings['LBL_CHARSET']}");
-          ⋮┆----------------------------------------
-         60┆ header("Last-Modified: " . TimeDate::httpTime());
-          ⋮┆----------------------------------------
-         62┆ header("Content-Length: ".strlen($str));
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/PasswordManager.php 
@@ -1854,41 +1164,6 @@ Findings:
         207┆ $storedOptions = unserialize(base64_decode($focus->stored_options));
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/QuickRepairAndRebuild.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        383┆ unlink((string)$src_file);
-          ⋮┆----------------------------------------
-        481┆ unlink($thedir . "/" . $children);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/RebuildDashlets.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         52┆ unlink($cachedfile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/RepairUploadFolder.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        106┆ if (unlink('upload://' . $node->getFilename())) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         79┆ header("Location: index.php?action={$_POST['return_action']}&module={$_POST['return_module']}");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/Updater.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -1912,16 +1187,6 @@ Findings:
         allowlist for approved hosts hardcode the correct host.
 
         120┆ copy($moduleDir . '/' . $_REQUEST['upgrade_zip_escaped'], "upload://" . $_REQUEST['upgrade_zip_escaped']);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         54┆ @unlink($_FILES['upgrade_zip']['tmp_name']);
-          ⋮┆----------------------------------------
-         55┆ @unlink("upload://".$_FILES['upgrade_zip']['name']);
-          ⋮┆----------------------------------------
-        213┆ if (unlink($delete_me)) { // successful deletion?
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/UpgradeWizard_commit.php 
@@ -1951,74 +1216,6 @@ Findings:
         488┆ $the_md5 = md5_file($install_file);
           ⋮┆----------------------------------------
         501┆ $the_md5 = md5_file($install_file);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        279┆ } elseif (file_exists($dest_file) && !unlink($dest_file)) {
-          ⋮┆----------------------------------------
-        438┆ unlink($uh->filename);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/UpgradeWizard_prepare.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.md5-loose-equality
-        Make sure comparisons involving md5 values are strict (use `===` not `==`) to avoid type
-        juggling issues
-
-        433┆ if (!$forced_copy && is_file($new_file) && (md5_file($unzip_file) == md5_file($new_file))) {
-          ⋮┆----------------------------------------
-        446┆ if (md5_file($unzip_file) == md5_file($new_file)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/clear_chart_cache.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         58┆ unlink((string)$src_file);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/expandDatabase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        128┆ header("Content-Type: text/sql; charset={$app_strings['LBL_CHARSET']}");
-          ⋮┆----------------------------------------
-        130┆ header("Last-Modified: " . TimeDate::httpTime());
-          ⋮┆----------------------------------------
-        132┆ header("Content-Length: ".strlen($theAlterQueries));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/repairDatabase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         65┆ header("Content-Type: text/sql; charset={$app_strings['LBL_CHARSET']}");
-          ⋮┆----------------------------------------
-         67┆ header("Last-Modified: " . TimeDate::httpTime());
-          ⋮┆----------------------------------------
-         69┆ header("Content-Length: " . strlen($_POST['sql']));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/repairUniSearch.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         55┆ unlink((string)$src_file);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/undoupdateclass.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         52┆ unlink($filename);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Administration/updateTimezonePrefs.php 
@@ -2092,16 +1289,6 @@ Findings:
          57┆ $this->bean = new $beanList[$module]();
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Calendar/views/view.savesettings.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         74┆ header("Location: index.php?module=Calendar&action=index&view=".$_REQUEST['view']."&hour=0&day=".$_REQUEST['day']."&month=".$_REQUEST['month']."&year=".$_REQUES ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Calls/CallFormBase.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -2137,13 +1324,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Campaigns/QueueCampaign.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        215┆ header($header_URL);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -2210,13 +1390,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Campaigns/WebToPersonCapture.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        354┆ header($_SERVER['SERVER_PROTOCOL'].'201', true, 201);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -2241,12 +1414,6 @@ Findings:
 
          55┆ file_put_contents($filepath, base64_decode($data));
           ⋮┆----------------------------------------
-         57┆ unlink($filepath);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
          57┆ unlink($filepath);
 
 
@@ -2289,23 +1456,6 @@ Findings:
         392┆ if ($this->saveCompanyLogo("upload://" . $_POST['company_logo']) === false) {
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Configurator/UploadFileCheck.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         92┆ unlink($file_name);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Configurator/controller.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         78┆ header("Location: $urlSTR");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Configurator/views/view.sugarpdfsettings.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -2317,12 +1467,6 @@ Findings:
         110┆ $result = $focus->db->query("SELECT count(*) AS the_count FROM config WHERE category = '{$prefix[0]}' AND name = '{$prefix[1]}'");
           ⋮┆----------------------------------------
         113┆ $focus->db->query("DELETE FROM config WHERE category = '{$prefix[0]}' AND name = '{$prefix[1]}'");
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         97┆ unlink($cachedfile);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Connectors/Menu.php 
@@ -2371,31 +1515,6 @@ Findings:
         remote code execution, as it allows to instantiate any class in the application.
 
          80┆ $focus = new $bean;
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Contacts/ContactFormBase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        557┆ header("Location: index.php?$location");
-          ⋮┆----------------------------------------
-        592┆ header("Location: index.php?&module=Emails&action=EditView&type=out&inbound_email_id=".$_REQUEST['inbound_email_id']."&parent_id=".$email->parent_id."&parent_ty ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
-          ⋮┆----------------------------------------
-        639┆ header("Location: index.php?".http_build_query($urlData));
-          ⋮┆----------------------------------------
-        686┆ header("Location: ". $redirect_url);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Contacts/SaveContactOpportunityRelationship.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         76┆ header($header_URL);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Contacts/ShowDuplicates.php 
@@ -2501,15 +1620,6 @@ Findings:
           [shortened a long line from output, adjust with --max-chars-per-line]
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Documents/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         76┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Documents/Document.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -2538,14 +1648,6 @@ Findings:
         File name based on user input risks server-side request forgery.
 
         112┆ if (file_exists($tpl_file)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/DynamicFields/DynamicField.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        778┆ unlink($file_loc);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/DynamicFields/Save.php 
@@ -2625,28 +1727,9 @@ Findings:
         167┆ if (file_exists($cachefile = sugar_cached("modules/$module/SearchForm_advanced.tpl"))) {
           ⋮┆----------------------------------------
         168┆ unlink($cachefile);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        118┆ unlink($cachefile);
-          ⋮┆----------------------------------------
-        122┆ unlink($cachefile);
-          ⋮┆----------------------------------------
-        164┆ unlink($cachefile);
-          ⋮┆----------------------------------------
-        168┆ unlink($cachefile);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailMan/EmailImage.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         61┆ header("Content-Type: {$mime['mime']}");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.php-ssrf
         The web server receives a URL or similar request from an upstream component and retrieves
         the contents of this URL, but it does not sufficiently ensure that the request is being sent
@@ -2673,17 +1756,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailMan/EmailManDelivery.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        321┆ header($header_URL);
-          ⋮┆----------------------------------------
-        323┆ header("Location: index.php?module={$_REQUEST['return_module']}&action={$_REQUEST['return_action']}&record={$_REQUEST['return_id']}&from=test");
-          ⋮┆----------------------------------------
-        326┆ header("Location: index.php?module={$_REQUEST['return_module']}&action={$_REQUEST['return_action']}&record={$_REQUEST['return_id']}");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -2704,13 +1776,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailMarketing/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         67┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -2719,41 +1784,6 @@ Findings:
         (`$mysqli->prepare("INSERT INTO test(id, label) VALUES (?, ?)");`) or a safe library.
 
          63┆ $query = "DELETE FROM emailman WHERE marketing_id ='" . $_REQUEST['record'] ."'";
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailMarketing/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        150┆ header($header_URL);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailTemplates/AttachFiles.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         83┆ unlink($path);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailTemplates/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         63┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailTemplates/EmailTemplateData.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        103┆ header('Location: ' . $redirectUrl);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/EmailTemplates/EmailTemplateFormBase.php 
@@ -2765,24 +1795,6 @@ Findings:
         (`$mysqli->prepare("INSERT INTO test(id, label) VALUES (?, ?)");`) or a safe library.
 
         393┆ $q = 'UPDATE notes SET deleted = 1 WHERE id = \''.$noteId.'\'';
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/Check.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         58┆ header('Location: index.php?module=Emails&action=ListView&type=inbound&assigned_user_id='.$current_user->id);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         72┆ header($loc);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/Email.php 
@@ -2822,18 +1834,6 @@ Findings:
 
        1622┆ $focus = new $bean();
           ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-       1262┆ unlink($filePath);
-          ⋮┆----------------------------------------
-       2929┆ unlink($file);
-          ⋮┆----------------------------------------
-       2939┆ unlink($file);
-          ⋮┆----------------------------------------
-       2943┆ unlink($file);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
@@ -2858,63 +1858,11 @@ Findings:
 
         785┆ $GLOBALS['log']->debug("*** ERROR: tried to delete an email for an account for which {$current_user->full_name} is not the owner!");
           ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        225┆ unlink($filePath);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
 
        1513┆ $ie->$k = unserialize(base64_decode($ie->$k));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/EmailsController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        542┆ header('location:index.php?module=Emails&action=DetailView&record=' . $result[0]->id);
-          ⋮┆----------------------------------------
-        562┆ header('location:index.php?module=Emails&action=DetailView&record=' . $importedEmailId);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/Grab.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         72┆ header('Location: index.php?module=Emails&action=ListView&type=inbound&assigned_user_id='.$current_user->id);
-          ⋮┆----------------------------------------
-         74┆ header('Location: index.php?module=Emails&action=ListView&show_error=true&type=inbound&assigned_user_id='.$current_user->id);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/PessimisticLock.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         87┆ header('Location: index.php?module=Emails&action=DetailView&record='.$next->id);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        277┆ header("Location: index.php?module=$return_module&action=ListViewDrafts");
-          ⋮┆----------------------------------------
-        283┆ header('Location: index.php?module='.$return_module.'&action=index');
-          ⋮┆----------------------------------------
-        288┆ header('Location: index.php?action='.$return_action.'&module='.$return_module.'&record='.$return_id.'&assigned_user_id='.$current_user->id.'&type=inbound');
-          ⋮┆----------------------------------------
-        292┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Emails/SugarRoutingAsync.php 
@@ -2931,30 +1879,6 @@ Findings:
         remote code execution, as it allows to instantiate any class in the application.
 
          86┆ $bean = new $class();
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Employees/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         93┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Employees/WapAuthenticate.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         58┆ header("Location: ".$GLOBALS['app']->getLoginRedirect());
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        104┆ unlink($tmp_file_name);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/FP_events/controller.php 
@@ -3057,23 +1981,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/FP_events/responseEntryPoint.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         30┆ header('Location: ' . $url);
-          ⋮┆----------------------------------------
-         48┆ header('Location: ' . $url);
-          ⋮┆----------------------------------------
-         71┆ header('Location: ' . $url);
-          ⋮┆----------------------------------------
-         88┆ header('Location: ' . $url);
-          ⋮┆----------------------------------------
-        110┆ header('Location: ' . $url);
-          ⋮┆----------------------------------------
-        128┆ header('Location: ' . $url);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -3116,15 +2023,6 @@ Findings:
           ⋮┆----------------------------------------
         123┆  ... 'UPDATE fp_events_leads_1_c SET accept_status="Declined", email_responded="1" WHERE fp_events_leads_1fp_events_ida="'.$event->id.'" AND fp_events_leads_1leads_i ... [0m
           [shortened a long line from output, adjust with --max-chars-per-line]
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Groups/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         90┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Home/SubpanelCreates.php 
@@ -3224,12 +2122,6 @@ Findings:
         241┆ $seed = new $beanName();
           ⋮┆----------------------------------------
         298┆ $seed = new $beanName();
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        552┆ unlink($cache_search);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Home/controller.php 
@@ -3271,14 +2163,6 @@ Findings:
          78┆ $bean = new $beanName();
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Import/ImportCacheFiles.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        211┆ unlink("$importdir/$file");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Import/Importer.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -3290,14 +2174,6 @@ Findings:
         254┆ $emailres = $focus->db->query("SELECT opt_out, invalid_email FROM email_addresses WHERE email_address = '".$focus->db->quote($rowValue)."'");
           ⋮┆----------------------------------------
         358┆ $query = "SELECT * FROM {$focus->table_name} WHERE id='".$focus->db->quote($focus->id)."'";
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Import/sources/ImportFile.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        170┆ unlink($this->_sourcename);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Import/views/view.confirm.php 
@@ -3360,15 +2236,6 @@ Findings:
         150┆ $storedOptions = unserialize(base64_decode($this->stored_options));
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/InboundEmail/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         55┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/InboundEmail/DetailView.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -3386,22 +2253,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/InboundEmail/InboundEmail.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        873┆ if (!unlink($file)) {
-          ⋮┆----------------------------------------
-       1538┆ unlink($cacheFilePath);
-          ⋮┆----------------------------------------
-       1855┆ unlink($cacheFilePath);
-          ⋮┆----------------------------------------
-       2172┆ if (!unlink($file)) {
-          ⋮┆----------------------------------------
-       2418┆ unlink($file);
-          ⋮┆----------------------------------------
-       7225┆ if (!unlink($msgCacheFile)) {
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
@@ -3414,13 +2265,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/InboundEmail/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        392┆ header($redirectUrl);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -3431,27 +2275,6 @@ Findings:
         222┆ $foldersFound = $focus->db->query('SELECT id FROM folders WHERE folders.id LIKE "'.$focus->id.'"');
           ⋮┆----------------------------------------
         303┆ $foldersFound = $focus->db->query('SELECT * FROM folders WHERE folders.id LIKE "'.$focus->id.'" OR '.
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/LabelEditor/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         70┆ header("Location:$location");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Leads/LeadFormBase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        361┆ header("Location: index.php?$location");
-          ⋮┆----------------------------------------
-        425┆ header("Location: index.php?&module=Emails&action=EditView&type=out&inbound_email_id=".urlencode($_REQUEST['inbound_email_id'])."&parent_id=".$email->parent_id. ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Leads/views/view.convertlead.php 
@@ -3472,16 +2295,6 @@ Findings:
         173┆ $input .= '<input type="hidden" name="create" value="'.$_POST['create'].'">';
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MailMerge/MailMerge.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         91┆ unlink($this->mm_data_dir.'/Temp/'.$this->datasource_file);
-          ⋮┆----------------------------------------
-         92┆ unlink($this->mm_data_dir.'/Temp/'.$this->header_file);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MailMerge/Save.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -3490,13 +2303,6 @@ Findings:
         that is not a viable solution, validate user input thoroughly.
 
          58┆ require_once($includedir);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         88┆ header("Location: index.php?module=MailMerge&action=Step4&file=" . urlencode($file));
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-object-instantiation
         <- A new object is created where the class name is based on user input. This could lead to
@@ -3576,25 +2382,6 @@ Findings:
          59┆ if (file_exists($rtfFile)) {
           ⋮┆----------------------------------------
          60┆ unlink($rtfFile);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         58┆ unlink($file);
-          ⋮┆----------------------------------------
-         60┆ unlink($rtfFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MailMerge/get_doc.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         56┆ header("Content-Length: " . filesize($local_location));
-          ⋮┆----------------------------------------
-         57┆ header("Content-disposition: attachment; filename=\"".$name."\";");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MailMerge/index.php 
@@ -3619,14 +2406,6 @@ Findings:
           [shortened a long line from output, adjust with --max-chars-per-line]
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Meetings/Meeting.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        740┆ return unlink($path);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Meetings/MeetingFormBase.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -3640,15 +2419,6 @@ Findings:
         446┆ $qU  = 'UPDATE meetings_contacts SET deleted = 0, accept_status = \''.$acceptStatusContacts[$contact_id].'\' ';
           ⋮┆----------------------------------------
         469┆ $qU  = 'UPDATE meetings_leads SET deleted = 0, accept_status = \''.$acceptStatusLeads[$lead_id].'\' ';
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MergeRecords/SaveMerge.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        174┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MergeRecords/Step2.php 
@@ -3692,27 +2462,6 @@ Findings:
          70┆ $focus = new $bean();
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/MB/MBModule.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        513┆ unlink($path . '/metadata/studio.php') ;
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/MB/MBPackage.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        332┆ header('Location:' . $zipDir . '/' . $this->name . $date . '.zip');
-          ⋮┆----------------------------------------
-        703┆ header('Location:' . $zipDir . '/' . $this->name . $date . '.zip');
-          ⋮┆----------------------------------------
-       1066┆ header('Location:' . $zipDir . '/project_' . $this->name . $date . '.zip');
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/controller.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -3731,14 +2480,6 @@ Findings:
         396┆ $mod = new $class_name() ;
           ⋮┆----------------------------------------
         605┆ $seed = new $class_name() ;
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/parsers/ModuleBuilderParser.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        120┆ unlink($file);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/parsers/parser.label.php 
@@ -3798,34 +2539,6 @@ Findings:
         358┆ $file_contents = fopen($relationships_filename, 'wb');
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/parsers/views/AbstractMetaDataImplementation.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        338┆ unlink($filename);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/parsers/views/DeployedMetaDataImplementation.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        344┆ unlink($this->getFileName($this->_view, $this->_moduleName, null, MB_WORKINGMETADATALOCATION));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/parsers/views/History.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        199┆ if (!unlink($this->getFileByTimestamp($timestamp))) {
-          ⋮┆----------------------------------------
-        208┆ unlink($this->_previewFilename);
-          ⋮┆----------------------------------------
-        239┆ unlink($this->_previewFilename);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/views/view.labels.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -3860,16 +2573,6 @@ Findings:
         144┆ } elseif (file_exists($this->mbModule->path. '/language/en_us.lang.php')) {
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ModuleBuilder/views/view.resetmodule.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        186┆ unlink($file);
-          ⋮┆----------------------------------------
-        235┆ unlink($languageDir . "/" . $langFile);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/MySettings/LoadTabSubpanels.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -3894,25 +2597,6 @@ Findings:
          81┆ $tabs = unserialize($tabs);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Notes/Note.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        143┆ if (!unlink($removeFile)) {
-          ⋮┆----------------------------------------
-        166┆ if (!unlink($removeFile)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Project/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         88┆ header("Location: $return_location");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Project/Project.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -3925,13 +2609,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Project/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        133┆ header("Location: index.php?action=ProjectTemplatesDetailView&module=Project&record=$return_id&return_module=Project&return_action=ProjectTemplatesEditView");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -3955,41 +2632,7 @@ Findings:
         242┆ $query = "SELECT date_finish FROM project_task WHERE id = '{$id}'";
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ProjectTask/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         89┆ header("Location: $return_location");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ProjectTask/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        102┆ header("Location: index.php?module=$return_module&action=$return_action&record=$return_id");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ProspectLists/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         62┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/ProspectLists/Duplicate.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         72┆ header("Location: index.php?action=DetailView&module=ProspectLists&record=$return_id");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -4000,23 +2643,7 @@ Findings:
          62┆ $query  = "select * from prospect_lists_prospects where prospect_list_id = '". $focus->db->quote($_POST['record']) ."'";
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Prospects/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         63┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Prospects/ProspectFormBase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        520┆ header("Location: index.php?$get");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -4027,56 +2654,12 @@ Findings:
         512┆ $get .= '&create='.$_POST['create'];
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Relationships/Relationship.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        250┆ unlink($filename);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Relationships/views/view.editfields.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-object-instantiation
         <- A new object is created where the class name is based on user input. This could lead to
         remote code execution, as it allows to instantiate any class in the application.
 
          58┆ $link = new Link($this->rel, new $beanName(), array());
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Releases/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         98┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id$edit");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Roles/Delete.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         58┆ header("Location: index.php?module=".$_REQUEST['return_module']."&action=".$_REQUEST['return_action']."&record=".$_REQUEST['return_id']);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Roles/DeleteUserRelationship.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         60┆ header($header_URL);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Roles/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         98┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id");
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SavedSearch/SavedSearch.php 
@@ -4097,24 +2680,6 @@ Findings:
          52┆ $contents = unserialize(base64_decode($focus->contents));
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SavedSearch/index.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         74┆ header("Location: index.php?action=index&module={$_REQUEST['search_module']}&searchFormTab={$searchFormTab}&query=true&clear_query=true$ajaxLoad");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Schedulers/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        144┆ header("Location: index.php?action=$return_action&module=$return_module&record=$return_id&$edit");
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SecurityGroups/MassAssign.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.file-inclusion
         Detected non-constant file inclusion. This can lead to local file inclusion (LFI) or remote
@@ -4124,45 +2689,11 @@ Findings:
 
          24┆ require_once($GLOBALS['beanFiles'][$class]);
           ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        128┆ header("Location: index.php?action={$_POST['return_action']}&module={$_POST['return_module']}");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-object-instantiation
         <- A new object is created where the class name is based on user input. This could lead to
         remote code execution, as it allows to instantiate any class in the application.
 
          25┆ $sugarbean = new $class();
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SecurityGroups/SaveConfig.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         91┆ header("Location: index.php?action={$_POST['return_action']}&module={$_POST['return_module']}");
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SecurityGroups/SaveSecurityGroupUserRelationship.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         61┆ header($header_URL);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Studio/SaveTabs.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         51┆ header('Location: index.php?module=Studio&action=TabGroups&lang='.$_POST['grouptab_lang']);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Studio/wizard.php 
@@ -4186,49 +2717,12 @@ Findings:
          54┆ $thewiz = new $wizard();
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SugarFeed/SugarFeed.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        125┆ unlink($cachefile);
-          ⋮┆----------------------------------------
-        130┆ unlink($cachefile);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/SugarFeed/linkHandlers/Image.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
 
          50┆ $imageData = unserialize(base64_decode($data['LINK_URL']));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Surveys/Entry/SurveySubmit.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        146┆ header('Location: index.php?entryPoint=surveyThanks&name=' . $survey->name);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Tasks/Save.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        138┆ header("Location: index.php?&module=Emails&action=EditView&type=out&inbound_email_id=".$_REQUEST['inbound_email_id']."&parent_id=".$email->parent_id."&parent_ty ... [0m
-          [shortened a long line from output, adjust with --max-chars-per-line]
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/UpgradeRemoval.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        101┆ unlink($file);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/UploadFileCheck.php 
@@ -4238,14 +2732,6 @@ Findings:
          65┆ if (file_exists($file_name)) {
           ⋮┆----------------------------------------
          66┆ $filesize = filesize($file_name);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/cancel.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         52┆ @unlink(isset($_SESSION['install_file']));
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/commit.php 
@@ -4271,30 +2757,6 @@ Findings:
         236┆ if (is_file($file)) {
           ⋮┆----------------------------------------
         306┆ if (is_file($file)) {
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        259┆ unlink($file);
-          ⋮┆----------------------------------------
-        365┆ unlink($file);
-          ⋮┆----------------------------------------
-        379┆ unlink($file);
-          ⋮┆----------------------------------------
-        656┆ unlink($styleJSFilePath);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/deleteCache.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         62┆ unlink($file);
-          ⋮┆----------------------------------------
-         73┆ unlink($file);
-          ⋮┆----------------------------------------
-         84┆ unlink($file);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/index.php 
@@ -4305,13 +2767,6 @@ Findings:
         that is not a viable solution, validate user input thoroughly.
 
         291┆ require('modules/UpgradeWizard/' . $upgradeStepFile . '.php');
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        537┆ header('Location: ' . $_SERVER['HTTP_REFERER'] . '?module=UpgradeWizard&action=index&step=4&additional_step=true');
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-filename
         File name based on user input risks server-side request forgery.
@@ -4330,22 +2785,6 @@ Findings:
         141┆ logThis('ERROR: could not delete: '.$delete_me);
           ⋮┆----------------------------------------
         148┆ logThis('ERROR: could not delete: '.$delete_dir);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        140┆ if (is_file($delete_me) && !@unlink($delete_me)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/layouts.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        165┆ @unlink($srcFile);
-          ⋮┆----------------------------------------
-        169┆ @unlink($srcBackupFile);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/silentUpgrade.php 
@@ -4361,57 +2800,11 @@ Findings:
         115┆ passthru($step3, $output);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/silentUpgrade_dce_step1.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         74┆ unlink($thedir . "/" . $children);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/silentUpgrade_dce_step2.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         60┆ unlink($thedir . "/" . $children);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/silentUpgrade_step1.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.exec-use
         Executing non-constant commands. This can lead to command injection.
 
         766┆ executeConvertTablesSql($_SESSION['allTables']);
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         77┆ unlink($thedir . '/' . $children);
-          ⋮┆----------------------------------------
-        704┆ unlink($file);
-          ⋮┆----------------------------------------
-        881┆ unlink($file);
-          ⋮┆----------------------------------------
-        893┆ unlink($file);
-          ⋮┆----------------------------------------
-        905┆ unlink($file);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/silentUpgrade_step2.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        365┆ unlink($file);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/upgradeMetaHelper.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.md5-loose-equality
-        Make sure comparisons involving md5 values are strict (use `===` not `==`) to avoid type
-        juggling issues
-
-        204┆ if (md5($fileContents) == $md5_string['./'.$file]) {
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/upload.php 
@@ -4430,12 +2823,6 @@ Findings:
         205┆ logThis('ERROR: trying to delete non-existent file: ['.$_REQUEST['install_file'].']');
           ⋮┆----------------------------------------
         215┆ logThis('ERROR: could not delete ['.$delete_me.']');
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        211┆ if (@unlink($delete_me)) {
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/uw_ajax.php 
@@ -4446,12 +2833,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/UpgradeWizard/uw_utils.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.md5-loose-equality
-        Make sure comparisons involving md5 values are strict (use `===` not `==`) to avoid type
-        juggling issues
-
-        571┆ if (md5($fileContents) == $md5_string['./'.$file]) {
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -4462,38 +2843,6 @@ Findings:
        2764┆ logThis('ERROR: trying to delete non-existent file: ['.$_REQUEST['install_file'].']');
           ⋮┆----------------------------------------
        2773┆ logThis('ERROR: could not delete ['.$delete_me.']');
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        277┆ unlink($cur);
-          ⋮┆----------------------------------------
-        352┆ unlink($f);
-          ⋮┆----------------------------------------
-        475┆ unlink($path);
-          ⋮┆----------------------------------------
-        572┆ unlink($file);
-          ⋮┆----------------------------------------
-        666┆ unlink($file);
-          ⋮┆----------------------------------------
-        679┆ unlink($file);
-          ⋮┆----------------------------------------
-        690┆ unlink($file);
-          ⋮┆----------------------------------------
-       1994┆ unlink($upgrade_progress_file);
-          ⋮┆----------------------------------------
-       2337┆ return @unlink($folder);
-          ⋮┆----------------------------------------
-       2371┆ @unlink($cacheFile);
-          ⋮┆----------------------------------------
-       2769┆ if (@unlink($delete_me)) {
-          ⋮┆----------------------------------------
-       4008┆ unlink($the_file);
-          ⋮┆----------------------------------------
-       4339┆ unlink($cacheFile);
-          ⋮┆----------------------------------------
-       4428┆ unlink($cachefile);
           ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -4514,15 +2863,6 @@ Findings:
         436┆ $prefs = unserialize(base64_decode($row['user_preferences']));
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Users/Authenticate.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        111┆ header($url);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Users/Changenewpassword.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
@@ -4538,38 +2878,12 @@ Findings:
         141┆ $query2 = "UPDATE users_password_link SET deleted='1' where id='" . $db->quote($_REQUEST['guid']) . "'";
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Users/LoggedOut.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-         47┆ header('Location: ' . $GLOBALS['app']->getLoginRedirect());
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Users/authentication/LDAPAuthenticate/LDAPAuthenticateUser.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.ldap-bind-without-password
         Detected anonymous LDAP bind. This permits anonymous users to execute LDAP statements.
         Consider enforcing authentication for LDAP.
 
         387┆ $bind = @ldap_bind($ldapconn);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Users/authentication/SugarAuthenticate/SugarAuthenticate.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        241┆ header("Location: index.php?action=Login&module=Users" . $GLOBALS['app']->getLoginRedirect());
-          ⋮┆----------------------------------------
-        460┆ header("Location: ".$GLOBALS['app']->getLoginRedirect());
-          ⋮┆----------------------------------------
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        178┆ unlink($tmp_file_name);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/Users/reassignUserRecords.php 
@@ -4603,27 +2917,7 @@ Findings:
         353┆ $countquery = "select count(*) AS count from $q_tables $q_where";
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/iCals/HTTP_WebDAV_Server_iCal.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        218┆ header('Content-Type: text/calendar; charset="' . $this->cal_charset . '"');
-          ⋮┆----------------------------------------
-        256┆ header("HTTP/$this->http_spec $status");
-          ⋮┆----------------------------------------
-        257┆ header("X-WebDAV-Status: $status", true);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/jjwg_Maps/controller.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        465┆ header("Content-Disposition: attachment; filename=\"$filename\"");
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.tainted-sql-string
         User data flows into this manually-constructed SQL string. User data can be safely inserted
         into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
@@ -4632,15 +2926,6 @@ Findings:
         (`$mysqli->prepare("INSERT INTO test(id, label) VALUES (?, ?)");`) or a safe library.
 
         766┆ $query = str_replace('SELECT ', 'SELECT (' . $calc_distance_expression . ') AS display_object_distance, ', $query);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/modules/vCals/HTTP_WebDAV_Server_vCal.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        104┆ header('WWW-Authenticate: Basic realm="'.($this->http_auth_realm).'"');
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/pdf.php 
@@ -4669,25 +2954,6 @@ Findings:
         that is not a viable solution, validate user input thoroughly.
 
          99┆ require_once('service/core/REST/'. $this->serverClass . '.php');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/service/example/Rest_Proxy.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.non-literal-header
-        Using user input when setting headers with `header()` is potentially dangerous. This could
-        allow an attacker to inject a new line and add a new header into the response. This is
-        called HTTP response splitting. To fix, do not allow whitespace inside `header()`: '[^\s]+'.
-
-        107┆ header($header);
-          ⋮┆----------------------------------------
-        110┆ header('Content-Length: ' . strlen($result[1]));
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/service/v3_1/SugarWebServiceUtilv3_1.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        356┆ @unlink($filename);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/salesagility.SuiteCRM/soap/SoapHelperFunctions.php 

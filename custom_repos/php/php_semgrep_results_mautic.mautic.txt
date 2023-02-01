@@ -1,28 +1,6 @@
 
 Findings:
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/assets/scaffold/files/upgrade.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        923┆ @unlink($path);
-          ⋮┆----------------------------------------
-        966┆ if (!@unlink($path)) {
-          ⋮┆----------------------------------------
-        979┆ if (!@unlink($dirpath)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/AssetBundle/Entity/Asset.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        726┆ unlink($filePath);
-          ⋮┆----------------------------------------
-        771┆ unlink($file);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/AssetBundle/Entity/AssetRepository.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.doctrine-orm-dangerous-query
         `$q->update(MAUTIC_TABLE_PREFIX.'assets')             ->set('download_count',
@@ -51,22 +29,6 @@ Findings:
         prepared statements instead.
 
         260┆ ->where('lead_id = '.(int) $fromLeadId)
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/AssetBundle/Tests/Asset/AbstractAssetTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         48┆ unlink($this->csvPath);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/AssetBundle/Tests/Controller/Api/AssetApiControllerFunctionalTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         46┆ unlink($assetsPath.'/file.txt');
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CampaignBundle/Entity/CampaignRepository.php 
@@ -207,51 +169,11 @@ Findings:
          22┆ assert($model instanceof SysinfoModel);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/ConfigBundle/Event/ConfigEvent.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        172┆ @unlink($tmpFile);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/ConfigBundle/Model/SysinfoModel.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.phpinfo-use
         The 'phpinfo' function may reveal sensitive information about your environment.
 
          62┆ phpinfo(INFO_GENERAL | INFO_CONFIGURATION | INFO_MODULES);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/ConfigBundle/Tests/Controller/ConfigControllerFunctionalTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         50┆ unlink($this->getConfigPath());
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Cache/MiddlewareCacheWarmer.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         59┆ unlink($this->cacheFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Command/ConvertConfigCommand.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        104┆ if (!unlink($configPath)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Command/GenerateProductionAssetsCommand.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         63┆ unlink($this->pathsHelper->getSystemPath('assets', true).'/js/mautic-form-tmp.js');
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Command/MaxMindDoNotSellPurgeCommand.php 
@@ -262,42 +184,6 @@ Findings:
         statements instead.
 
         131┆ $stmt = $conn->prepare($sql);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Command/ModeratedCommand.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        130┆ @unlink($this->lockFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Controller/AjaxController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        565┆ @unlink($file->getPath().'/'.$file->getFilename());
-          ⋮┆----------------------------------------
-        577┆ @unlink($cacheDir.'/lastUpdateCheck.txt');
-          ⋮┆----------------------------------------
-        581┆ @unlink($cacheDir.'/'.MAUTIC_VERSION.'.zip');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Controller/Api/FileApiController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        121┆ unlink($filePath);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Controller/FileController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        100┆ unlink($imagePath);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Entity/AuditLogRepository.php 
@@ -322,16 +208,6 @@ Findings:
          71┆ ->where('user_id = '.(int) $userId.' AND is_read = 0')
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Helper/AssetGenerationHelper.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        132┆ unlink($assetFile);
-          ⋮┆----------------------------------------
-        171┆ unlink($inProgressFile);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Helper/Chart/ChartQuery.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.doctrine-orm-dangerous-query
         `$uniqueQuery` Detected string concatenation with a non-literal variable in a Doctrine
@@ -350,14 +226,6 @@ Findings:
         462┆ ->from('('.$query->getSql().')', $tablePrefix);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Helper/LanguageHelper.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        132┆ @unlink($packagePath);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Helper/Serializer.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -368,42 +236,6 @@ Findings:
          29┆ return unserialize($serializedString, $options);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Helper/ThemeHelper.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        407┆ unlink($zipFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/IpLookup/AbstractLocalDataLookup.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        107┆ @unlink($temporaryPhar);
-          ⋮┆----------------------------------------
-        128┆ @unlink($tempTarget);
-          ⋮┆----------------------------------------
-        143┆ @unlink($tempTarget);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Test/MauticMysqlTestCase.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        235┆ unlink($sqlDumpFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Functional/Controller/FileControllerTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         67┆ unlink($this->uploadedFilePath);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Functional/Doctrine/Paginator/SimplePaginatorTest.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.assert-use-audit
         Calling assert with user input is equivalent to eval'ing.
@@ -411,90 +243,6 @@ Findings:
          29┆ assert($logger instanceof DebugStack);
           ⋮┆----------------------------------------
          48┆ assert($repository instanceof IpAddressRepository);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Unit/Command/ModeratedCommandTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        225┆ unlink($file->getPathname());
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Unit/Helper/LanguageHelperTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        115┆ @unlink($langFile);
-          ⋮┆----------------------------------------
-        136┆ @unlink($langFile);
-          ⋮┆----------------------------------------
-        140┆ @unlink($this->tmpPath.'/es.zip');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Unit/Helper/MaxMindDoNotSellDownloadHelperTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         50┆ unlink($filename);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Unit/Helper/UpdateHelperTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        104┆ @unlink(__DIR__.'/resource/update/tmp/lastUpdateCheck.txt');
-          ⋮┆----------------------------------------
-        128┆ @unlink($updatePackage);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Tests/Unit/IpLookup/MaxMindDoNotSellListTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         47┆ unlink($this->goodFilePath);
-          ⋮┆----------------------------------------
-         51┆ unlink($this->badFilePath);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Update/Step/FinalizeUpdateStep.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         59┆ @unlink($this->pathsHelper->getRootPath().'/upgrade.php');
-          ⋮┆----------------------------------------
-         60┆ @unlink($this->pathsHelper->getCachePath().'/lastUpdateCheck.txt');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Update/Step/InstallNewFilesStep.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         87┆ @unlink($zipFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/CoreBundle/Update/Step/RemoveDeletedFilesStep.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         65┆ @unlink($this->appRoot.'/deleted_files.txt');
-          ⋮┆----------------------------------------
-         79┆ if (@unlink($path)) {
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/DashboardBundle/Controller/DashboardController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        389┆ unlink($path);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/DynamicContentBundle/Entity/DynamicContentRepository.php 
@@ -528,12 +276,6 @@ Findings:
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/EmailBundle/Command/ProcessEmailQueueCommand.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        143┆ unlink($tmpFilename);
-          ⋮┆----------------------------------------
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
         Consider using JSON or structured data approaches (e.g. Google Protocol Buffers).
@@ -677,14 +419,6 @@ Findings:
          83┆ sprintf('EXISTS (%s)', $sb->getSql())
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/EmailBundle/Tests/Swiftmailer/Spool/DelegatingSpoolTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         63┆ unlink($messageFile);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/FormBundle/Entity/FormRepository.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.doctrine-orm-dangerous-query
         `$query` Detected string concatenation with a non-literal variable in a Doctrine
@@ -762,14 +496,6 @@ Findings:
         506┆ $q->andWhere($q->expr()->$operatorExpr('r.'.$field, ':value'))
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/InstallBundle/Tests/Functional/InstallWorkflowTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         44┆ unlink($this->localConfigPath);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/IntegrationsBundle/Entity/ObjectMappingRepository.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.doctrine-dbal-dangerous-query
         Detected string concatenation with a non-literal variable in a Doctrine DBAL query method.
@@ -805,16 +531,6 @@ Findings:
          56┆ assert($emailModel instanceof EmailModel);
           ⋮┆----------------------------------------
         165┆ assert($dncModel instanceof \Mautic\LeadBundle\Model\DoNotContact);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Controller/ImportController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        323┆ unlink($fullPath);
-          ⋮┆----------------------------------------
-        630┆ unlink($filepath);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Controller/LeadController.php 
@@ -878,14 +594,6 @@ Findings:
         207┆ $q->andWhere('ch.'.$statSentColumn.' >= :frequencyTime')
           ⋮┆----------------------------------------
         221┆ sprintf('NOT EXISTS (%s)', $subQuery->getSQL())
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Entity/Import.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        347┆ unlink($file);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Entity/LeadDeviceRepository.php 
@@ -1015,14 +723,6 @@ Findings:
         144┆ $clientInfo         = unserialize($row['client_info']);
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Model/LeadModel.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        545┆ unlink($avatar);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Model/ListModel.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.doctrine-orm-dangerous-query
         `$q` Detected string concatenation with a non-literal variable in a Doctrine QueryBuilder
@@ -1074,32 +774,6 @@ Findings:
         statements instead.
 
         213┆ return $this->connection->executeQuery($this->getSQL(), $this->params, $this->paramTypes);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Tests/Functional/Controller/ImportControllerFunctionalTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         42┆ unlink($this->csvFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Tests/Model/ImportModelTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        393┆ @unlink(self::$csvPath);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/LeadBundle/Tests/StandardImportTestHelper.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         43┆ unlink(self::$csvPath);
-          ⋮┆----------------------------------------
-         47┆ unlink(self::$largeCsvPath);
 
 
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/NotificationBundle/Entity/NotificationRepository.php 
@@ -1310,32 +984,6 @@ Findings:
          45┆ ->where('lead_id = '.(int) $fromLeadId)
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/ReportBundle/Tests/Model/CsvExporterTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        132┆ unlink($tmpFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/ReportBundle/Tests/Model/ExcelExporterTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         61┆ unlink($tmpFile);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/ReportBundle/Tests/Scheduler/Model/FileHandlerTest.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         96┆ unlink($tmpFilePath);
-          ⋮┆----------------------------------------
-         97┆ unlink($tmpZipFilePath);
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/bundles/SmsBundle/Broadcast/BroadcastQuery.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.doctrine-orm-dangerous-query
         `$this->query` Detected string concatenation with a non-literal variable in a Doctrine
@@ -1487,16 +1135,6 @@ Findings:
         146┆ ->from(sprintf('(%s)', $selectqb->getSQL()), $this->getTableAlias())
 
 
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/migrations/Version20190704154940.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-         39┆ @unlink($path.'/config.php');
-          ⋮┆----------------------------------------
-         67┆ @unlink($path.'/config.json');
-
-
   /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/app/migrations/Version20200422144300.php 
      home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unserialize-use
         Calling `unserialize()` with user input in the pattern can lead to arbitrary code execution.
@@ -1505,23 +1143,3 @@ Findings:
          81┆ $properties         = unserialize($rowToMigrate['properties']);
           ⋮┆----------------------------------------
         114┆ $properties   = unserialize($rowToMigrate['properties']);
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/plugins/MauticCitrixBundle/Controller/PublicController.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.symfony-permissive-cors
-        Access-Control-Allow-Origin response header is set to "*". This will disable CORS Same
-        Origin Policy restrictions.
-
-         70┆ $response->headers->set('Access-Control-Allow-Origin', '*');
-
-
-  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/mautic.mautic/upgrade.php 
-     home.rtz.github_vuln_research.my_semgrep_rules.php_semgrep_rules.unlink-use
-        Using user input when deleting files with `unlink()` is potentially dangerous. A malicious
-        actor could use this to modify or access files they have no right to.
-
-        923┆ @unlink($path);
-          ⋮┆----------------------------------------
-        966┆ if (!@unlink($path)) {
-          ⋮┆----------------------------------------
-        979┆ if (!@unlink($dirpath)) {

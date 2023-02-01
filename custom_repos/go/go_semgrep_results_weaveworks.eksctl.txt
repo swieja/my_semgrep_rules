@@ -1,0 +1,19 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/weaveworks.eksctl/integration/runner/runner.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.dangerous-exec-command
+        Detected non-static command inside Command. Audit the input to 'exec.Command'. If unverified
+        user data can reach this call site, this is a code injection vulnerability. A malicious
+        actor can inject a malicious script to execute arbitrary code.
+
+         99┆ command := exec.Command(c.execPath, c.args...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir/weaveworks.eksctl/pkg/executor/executor.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.dangerous-exec-command
+        Detected non-static command inside Command. Audit the input to 'exec.Command'. If unverified
+        user data can reach this call site, this is a code injection vulnerability. A malicious
+        actor can inject a malicious script to execute arbitrary code.
+
+         52┆ cmd := exec.Command(command, args...)
