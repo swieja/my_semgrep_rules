@@ -1,4 +1,0 @@
-https://github.com/openmrs/openmrs-core
-https://github.com/WeBankFinTech/DataSphereStudio
-https://github.com/vespa-engine/vespa
-https://github.com/shopizer-ecommerce/shopizer

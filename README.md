@@ -25,14 +25,14 @@ python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /ho
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_csharp.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/csharp_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/php_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_python.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/python_semgrep_results.txt -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_python.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/python_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_go.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.p    y -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_go.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_js.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/js_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/js_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
 
-#count the number of occurrences
+#count the number of occurrences to remove most likely fps
 cd /home/rtz/github_vuln_research/my_semgrep_rules/
 mkdir /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
 mv go_semgrep* /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
