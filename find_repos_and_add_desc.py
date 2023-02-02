@@ -58,8 +58,8 @@ if __name__ == "__main__":
     repoCounter = 0
     repos = {}
     #general whitelisting
-    unwantedDescriptionKeywords = ["bootcamp", "bootcamps", "beginner", "beginners", "exercise" , "exercises" , "labs" , "course", "shellcode", "payload", "wrapper","installer","hacking","hacker","c2","multiplayer","player","minecraft"]
-    unwantedRepoOwnerName = ["microsoft","dotnet","azure","tutorial","firefox","chrome","google","hacking","hacker","c2","multiplayer","player","minecraft","metamask","duckduckgo"]
+    unwantedDescriptionKeywords = ["bootcamp", "bootcamps", "beginner", "beginners", "exercise" , "exercises" , "labs" , "course", "shellcode", "payload", "wrapper","installer","hacking","hacker","c2","multiplayer","player","minecraft","owasp"]
+    unwantedRepoOwnerName = ["microsoft","dotnet","azure","tutorial","firefox","chrome","google","hacking","hacker","c2","multiplayer","player","minecraft","metamask","duckduckgo",'apache']
 
     for page in range(0,totalNumberOfRelevantPages,1):
         r = s.get(f"{BASE_URL}/repositories?q={query}&page={page}",headers=headers)
@@ -89,11 +89,11 @@ if __name__ == "__main__":
         if path.exists(f"{args.storedFile}"):
             with open(f"{args.storedFile}","a") as file:
                 for key,value in repos.items():
-                    file.write(f"{key}: {value}\n")
+                    file.write(f"{key} {value}\n")
         else:
             with open(f"{args.storedFile}","w") as file:
                 for key,value in repos.items():
-                    file.write(f"{key}: {value}\n")
+                    file.write(f"{key} {value}\n")
     else:
         print("Didn't provide filename argument, not saving.")
         

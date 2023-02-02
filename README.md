@@ -32,8 +32,10 @@ python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.p    y -l
 
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_js.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/js_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/js_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
+```
 
-#count the number of occurrences to remove most likely fps
+## count the number of occurrences to remove most likely fps
+```bash
 cd /home/rtz/github_vuln_research/my_semgrep_rules/
 mkdir /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
 mv go_semgrep* /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
@@ -57,8 +59,15 @@ cd /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules
 ## modified repo finding tool to add desc for each repo
 I had to modify the script to add description for each repo so it better to filter which is usually needed anyway
 ```
-python3 /home/rtz/github_vuln_research/find_repos_and_add_desc.py \
-    -q "NOT in:descritpion library NOT in:readme exercise stars:500..1000 language:Java" \
-    -f /home/rtz/github_vuln_research/my_semgrep_rules/java_repos_list_semgrep.txt \
-    -s 10000
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/find_repos_and_add_desc.py \
+    -q "NOT in:descritpion library NOT in:readme exercise stars:500..1000 language:Java created:>2017-01-01" \
+    -f /home/rtz/github_vuln_research/my_semgrep_rules/java_all/java_repos_list_semgrep.txt \
+    -s 20000
+```
+
+```bash
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/find_repos_and_add_desc.py \
+    -q "NOT in:descritpion library NOT in:readme exercise stars:500..1000 language:Java created:>2017-01-01" \
+    -f /home/rtz/github_vuln_research/my_semgrep_rules/java_all/java_repos_list_semgrep.txt \
+    -s 20000
 ```

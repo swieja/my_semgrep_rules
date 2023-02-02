@@ -1,0 +1,85 @@
+https://github.com/devopshydclub/vprofile-project None
+https://github.com/stacksimplify/aws-eks-kubernetes-masterclass AWS EKS Kubernetes - Masterclass | DevOps, Microservices
+https://github.com/mercyblitz/geekbang-lessons 极客时间课程工程
+https://github.com/jammy928/CoinExchange_CryptoExchange_Java The best Java open source crypto currency exchange platform, bitcoin exchange based on Java | BTC exchange | ETH exchange | digital currency exchange | trading platform | matching trading engine. This project is based on the development of Spring Cloud microservices and can be used to build and secondary development of digital currency exchanges. It has a complete source code for matching trading engines, back-end management (back-end + front-end), front-end (transaction page, activity page, personal center, etc.), Android APP source code, Apple APP source code, currency wallet RPC source code. Contact Email: 877070886@qq.com
+https://github.com/417511458/jbone jbone基于Spring Cloud框架开发，旨在为中小企业提供稳定的微服务解决方案，为开发人员提供基础开发骨架，jbone包含微服务中所有常用组件，例如注册中心、服务管理、服务监控、JVM监控、内存分析、调用链跟踪、API网关等等。业务功能包括系统权限的统一管理、单点登录、CMS、电商平台、工作流平台、支付平台等等。
+https://github.com/jeecgboot/jeewx-boot JAVA版免费开源的微信管家平台。支持微信公众号、小程序、第三方平台等。平台已经实现了公众号基础管理、群发、系统权限、抽奖活动、小程序官网等功能，便于二次开发，可以快速搭建微信应用！
+https://github.com/fayson/cdhproject hadoop各组件使用，持续更新
+https://github.com/KOHGYLW/kiftd-source kiftd: An open source sky driver or cloud driver server application! 欢迎访问kiftd源代码资源库！您可以在此获取kiftd源代码，并自由地进行下载和查看。该源代码仓库同时也是开发仓库，因此其版本可能比发行版靠前（但绝不会滞后）。
+https://github.com/zccodere/study-imooc 慕课网Java相关课程学习项目源码，博客地址：https://segmentfault.com/blog/zccoder
+https://github.com/laodaobazi/ldbz-shop 分布式商城
+https://github.com/xingag/app_spider a spider on the apps
+https://github.com/newbee-ltd/newbee-mall-api 🔥 🎉新蜂商城前后端分离版本-后端API源码
+https://github.com/leelovejava/cloud2020 SpringCloud
+https://github.com/dapr/quickstarts Dapr quickstart code samples and tutorials showcasing core Dapr capabilities
+https://github.com/EiletXie/cloud2020 SpringCloud2020最新技术学习
+https://github.com/szvone/vmqApk V免签监控端
+https://github.com/algorithm004-01/algorithm004-01 None
+https://github.com/Zephery/newblog :octocat: 个人博客，个人网站，blog
+https://github.com/PacktPublishing/Java-Coding-Problems Java Coding Problems, published by Packt
+https://github.com/SiGuiyang/spring-cloud-shop spring cloud 版分布式电商项目，全力打造顶级多模块，高可用，高扩展电商项目
+https://github.com/actiontech/dble A High Scalability Middle-ware for MySQL Sharding
+https://github.com/cjbi/admin3 一个灵活高效不臃肿的后台管理框架，项目后端基于Java17、SpringBoot3.0，前端基于TypeScript、Vite3、Vue3、Element Plus，只提供登录会话、用户管理、角色管理、权限资源管理、事件日志等基础功能的最佳实践方案，不做过多的封装，适合二次定制开发、接私活、源码学习等场景
+https://github.com/openlookeng/hetu-core None
+https://github.com/java110/MicroCommunity HC is open source Property Management Software(saas)
+https://github.com/sun0x00/redtorch Kotlin(Java)开源量化交易开发框架
+https://github.com/GIScience/openrouteservice 🌍 The open source route planner api with plenty of features.
+https://github.com/michaelliao/itranswarp Full-featured CMS including blog, wiki, discussion, etc. Cloud native application that powered by SpringBoot.
+https://github.com/liuyueyi/quick-media media(audio/image/qrcode/markdown/html/svg/png) support (多媒体编辑服务, 酷炫二维码, 音频, 图片, svg, markdown, html渲染服务支持)  
+https://github.com/ofdrw/ofdrw OFD Reader & Writer 开源的OFD处理库，支持文档生成、数字签名、文档保护、文档合并、转换等功能，文档格式遵循《GB/T 33190-2016 电子文件存储与交换格式版式文档》。
+https://github.com/72wukong/72crm-9.0-JAVA 悟空CRM-基于jfinal+vue+ElementUI的前后端分离CRM系统
+https://github.com/asLody/SandVXposed Xposed environment without root (OS 5.0 - 10.0)
+https://github.com/Zo3i/frpMgr Frp快速配置面板
+https://github.com/thombergs/code-examples A collection of code examples from blog posts etc.
+https://github.com/in28minutes/spring-microservices Microservices using Spring Boot, Spring Cloud, Docker and Kubernetes
+https://github.com/digitalsonic/geektime-spring-family 极客时间视频课程《玩转Spring全家桶》
+https://github.com/kubernetes-client/java Official Java client library for kubernetes
+https://github.com/201206030/novel-plus novel-plus 是一个多端（PC、WAP）阅读 、功能完善的小说 CMS 系统。包括小说推荐、小说检索、小说排行、小说阅读、小说书架、小说评论、小说爬虫、会员中心、作家专区、充值订阅、新闻发布等功能。
+https://github.com/xubinux/xbin-store 模仿国内知名B2C网站,实现的一个分布式B2C商城 使用Spring Boot 自动配置 Dubbox / MVC / MyBatis / Druid / Solr / Redis 等。使用Spring Cloud版本请查看
+https://github.com/LuckyZXL2016/Movie_Recommend 基于Spark的电影推荐系统，包含爬虫项目、web网站、后台管理系统以及spark推荐系统
+https://github.com/spring2go/staffjoy 微服务(Microservices)和云原生架构教学案例项目，基于Spring Boot和Kubernetes技术栈
+https://github.com/ZHENFENG13/My-Blog :palm_tree::octocat:A simple & beautiful blogging system implemented with spring-boot & thymeleaf & mybatis My Blog 是由 SpringBoot + Mybatis + Thymeleaf 等技术实现的 Java 博客系统，页面美观、功能齐全、部署简单及完善的代码，一定会给使用者无与伦比的体验
+https://github.com/rememberber/WePush 专注批量推送的小而美的工具，目前支持：模板消息-公众号、模板消息-小程序、微信客服消息、微信企业号/企业微信消息、阿里云短信、阿里大于模板短信 、腾讯云短信、云片网短信、E-Mail、HTTP请求、钉钉、华为云短信、百度云短信、又拍云短信、七牛云短信
+https://github.com/qq53182347/liugh-parent SpringBoot+SpringCloud Oauth2+JWT+MybatisPlus实现Restful快速开发后端脚手架
+https://github.com/648540858/wvp-GB28181-pro WEB VIDEO PLATFORM是一个基于GB28181-2016标准实现的网络视频平台，支持NAT穿透，支持海康、大华、宇视等品牌的IPC、NVR、DVR接入。支持国标级联，支持rtsp/rtmp等视频流转发到国标平台，支持rtsp/rtmp等推流转发到国标平台。
+https://github.com/WeBankFinTech/DataSphereStudio DataSphereStudio is a one stop data application development& management portal, covering scenarios including data exchange, desensitization/cleansing, analysis/mining, quality measurement, visualization, and task scheduling.
+https://github.com/android/animation-samples Multiple samples showing the best practices in animation on Android.
+https://github.com/mercyblitz/segmentfault-lessons Segment Fault 在线讲堂 代码工程
+https://github.com/boylegu/SpringBoot-vue A example demo base SpringBooot with vueJS2.x + webpack2.x as Java full stack web practice
+https://github.com/Antabot/White-Jotter 白卷是一款使用 Vue+Spring Boot 开发的前后端分离项目，附带全套开发教程。（A simple CMS developed by Spring Boot and Vue.js with development tutorials）
+https://github.com/lxy-go/SpringBoot 这是一个SpringBoot的从入门程序集锦
+https://github.com/doublechaintech/scm-biz-suite 供应链中台系统基础版，集成零售管理, 电子商务, 供应链管理,  财务管理, 车队管理, 仓库管理, 人员管理, 产品管理, 订单管理, 会员管理, 连锁店管理, 加盟管理, 前端React/Ant Design, 后端Java Spring+自有开源框架，全面支持MySQL, PostgreSQL, 全面支持国产数据库南大通用GBase 8s,通过REST接口调用，前后端完全分离。
+https://github.com/fossasia/pslab-android PSLab Android App https://play.google.com/store/apps/details?id=io.pslab
+https://github.com/smartloli/EFAK A easy and high-performance monitoring system, for comprehensive monitoring and management of kafka cluster.
+https://github.com/ngbdf/redis-manager Redis 一站式管理平台，支持集群的监控、安装、管理、告警以及基本的数据操作
+https://github.com/NiceSeason/gulimall-learning 2020谷粒商城代码+笔记
+https://github.com/cskefu/cskefu 🌲 春松客服，开源，免费，智能客服系统，机器人客服
+https://github.com/CatVodTVOfficial/CatVodTVSpider None
+https://github.com/chengxy-nds/Springboot-Notebook Springboot-Notebook 一个以 springboot 为基础开发框架， 整合 Redis 、Mysql 、 Rabbitmq 、ES 、MongoDB、sharding-jdbc 分库分表、zookeeper 、web人脸识别 、实时消息推送 、SQL优化、注册中心 、数据脱敏 等互联网主流技术， 文章图解理论配合实战案例，实现开发中常见功能点的综合项目。 本着拿来即用的原则，助力于减少开发者在工作中的学习成本。
+https://github.com/ZHENFENG13/ssm-demo :banana:Spring+SpringMVC+Mybatis+easyUI实现简单的后台管理系统
+https://github.com/youseries/ureport UReport2 is a high-performance pure Java report engine based on Spring architecture, where complex Chinese-style statements and reports can be prepared by iterating over cells.
+https://github.com/wkeyuan/DWSurvey Survey System. 最好用的开源问卷调查系统、表单系统。
+https://github.com/MoRan1607/BigDataGuide 大数据学习，从零开始学习大数据，包含大数据学习各阶段学习视频、面试资料
+https://github.com/android/views-widgets-samples Multiple samples showing the best practices in views-widgets on Android.
+https://github.com/bjmashibing/InternetArchitect 年薪百万互联网架构师课程文档及源码(公开部分)
+https://github.com/2227324689/gpmall 【咕泡学院实战项目】-基于SpringBoot+Dubbo构建的电商平台-微服务架构、商城、电商、微服务、高并发、kafka、Elasticsearch
+https://github.com/WeiYe-Jing/datax-web DataX集成可视化页面，选择数据源即可一键生成数据同步任务，支持RDBMS、Hive、HBase、ClickHouse、MongoDB等数据源，批量创建RDBMS数据同步任务，集成开源调度系统，支持分布式、增量同步数据、实时查看运行日志、监控执行器资源、KILL运行进程、数据源信息加密等。
+https://github.com/dromara/lamp-cloud lamp-cloud 基于Jdk11 + SpringCloud + SpringBoot 开发的微服务中后台快速开发平台，专注于多租户(SaaS架构)解决方案，亦可作为普通项目（非SaaS架构）的基础开发框架使用，目前已实现插拔式数据库隔离、SCHEMA隔离、字段隔离 等租户隔离方案。
+https://github.com/saysky/ForestBlog 一个简单漂亮的SSM(Spring+SpringMVC+Mybatis)博客系统
+https://github.com/zlt2000/microservices-platform 基于SpringBoot2.x、SpringCloud和SpringCloudAlibaba并采用前后端分离的企业级微服务多租户系统架构。并引入组件化的思想实现高内聚低耦合，项目代码简洁注释丰富上手容易，适合学习和企业中使用。真正实现了基于RBAC、jwt和oauth2的无状态统一权限认证的解决方案，面向互联网设计同时适合B端和C端用户，支持CI/CD多环境部署，并提供应用管理方便第三方系统接入；同时还集合各种微服务治理功能和监控功能。模块包括:企业级的认证系统、开发平台、应用监控、慢sql监控、统一日志、单点登录、Redis分布式高速缓存、配置中心、分布式任务调度、接口文档、代码生成等等。
+https://github.com/stylefeng/Guns Guns基于SpringBoot 2，致力于做更简洁的后台管理系统，完美整合springmvc + shiro + mybatis-plus + beetl!Guns项目代码简洁，注释丰富，上手容易，同时Guns包含许多基础模块(用户管理，角色管理，部门管理，字典管理等10个模块)，可以直接作为一个后台管理系统的脚手架!
+https://github.com/DTStack/chunjun A data integration framework
+https://github.com/zq2599/blog_demos CSDN博客专家程序员欣宸的github，这里有六百多篇原创文章的详细分类和汇总，以及对应的源码，内容涉及Java、Docker、Kubernetes、DevOPS等方面
+https://github.com/jeecgboot/JimuReport ⭐️「低代码可视化报表」类似excel操作风格，在线拖拽完成设计！功能涵盖: 报表设计、图形报表、打印设计、大屏设计等，完全免费！秉承“简单、易用、专业”的产品理念，极大的降低报表开发难度、缩短开发周期、解决各类报表难题。
+https://github.com/Javen205/IJPay IJPay 让支付触手可及，封装了微信支付、QQ支付、支付宝支付、京东支付、银联支付、PayPal 支付等常用的支付方式以及各种常用的接口。不依赖任何第三方 mvc 框架，仅仅作为工具使用简单快速完成支付模块的开发，可轻松嵌入到任何系统里。右上角点下小星星✨ 
+https://github.com/awsdocs/aws-doc-sdk-examples Welcome to the AWS Code Examples Repository.  This repo contains code examples used in the AWS documentation, AWS SDK Developer Guides, and more. For more information, see the Readme.md file below.
+https://github.com/hs-web/hsweb-framework hsweb (haʊs wɛb) 是一个基于spring-boot 2.x开发 ,首个使用全响应式编程的企业级后台管理系统基础项目。
+https://github.com/Exrick/xmall 基于SOA架构的分布式电商购物商城 前后端分离 前台商城:Vue全家桶 后台管理系统:Dubbo/SSM/Elasticsearch/Redis/MySQL/ActiveMQ/Shiro/Zookeeper等
+https://github.com/YunaiV/yudao-cloud ruoyi-vue-pro 全新 Cloud 版本，优化重构所有功能。基于 Spring Cloud Alibaba + MyBatis Plus + Vue & Element 实现的后台管理系统 + 用户小程序，支持 RBAC 动态权限、多租户、数据权限、工作流、三方登录、支付、短信、商城等功能。你的 ⭐️ Star ⭐️，是作者生发的动力！
+https://github.com/kekingcn/kkFileView 基于 Spring Boot 的文件在线预览项目
+https://github.com/wxiaoqi/Spring-Cloud-Platform 🔥🔥🔥国内首个Spring Cloud微服务化RBAC的管理平台，核心采用Spring Boot 2.4、Spring Cloud 2020.0.0 & Alibaba，前端采用d2-admin中台框架。 🔝 🔝 记得上边点个star 关注更新
+https://github.com/trinodb/trino Official repository of Trino, the distributed SQL query engine for big data, formerly known as PrestoSQL (https://trino.io)
+https://github.com/flowable/flowable-engine A compact and highly efficient workflow and Business Process Management (BPM) platform for developers, system admins and business users.
+https://github.com/sohutv/cachecloud 搜狐视频(sohu tv)Redis私有云平台 ：支持Redis多种架构(Standalone、Sentinel、Cluster)高效管理、有效降低大规模redis运维成本，提升资源管控能力和利用率。平台提供快速搭建/迁移，运维管理，弹性伸缩，统计监控，客户端整合接入等功能。(CacheCloud is a Redis cloud management platform. It supports Standalone, Sentinel, and Cluster architectures for Redis, effectively reducing large-scale Redis operation and maintenance costs, and improving resource management and utilization. The platform provides rapid construction/migration, operation and maintenance management, elastic scaling, statistical monitoring, client integration and access and other functions)
+https://github.com/Netflix/conductor Conductor is a microservices orchestration engine.
+https://github.com/datahub-project/datahub The Metadata Platform for the Modern Data Stack
