@@ -53,7 +53,6 @@ if __name__ == "__main__":
     ''')
     asd = input("Continue?  ")
     totalNumberOfRelevantPages = round(1 * totalNumberOfPages) if totalNumberOfPages <= 10 else 10
-    totalNumberOfRelevantPages += 1
     print(f"Looping {totalNumberOfRelevantPages} times:")
 
     repoCounter = 0
