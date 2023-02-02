@@ -51,8 +51,9 @@ if __name__ == "__main__":
     To work around split your query into small queries which will return less than 1000 results.
     The number of pages: {totalNumberOfPages}, picking only updated top 1000 results
     ''')
-    
-    totalNumberOfRelevantPages = round(0.7 * totalNumberOfPages) if totalNumberOfPages <= 10 else 10
+    asd = input("Continue?  ")
+    totalNumberOfRelevantPages = round(1 * totalNumberOfPages) if totalNumberOfPages <= 10 else 10
+    totalNumberOfRelevantPages += 1
     print(f"Looping {totalNumberOfRelevantPages} times:")
 
     repoCounter = 0

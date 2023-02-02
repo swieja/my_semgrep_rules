@@ -1,0 +1,25 @@
+https://github.com/bit4woo/Summit_PPT 各种安全大会PPT PDF
+https://github.com/krlawrence/graph Practical Gremlin - An Apache TinkerPop Tutorial
+https://github.com/Shopify/shopify-cli Shopify CLI helps you build against the Shopify platform faster.
+https://github.com/rubocop/rubocop-rails A RuboCop extension focused on enforcing Rails best practices and coding conventions.
+https://github.com/pupilfirst/pupilfirst A learning management system (LMS) that lets you run an asynchronous online school, where learning is achieved through focused tasks, directed feedback, an iterative workflow, and community interaction.
+https://github.com/Hacktoberfest/hacktoberfest-2020 Hacktoberfest - App to manage the annual open-source challenge, used for the 2019 & 2020 seasons.
+https://github.com/github/explore Community-curated topic and collection pages on GitHub
+https://github.com/rmosolgo/graphql-ruby Ruby implementation of GraphQL 
+https://github.com/shakacode/react_on_rails Integration of React + Webpack + Rails + rails/webpacker including server-side rendering of React, enabling a better developer experience and faster client performance.
+https://github.com/consul/consul Consul Democracy - Open Government and E-Participation Web Software
+https://github.com/illacceptanything/illacceptanything The project where literally anything* goes.
+https://github.com/SUSE/Portus Authorization service and frontend for Docker registry (v2)
+https://github.com/octobox/octobox 📮Untangle your GitHub Notifications
+https://github.com/helpyio/helpy Helpy is a modern, open source helpdesk customer support application. Features include knowledgebase, community discussions and support tickets integrated with email.
+https://github.com/education/classroom GitHub Classroom automates repository creation and access control, making it easy for teachers to distribute starter code and collect assignments on GitHub.
+https://github.com/athityakumar/colorls A Ruby gem that beautifies the terminal's ls command, with color and font-awesome icons. :tada:
+https://github.com/Homebrew/linuxbrew-core 💀Formerly the core formulae for the Homebrew package manager on Linux
+https://github.com/pluosi/app-host 应用内网发布 | iOS OTA (Over-the-Air) | APP publish website like fir.im  | 适用于企业 iOS & Android 内网发布测试使用，方便管理和分发 APP 包
+https://github.com/Homebrew/formulae.brew.sh 🏎 An online formulae browser for Homebrew
+https://github.com/bit4woo/Summit_PPT 各种安全大会PPT PDF
+https://github.com/krlawrence/graph Practical Gremlin - An Apache TinkerPop Tutorial
+https://github.com/rubyforgood/human-essentials Human Essentials is an inventory management system for essentials banks, to aid them in distributing items to their partners, tracking their inventory, and providing statistics about their inventory flows.
+https://github.com/Shopify/shopify-cli Shopify CLI helps you build against the Shopify platform faster.
+https://github.com/rubocop/rubocop-rails A RuboCop extension focused on enforcing Rails best practices and coding conventions.
+https://github.com/pupilfirst/pupilfirst A learning management system (LMS) that lets you run an asynchronous online school, where learning is achieved through focused tasks, directed feedback, an iterative workflow, and community interaction.
