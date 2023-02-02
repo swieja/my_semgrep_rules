@@ -58,7 +58,7 @@ if __name__ == "__main__":
     repoCounter = 0
     repos = {}
     #general whitelisting
-    unwantedDescriptionKeywords = ["bootcamp", "bootcamps", "beginner", "beginners", "exercise" , "exercises" , "labs" , "course", "shellcode", "payload", "wrapper","installer","hacking","hacker","c2","multiplayer","player","minecraft","owasp"]
+    unwantedDescriptionKeywords = ["bootcamp", "bootcamps", "beginner", "beginners", "exercise" , "exercises" , "labs" , "course", "shellcode", "payload", "wrapper","installer","hacking","hacker","c2","multiplayer","player","minecraft","owasp","ffmpeg",""]
     unwantedRepoOwnerName = ["microsoft","dotnet","azure","tutorial","firefox","chrome","google","hacking","hacker","c2","multiplayer","player","minecraft","metamask","duckduckgo",'apache']
 
     for page in range(0,totalNumberOfRelevantPages,1):
