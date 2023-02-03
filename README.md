@@ -68,3 +68,14 @@ python3 /home/rtz/github_vuln_research/my_semgrep_rules/find_repos_and_add_desc.
 ```bash
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/find_repos_and_add_desc.py  -q "NOT in:descritpion library NOT in:readme exercise stars:250..999 language:C# created:>2017-01-01 sort:updated"  -f /home/rtz/github_vuln_research/my_semgrep_rules/csharp_all/csharp_repos_list_semgrep.txt -s 20000
 ```
+
+
+```
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/find_repos_and_add_desc.py \
+    -q "NOT in:descritpion library NOT in:readme exercise stars:{i}..{i+500} language:{lang} created:>2017-01-01 sort:updated" \
+    -f /home/rtz/github_vuln_research/my_semgrep_rules/{save}_all/{save}_repos_list_semgrep.txt \
+    -s 20000
+
+
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/find_repos_and_add_desc.py -q \"NOT in:descritpion library NOT in:readme exercise stars:{i}..{i+500} language:{lang} created:>2017-01-01 sort:updated\" -f /home/rtz/github_vuln_research/my_semgrep_rules/{save}_all/{save}_repos_list_semgrep.txt -s 20000
+```
