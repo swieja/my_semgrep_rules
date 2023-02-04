@@ -51,14 +51,14 @@ if __name__ == "__main__":
     To work around split your query into small queries which will return less than 1000 results.
     The number of pages: {totalNumberOfPages}, picking only updated top 1000 results
     ''')
-    asd = input("Continue?  ")
+    
     totalNumberOfRelevantPages = round(1 * totalNumberOfPages) if totalNumberOfPages <= 10 else 10
     print(f"Looping {totalNumberOfRelevantPages} times:")
 
     repoCounter = 0
     repos = {}
     #general whitelisting
-    unwantedDescriptionKeywords = ["bootcamp", "bootcamps", "beginner", "beginners", "exercise" , "exercises" , "labs" , "course", "shellcode", "payload", "wrapper","installer","hacking","hacker","c2","multiplayer","player","minecraft","owasp","ffmpeg",""]
+    unwantedDescriptionKeywords = ["bootcamp", "bootcamps", "beginner", "beginners", "exercise" , "exercises" , "labs" , "course", "shellcode", "payload", "wrapper","installer","hacking","hacker","c2","multiplayer","player","minecraft","owasp","ffmpeg",]
     unwantedRepoOwnerName = ["microsoft","dotnet","azure","tutorial","firefox","chrome","google","hacking","hacker","c2","multiplayer","player","minecraft","metamask","duckduckgo",'apache']
 
     for page in range(0,totalNumberOfRelevantPages,1):
