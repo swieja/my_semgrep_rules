@@ -5,7 +5,7 @@ from time import sleep
 stack = ["Java","Ruby","PHP","Go","csharp","Python"]
 
 for lang in stack:
-    for i in range (1000,14000,4000):
+    for i in range (1000,14000,3001):
         if lang == "csharp":
             save = lang
             lang = "C#"
