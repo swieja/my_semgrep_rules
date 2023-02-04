@@ -1,0 +1,178 @@
+https://github.com/Alexey-T/CudaText Cross-platform text editor, written in Lazarus
+https://github.com/markqvist/Reticulum The cryptography-based networking stack for building unstoppable networks with LoRa, Packet Radio, WiFi and everything in between.
+https://github.com/blackholll/loonflow 基于django的工作流引擎,工单(a workflow engine base on django python)
+https://github.com/dqzg12300/fridaUiTools frida工具的缝合怪
+https://github.com/zero-to-mastery/start-here-guidelines Lets Git started in the world of opensource, starting in the Zero To Mastery's opensource playground. Especially designed for education and practical experience purposes.
+https://github.com/tintinweb/smart-contract-sanctuary 🐦🌴🌴🌴🦕 A home for ethereum smart contracts. 🏠
+https://github.com/snapcore/snapcraft Package, distribute, and update any app for Linux and IoT.
+https://github.com/TheLastBen/fast-stable-diffusion fast-stable-diffusion + DreamBooth
+https://github.com/DeepLabCut/DeepLabCut Official implementation of DeepLabCut: Markerless pose estimation of user-defined features with deep learning for all animals incl. humans
+https://github.com/iterativv/NostalgiaForInfinity Trading strategy for the Freqtrade crypto bot
+https://github.com/LmeSzinc/AzurLaneAutoScript Azur Lane bot (CN/EN/JP/TW) 碧蓝航线脚本 | 无缝委托科研，全自动大世界
+https://github.com/voxel51/fiftyone The open-source tool for building high-quality datasets and computer vision models
+https://github.com/SamirPaul1/DSAlgo 📚A repository that contains all the Data Structures and Algorithms concepts and solutions to various problems in Python3 stored in a structured manner.👨‍💻🎯
+https://github.com/BlinkDL/AI-Writer AI 写小说，生成玄幻和言情网文等等。中文预训练生成模型。采用我的 RWKV 模型，类似 GPT-2 。AI写作。RWKV for Chinese novel generation.
+https://github.com/kubeflow/pipelines Machine Learning Pipelines for Kubeflow
+https://github.com/skypilot-org/skypilot SkyPilot is a framework for easily running machine learning workloads on any cloud through a unified interface.
+https://github.com/adap/flower Flower: A Friendly Federated Learning Framework
+https://github.com/automatic-ripping-machine/automatic-ripping-machine Automatic Ripping Machine (ARM) Scripts
+https://github.com/crytic/slither Static Analyzer for Solidity
+https://github.com/hay-kot/mealie Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor
+https://github.com/bram2w/baserow Baserow is an open source no-code database tool and Airtable alternative. This is a mirrored repository, the official one is hosted on https://gitlab.com/bramw/baserow.
+https://github.com/Netflix/dispatch All of the ad-hoc things you're doing to manage incidents today, done for you, and much more!
+https://github.com/mage-ai/mage-ai 🧙 The modern replacement for Airflow. Build, run, and manage data pipelines for integrating and transforming data.
+https://github.com/feast-dev/feast Feature Store for Machine Learning
+https://github.com/tensorflow/federated A framework for implementing federated learning
+https://github.com/kserve/kserve Standardized Serverless ML Inference Platform on Kubernetes
+https://github.com/yihong0618/GitHubPoster Make everything a GitHub svg poster and Skyline!
+https://github.com/napari/napari napari: a fast, interactive, multi-dimensional image viewer for python
+https://github.com/Nixtla/neuralforecast Scalable and user friendly neural :brain: forecasting algorithms.
+https://github.com/ms-jpq/chadtree File manager for Neovim. Better than NERDTree.
+https://github.com/electricitymaps/electricitymaps-contrib A real-time visualisation of the CO2 emissions of electricity consumption
+https://github.com/bookwyrm-social/bookwyrm Social reading and reviewing, decentralized with ActivityPub
+https://github.com/emissary-ingress/emissary open source Kubernetes-native API gateway for microservices built on the Envoy Proxy
+https://github.com/elyra-ai/elyra Elyra extends JupyterLab with an AI centric approach.
+https://github.com/tensorflow/lingvo Lingvo
+https://github.com/RPiList/specials Schutz vor Fakeshops, Werbung, Tracking und anderen Angriffen aus dem Internet
+https://github.com/determined-ai/determined Determined: Deep Learning Training Platform
+https://github.com/grafana/oncall Developer-friendly incident response with brilliant Slack integration
+https://github.com/h2oai/wave Realtime Web Apps and Dashboards for Python and R
+https://github.com/pytorch/captum Model interpretability and understanding for PyTorch
+https://github.com/cisagov/Malcolm Malcolm is a powerful, easily deployable network traffic analysis tool suite for full packet capture artifacts (PCAP files), Zeek logs and Suricata alerts.
+https://github.com/wsvincent/djangox Django starter project with 🔋
+https://github.com/icopy-site/awesome-cn 超赞列表合集
+https://github.com/uselotus/lotus Open Source Pricing & Packaging Infrastructure
+https://github.com/tensorflow/tfx  TFX is an end-to-end platform for deploying production ML pipelines
+https://github.com/aws-cloudformation/cfn-lint CloudFormation Linter
+https://github.com/lucidrains/x-transformers A simple but complete full-attention transformer with a set of promising experimental features from various papers
+https://github.com/openbmc/openbmc OpenBMC Distribution
+https://github.com/robusta-dev/robusta Kubernetes observability and automation, with an awesome Prometheus integration
+https://github.com/diffgram/diffgram Training Data (Annotation, Catalog, Workflow) for all Data Types (Image, Video, 3D, Text, Geo, Audio, more) at scale.
+https://github.com/rotki/rotki A portfolio tracking, analytics, accounting and tax reporting application that protects your privacy
+https://github.com/Cog-Creators/Red-DiscordBot A multi-function Discord bot
+https://github.com/rootzoll/raspiblitz Get your own Bitcoin & Lightning Node running - on a RaspberryPi with a nice LCD
+https://github.com/uber/causalml Uplift modeling and causal inference with machine learning algorithms
+https://github.com/clementchadebec/benchmark_VAE Unifying Variational Autoencoder (VAE) implementations in Pytorch (NeurIPS 2022)
+https://github.com/GlasgowEmbedded/glasgow Scots Army Knife for electronics
+https://github.com/arviz-devs/arviz Exploratory analysis of Bayesian models with Python
+https://github.com/freemocap/freemocap Free Motion Capture for Everyone 💀✨
+https://github.com/gnome-terminator/terminator multiple GNOME terminals in one window
+https://github.com/vmware/photon Minimal Linux container host
+https://github.com/MoonInTheRiver/DiffSinger DiffSinger: Singing Voice Synthesis via Shallow Diffusion Mechanism (SVS & TTS); AAAI 2022; Official code
+https://github.com/zenml-io/zenml ZenML 🙏: Build portable, production-ready MLOps pipelines. https://zenml.io.
+https://github.com/goauthentik/authentik The authentication glue you need.
+https://github.com/pygments/pygments Pygments is a generic syntax highlighter written in Python
+https://github.com/DLR-RM/BlenderProc A procedural Blender pipeline for photorealistic training image generation
+https://github.com/Netflix/consoleme A Central Control Plane for AWS Permissions and Access
+https://github.com/holoviz/panel A high-level app and dashboarding solution for Python
+https://github.com/SeldonIO/alibi Algorithms for explaining machine learning models
+https://github.com/BlankerL/DXY-COVID-19-Data 2019新型冠状病毒疫情时间序列数据仓库 | COVID-19/2019-nCoV Infection Time Series Data Warehouse
+https://github.com/erocarrera/pefile pefile is a Python module to read and work with PE (Portable Executable) files
+https://github.com/scverse/scanpy Single-cell analysis in Python. Scales to >1M cells.
+https://github.com/opendilab/DI-engine OpenDILab Decision AI Engine
+https://github.com/s3prl/s3prl Self-Supervised Speech/Sound Pre-training and Representation Learning Toolkit
+https://github.com/neuml/txtai 💡 Build AI-powered semantic search applications 
+https://github.com/Flagsmith/flagsmith Open Source Feature Flagging and Remote Config Service. Host on-prem or use our hosted version at https://flagsmith.com/
+https://github.com/SeldonIO/alibi-detect Algorithms for outlier, adversarial and drift detection
+https://github.com/emacs-eaf/emacs-application-framework EAF, an extensible framework that revolutionizes the graphical capabilities of Emacs
+https://github.com/openvinotoolkit/open_model_zoo Pre-trained Deep Learning models and demos (high quality and extremely fast)
+https://github.com/Yelp/paasta An open, distributed platform as a service
+https://github.com/sdv-dev/SDV Synthetic Data Generation for tabular, relational and time series data.
+https://github.com/Ericsson/codechecker CodeChecker is an analyzer tooling, defect database and viewer extension for the Clang Static Analyzer and Clang Tidy
+https://github.com/galaxyproject/galaxy Data intensive science for everyone.
+https://github.com/zalando/spilo Highly available elephant herd: HA PostgreSQL cluster using Docker
+https://github.com/marqo-ai/marqo Tensor search for humans.
+https://github.com/neonbjb/tortoise-tts A multi-voice TTS system trained with an emphasis on quality
+https://github.com/bitsadmin/wesng Windows Exploit Suggester - Next Generation
+https://github.com/aws/aws-eks-best-practices A best practices guide for day 2 operations, including operational excellence, security, reliability, performance efficiency, and cost optimization.
+https://github.com/Project-MONAI/MONAI AI Toolkit for Healthcare Imaging
+https://github.com/openvinotoolkit/training_extensions Trainable models and NN optimization tools
+https://github.com/bunkerity/bunkerweb 🛡️ Make your web services secure by default !
+https://github.com/open-mmlab/mmaction2 OpenMMLab's Next Generation Video Understanding Toolbox and Benchmark
+https://github.com/IDEA-CCNL/Fengshenbang-LM Fengshenbang-LM(封神榜大模型)是IDEA研究院认知计算与自然语言研究中心主导的大模型开源体系，成为中文AIGC和认知智能的基础设施。
+https://github.com/emeryberger/CSrankings A web app for ranking computer science departments according to their research output in selective venues, and for finding active faculty across a wide range of areas.
+https://github.com/bkerler/mtkclient MTK reverse engineering and flash tool
+https://github.com/archerysec/archerysec Automate Your Application Security Orchestration And Correlation (ASOC) Using ArcherySec.
+https://github.com/longguikeji/arkid 一账通是一款开源的统一身份认证授权管理解决方案，支持多种标准协议(LDAP, OAuth2, SAML, OpenID)，细粒度权限控制，完整的WEB管理功能，钉钉、企业微信集成等，QQ group: 167885406
+https://github.com/Tencent/CodeAnalysis Static Code Analysis - 静态代码分析
+https://github.com/towhee-io/towhee Towhee is a framework that is dedicated to making neural data processing pipelines simple and fast.
+https://github.com/facebookresearch/ReAgent A platform for Reasoning systems (Reinforcement Learning, Contextual Bandits, etc.)
+https://github.com/virt-manager/virt-manager Desktop tool for managing virtual machines via libvirt
+https://github.com/LibreLingo/LibreLingo 🐢 🌎 📚 a community-owned language-learning platform
+https://github.com/WyattBlue/auto-editor Auto-Editor: Effort free video editing!
+https://github.com/nextstrain/ncov Nextstrain build for novel coronavirus SARS-CoV-2
+https://github.com/innnky/so-vits-svc 基于vits与softvc的歌声音色转换模型
+https://github.com/armory3d/armory 3D Engine with Blender Integration
+https://github.com/eleurent/highway-env A minimalist environment for decision-making in autonomous driving 
+https://github.com/quay/quay Build, Store, and Distribute your Applications and Containers
+https://github.com/fairlearn/fairlearn A Python package to assess and improve fairness of machine learning models.
+https://github.com/deepchecks/deepchecks Tests for Continuous Validation of ML Models & Data. Deepchecks is a Python package for comprehensively validating your machine learning models and data with minimal effort.
+https://github.com/Visualize-ML/Book3_Elements-of-Mathematics Book_3_《数学要素》 |   鸢尾花书：从加减乘除到机器学习；本册有，583幅图，136个代码文件，其中24个Streamlit App；状态：清华社五审五校中；Github稿件基本稳定，欢迎提意见，会及时修改
+https://github.com/fastnlp/fastNLP fastNLP: A Modularized and Extensible NLP Framework. Currently still in incubation.
+https://github.com/blackorbird/APT_REPORT Interesting apt report collection and some special ioc express
+https://github.com/xavier150/Blender-For-UnrealEngine-Addons I have created this addons for export asset from Blender to Unreal Engine 4
+https://github.com/hap-wi/roxy-wi Web interface for managing Haproxy, Nginx, Apache and Keepalived servers
+https://github.com/home-assistant/supervisor :house_with_garden: Home Assistant Supervisor
+https://github.com/anmol098/waka-readme-stats This GitHub action helps to add cool dev metrics to your github profile Readme
+https://github.com/LCAV/pyroomacoustics Pyroomacoustics is a package for audio signal processing for indoor applications. It was developed as a fast prototyping platform for beamforming algorithms in indoor scenarios.
+https://github.com/eliemichel/MapsModelsImporter A Blender add-on to import models from google maps
+https://github.com/Charmve/Surface-Defect-Detection 📈 目前最大的工业缺陷检测数据库及论文集 Constantly summarizing open source dataset and critical papers in the field of surface defect research which are of great importance.  
+https://github.com/KhronosGroup/glTF-Blender-IO Blender glTF 2.0 importer and exporter
+https://github.com/dothinking/pdf2docx Open source Python library converting pdf to docx.
+https://github.com/mlcommons/training Reference implementations of MLPerf™ training benchmarks
+https://github.com/iscyy/yoloair 🔥🔥🔥YOLOv5, YOLOv6, YOLOv7, YOLOv8, PPYOLOE, YOLOX, YOLOR, YOLOv4, YOLOv3, Transformer, Attention, TOOD and Improved-YOLOv5-YOLOv7... Support to improve backbone, neck, head, loss, IoU, NMS and other modules🚀
+https://github.com/dongrixinyu/JioNLP 中文 NLP 预处理、解析工具包，准确、高效、易用 A Chinese NLP Preprocessing & Parsing Package www.jionlp.com
+https://github.com/Meituan-Dianping/lyrebird 移动应用插件化测试工作台
+https://github.com/ourownstory/neural_prophet NeuralProphet: A simple forecasting package
+https://github.com/m-bain/whisperX WhisperX:  Automatic Speech Recognition with Word-level Timestamps (& Diarization)
+https://github.com/huggingface/setfit Efficient few-shot learning with Sentence Transformers
+https://github.com/yeti-platform/yeti Your Everyday Threat Intelligence
+https://github.com/pypa/setuptools Official project repository for the Setuptools build system
+https://github.com/searxng/searxng SearXNG is a free internet metasearch engine which aggregates results from various search services and databases. Users are neither tracked nor profiled.
+https://github.com/xiaolai/regular-investing-in-box 定投改变命运 —— 让时间陪你慢慢变富 https://onregularinvesting.com
+https://github.com/jxxghp/nas-tools NAS媒体库资源归集、整理自动化工具
+https://github.com/espnet/espnet End-to-End Speech Processing Toolkit
+https://github.com/owid/covid-19-data Data on COVID-19 (coronavirus) cases, deaths, hospitalizations, tests • All countries • Updated daily by Our World in Data
+https://github.com/blakeblackshear/frigate NVR with realtime local object detection for IP cameras
+https://github.com/PaddlePaddle/PaddleSeg Easy-to-use image segmentation library with awesome pre-trained model zoo, supporting wide-range of practical tasks in Semantic Segmentation, Interactive Segmentation, Panoptic Segmentation, Image Matting, 3D Segmentation, etc.
+https://github.com/oppia/oppia A free, online learning platform to make quality education accessible for all.
+https://github.com/elebumm/RedditVideoMakerBot Create Reddit Videos with just✨ one command ✨
+https://github.com/sqlalchemy/sqlalchemy The Database Toolkit for Python
+https://github.com/facebookresearch/metaseq Repo for external large-scale work
+https://github.com/bentoml/BentoML Unified Model Serving Framework 🍱
+https://github.com/bottlesdevs/Bottles Run Windows software and games on Linux
+https://github.com/sphinx-doc/sphinx The Sphinx documentation generator
+https://github.com/airbnb/knowledge-repo A next-generation curated knowledge sharing platform for data scientists and other technical professions.
+https://github.com/dbt-labs/dbt-core dbt enables data analysts and engineers to transform their data using the same practices that software engineers use to build applications.
+https://github.com/bridgecrewio/checkov Prevent cloud misconfigurations and find vulnerabilities during build-time in infrastructure as code, container images and open source packages with Checkov by Bridgecrew.
+https://github.com/activeloopai/deeplake Data Lake for Deep Learning. Build, manage, query, version, & visualize datasets. Stream data real-time to PyTorch/TensorFlow. https://activeloop.ai 
+https://github.com/flet-dev/flet Flet enables developers to easily build realtime web, mobile and desktop apps in Python. No frontend experience required.
+https://github.com/dagster-io/dagster An orchestration platform for the development, production, and observation of data assets.
+https://github.com/icloud-photos-downloader/icloud_photos_downloader A command-line tool to download photos from iCloud
+https://github.com/guardicore/monkey Infection Monkey - An automated pentest tool
+https://github.com/paperless-ngx/paperless-ngx A community-supported supercharged version of paperless: scan, index and archive all your physical documents
+https://github.com/sqlfluff/sqlfluff A modular SQL linter and auto-formatter with support for multiple dialects and templated code.
+https://github.com/OpenNMT/OpenNMT-py Open Source Neural Machine Translation in PyTorch
+https://github.com/deepchem/deepchem Democratizing Deep-Learning for Drug Discovery, Quantum Chemistry, Materials Science and Biology
+https://github.com/deepset-ai/haystack :mag: Haystack is an open source NLP framework to interact with your data using Transformer models and LLMs (GPT-3 and alike). Haystack offers production-ready tools to quickly build ChatGPT-like question answering, semantic search, text generation, and more.
+https://github.com/conan-io/conan Conan - The open-source C/C++ package manager
+https://github.com/xonsh/xonsh :shell: Python-powered, cross-platform, Unix-gazing shell
+https://github.com/openreplay/openreplay :tv: OpenReplay is developer-friendly, open-source session replay.
+https://github.com/dortania/OpenCore-Legacy-Patcher Experience macOS just like before
+https://github.com/automl/auto-sklearn Automated Machine Learning with scikit-learn
+https://github.com/PaddlePaddle/PaddleSpeech Easy-to-use Speech Toolkit including Self-Supervised Learning model, SOTA/Streaming ASR with punctuation, Streaming TTS with text frontend, Speaker Verification System, End-to-End Speech Translation and Keyword Spotting. Won NAACL2022 Best Demo Award.
+https://github.com/mwouts/jupytext Jupyter Notebooks as Markdown Documents, Julia, Python or R scripts
+https://github.com/PaddlePaddle/PaddleClas A treasure chest for visual classification and recognition powered by PaddlePaddle
+https://github.com/FederatedAI/FATE An Industrial Grade Federated Learning Framework
+https://github.com/akfamily/akshare AKShare is an elegant and simple financial data interface library for Python, built for human beings! 开源财经数据接口库
+https://github.com/hummingbot/hummingbot Hummingbot is open source software that helps you build trading bots that run on any exchange or blockchain
+https://github.com/facebookresearch/Kats Kats, a kit to analyze time series data, a lightweight, easy-to-use, generalizable, and extendable framework to perform time series analysis, from understanding the key statistics and characteristics, detecting change points and anomalies, to forecasting future trends. 
+https://github.com/allegroai/clearml ClearML - Auto-Magical CI/CD to streamline your ML workflow. Experiment Manager, MLOps and Data-Management
+https://github.com/kornia/kornia Open Source Differentiable Computer Vision Library
+https://github.com/hoochanlon/w3-goto-world 🍅 Git/AWS/Google 镜像 ,SS/SSR/VMESS节点,WireGuard,IPFS, DeepWeb,Capitalism 、行业研究报告的知识储备库
+https://github.com/doccano/doccano Open source annotation tool for machine learning practitioners.
+https://github.com/aws/serverless-application-model The AWS Serverless Application Model (AWS SAM) transform is a AWS CloudFormation macro that transforms SAM templates into CloudFormation templates.
+https://github.com/borgbackup/borg Deduplicating archiver with compression and authenticated encryption.
+https://github.com/ludwig-ai/ludwig Data-centric declarative deep learning framework
+https://github.com/lbryio/lbry-sdk The LBRY SDK for building decentralized, censorship resistant, monetized, digital content apps.
+https://github.com/PaddlePaddle/PaddleDetection Object Detection toolkit based on PaddlePaddle. It supports object detection, instance segmentation, multiple object tracking and real-time multi-person keypoint detection.

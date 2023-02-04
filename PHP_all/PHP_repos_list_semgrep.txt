@@ -1,0 +1,27 @@
+https://github.com/WordPress/wordpress-develop WordPress Develop, Git-ified. Synced from git://develop.git.wordpress.org/, including branches and tags! This repository is just a mirror of the WordPress subversion repository. Please include a link to a pre-existing ticket on https://core.trac.wordpress.org/ with every pull request.
+https://github.com/EasyCorp/EasyAdminBundle EasyAdmin is a fast, beautiful and modern admin generator for Symfony applications.
+https://github.com/craftcms/cms Craft is a flexible, extensible platform for creating bespoke digital experiences.
+https://github.com/BOINC/boinc Open-source software for volunteer computing and grid computing.
+https://github.com/shopware/platform Shopware 6 is an open commerce platform based on Symfony Framework and Vue and supported by a worldwide community and more than 1.500 community extensions
+https://github.com/icret/EasyImages2.0 新版简单强大无数据库的图床2.0版  演示地址：
+https://github.com/diskoverdata/diskover-community Diskover Community Edition - Open source file indexer, file search engine and data management and analytics powered by Elasticsearch
+https://github.com/Cacti/cacti Cacti ™
+https://github.com/statamic/cms The core Laravel CMS Composer package
+https://github.com/pi-hole/AdminLTE Pi-hole Dashboard for stats and more
+https://github.com/ampproject/amp-wp Enable AMP on your WordPress site, the WordPress way.
+https://github.com/Leantime/leantime Leantime is a lean project management system for non-project managers. Designed to help you manage your projects from ideation to delivery.
+https://github.com/passbolt/passbolt_api Passbolt CE Backend, a JSON API written with Cakephp
+https://github.com/orchidsoftware/platform Orchid is a @laravel package that allows for rapid application development of back-office applications, admin/user panels, and dashboards.
+https://github.com/v2board/v2board 🚀A multiple proxy protocol manage panel application interface
+https://github.com/glpi-project/glpi GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.
+https://github.com/area17/twill Twill is an open source CMS toolkit for Laravel that helps developers rapidly create a custom admin console that is intuitive, powerful and flexible. Chat with us on Discord at https://discord.gg/cnWk7EFv8R.
+https://github.com/openmediavault/openmediavault openmediavault is the next generation network attached storage (NAS) solution based on Debian Linux. It contains services like SSH, (S)FTP, SMB/CIFS, DAAP media server, RSync, BitTorrent client and many more. Thanks to the modular design of the framework it can be enhanced via plugins.  OpenMediaVault is primarily designed to be used in home environments or small home offices, but is not limited to those scenarios. It is a simple and easy to use out-of-the-box solution that will allow everyone to install and administrate a Network Attached Storage without deeper knowledge.
+https://github.com/symfony/demo Symfony Demo Application
+https://github.com/elementary/website The elementary.io website
+https://github.com/kimai/kimai Kimai is a web-based multi-user time-tracking application. Works great for everyone: freelancers, companies, organizations - everyone can track their times, generate reports, create invoices and do so much more. SaaS version available at https://www.kimai.cloud
+https://github.com/HDInnovations/UNIT3D-Community-Edition 🚀 A Next Generation Private Torrent Tracker (Community Edition)
+https://github.com/laravel/horizon Dashboard and code-driven configuration for Laravel queues.
+https://github.com/Qsnh/meedu 教培系统、线上培训、知识付费解决方案。
+https://github.com/LycheeOrg/Lychee  A great looking and easy-to-use photo-management-system you can run on your server, to manage and share photos.
+https://github.com/seatonjiang/kratos 📖 WordPress theme that focus on reading experience
+https://github.com/beyondcode/expose A beautiful, fully open-source, tunneling service - written in pure PHP

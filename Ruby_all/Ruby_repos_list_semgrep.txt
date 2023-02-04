@@ -1,0 +1,5 @@
+https://github.com/github/explore Community-curated topic and collection pages on GitHub
+https://github.com/consul/consul Consul Democracy - Open Government and E-Participation Web Software
+https://github.com/openjournals/joss The Journal of Open Source Software
+https://github.com/castwide/solargraph A Ruby language server.
+https://github.com/coreinfrastructure/best-practices-badge 🏆Open Source Security Foundation (OpenSSF) Best Practices Badge (formerly Core Infrastructure Initiative (CII) Best Practices Badge)
