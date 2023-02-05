@@ -1,12 +1,11 @@
-https://github.com/clickvisual/clickvisual A lightweight log analytic and data visualize platform  built on clickhouse.
-https://github.com/kubevirt/kubevirt Kubernetes Virtualization API and runtime in order to define and manage virtual machines.
-https://github.com/argoproj/argo-events Event-driven automation framework
-https://github.com/polarismesh/polaris Service Discovery and Governance Platform for Microservice and Distributed Architecture
-https://github.com/meshery/meshery Meshery, the cloud native manager
-https://github.com/k1LoW/tbls tbls is a CI-Friendly tool for document a database, written in Go.
-https://github.com/lyft/clutch Extensible platform for infrastructure management
-https://github.com/fleetdm/fleet Fleet is the lightweight, programmable telemetry platform for servers and workstations. Get comprehensive, customizable data from all your devices and operating systems — without the downtime risk.
-https://github.com/pomerium/pomerium Pomerium is an identity and context-aware access proxy.
-https://github.com/amir20/dozzle Realtime log viewer for docker containers. 
+https://github.com/clickvisual/clickvisual
+https://github.com/kubevirt/kubevirt
+https://github.com/argoproj/argo-events
+https://github.com/polarismesh/polaris
+https://github.com/meshery/meshery
+https://github.com/k1LoW/tbls
+https://github.com/lyft/clutch
+https://github.com/fleetdm/fleet
+https://github.com/pomerium/pomerium
+https://github.com/amir20/dozzle
 https://github.com/devtron-labs/devtron
-https://github.com/kubevela/kubevela The Modern Application Platform.

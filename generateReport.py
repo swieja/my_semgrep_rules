@@ -92,5 +92,5 @@ if __name__ == "__main__":
         subprocess.run(cmd,shell=True)
 
         #print(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
-        sleep(20)
+        sleep(5)
         

@@ -1,0 +1,152 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/api/user/UserAuthHandler.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+         85┆ http.SetCookie(w, &http.Cookie{Name: "argocd.token", Value: token, Path: "/"})
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/internal/sql/repository/NotificationSettingsRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+        313┆ err := impl.dbConnection.Model(&notificationSettings).Where("config::text like ?","%dest\":\""+configType+"%").
+        314┆ 	Where("config::text like ?","%configId\":" + strconv.Itoa(configId)+"%").Select()
+          ⋮┆----------------------------------------
+        313┆ err := impl.dbConnection.Model(&notificationSettings).Where("config::text like ?","%dest\":\""+configType+"%").
+        314┆ 	Where("config::text like ?","%configId\":" + strconv.Itoa(configId)+"%").Select()
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/internal/sql/repository/SlackNotificationRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+        104┆ err := impl.dbConnection.Model(&slackConfigs).Where(`config_name like ?`, "%"+value+"%").
+        105┆ 	Where("deleted = ?", false).Select()
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/internal/sql/repository/app/AppRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+        207┆ err = repo.dbConnection.Model(&apps).ColumnExpr("DISTINCT app.*").
+        208┆ 	Join("inner join pipeline p on p.app_id=app.id").
+        209┆ 	Where("app.app_name like ?", ""+appNameIncludes+"%").Where("app.app_name not like ?", ""+appNameExcludes+"%").
+          ⋮┆----------------------------------------
+        207┆ err = repo.dbConnection.Model(&apps).ColumnExpr("DISTINCT app.*").
+        208┆ 	Join("inner join pipeline p on p.app_id=app.id").
+        209┆ 	Where("app.app_name like ?", ""+appNameIncludes+"%").Where("app.app_name not like ?", ""+appNameExcludes+"%").
+        210┆ 	Where("app.active=?", true).Where("app_store=?", false).
+          ⋮┆----------------------------------------
+        214┆ err = repo.dbConnection.Model(&apps).ColumnExpr("DISTINCT app.*").
+        215┆ 	Join("inner join pipeline p on p.app_id=app.id").
+        216┆ 	Where("app.app_name like ?", ""+appNameIncludes+"%").
+        217┆ 	Where("app.active=?", true).Where("app_store=?", false).
+          ⋮┆----------------------------------------
+        221┆ err = repo.dbConnection.Model(&apps).ColumnExpr("DISTINCT app.*").
+        222┆ 	Where("app.app_name like ?", ""+appNameIncludes+"%").Where("app.app_name not like ?", ""+appNameExcludes+"%").
+          ⋮┆----------------------------------------
+        221┆ err = repo.dbConnection.Model(&apps).ColumnExpr("DISTINCT app.*").
+        222┆ 	Where("app.app_name like ?", ""+appNameIncludes+"%").Where("app.app_name not like ?", ""+appNameExcludes+"%").
+        223┆ 	Where("app.active=?", true).Where("app_store=?", false).
+          ⋮┆----------------------------------------
+        226┆ err = repo.dbConnection.Model(&apps).ColumnExpr("DISTINCT app.*").
+        227┆ 	Where("app.app_name like ?", ""+appNameIncludes+"%").
+        228┆ 	Where("app.active=?", true).Where("app_store=?", false).
+          ⋮┆----------------------------------------
+        254┆ err := repo.dbConnection.Model(&apps).Where("app_name ILIKE ?", "%"+appName+"%").Where("active = ?", true).Where("app_store = ?", false).Select()
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/pkg/chartRepo/repository/ChartsRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         76┆ err := repositoryImpl.dbConnection.
+         77┆ 	Model(chart).
+         78┆ 	Where("chart_name= ?", chartName).
+         79┆ 	Where("chart_version like ?", chartVersionPattern+"%").
+         80┆ 	Where("chart_repo = ? ", chartRepo).
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/pkg/user/UserAuthService.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.session-cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        190┆ session.Options = &sessions.Options{
+        191┆ 	MaxAge: -1,
+        192┆ }
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        248┆ session.Options = &sessions.Options{
+        249┆ 	MaxAge: CookieExpirationTime,
+        250┆ }
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        356┆ session.Options = &sessions.Options{
+        357┆ 	MaxAge: CookieExpirationTime,
+        358┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/pkg/user/repository/RoleGroupRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+        111┆ err := impl.dbConnection.Model(&model).Where("name ILIKE ?", "%"+name+"%").Where("active = ?", true).Order("updated_on desc").Select()
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/pkg/user/repository/UserAuthRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.useless-if-body
+        Detected identical statements in the if body and the else body of an if-statement. This will
+        lead to the same code being executed no matter what the if-expression evaluates to. Instead,
+        remove the if statement.
+
+        293┆ } else if team == "" && app == "" && env == "" && act == "" {
+        294┆ 	return model, nil
+        295┆ } else {
+        296┆ 	return model, nil
+        297┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/pkg/user/repository/UserRepository.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+        164┆ err := impl.dbConnection.Model(&model).
+        165┆ 	Where("email_id like (?)", "%"+email+"%").
+        166┆ 	Where("user_type is NULL or user_type != ?", bean.USER_TYPE_API_TOKEN).
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/devtron-labs.devtron/util/helper.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.potential-dos-via-decompression-bomb
+        Detected a possible denial-of-service via a zip bomb attack. By limiting the max bytes read,
+        you can mitigate this attack. `io.CopyN()` can specify a size. Refer to https://bomb.codes/
+        to learn more about this attack and other ways to mitigate it.
+
+         ▶▶┆ Autofix ▶ s/(.*)(Copy|CopyBuffer)\((.*?),(.*?)(\)|,.*\))/\1CopyN(\3, \4, 1024*1024*256)/g
+        179┆ if _, err := io.Copy(outFile, tarReader); err != nil {

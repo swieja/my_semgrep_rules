@@ -1,1 +1,1 @@
-https://github.com/consul/consul Consul Democracy - Open Government and E-Participation Web Software
+https://github.com/consul/consul

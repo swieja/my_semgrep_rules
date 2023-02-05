@@ -32,6 +32,11 @@ python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.p    y -l
 
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/list_of_repos_js.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/repos_dir -r /home/rtz/github_vuln_research/my_semgrep_rules/js_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/js_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/results.csv
 
+
+
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/generateReport.py -l /home/rtz/github_vuln_research/my_semgrep_rules/PHP_all/PHP_repos_list_semgrep.txt -d /home/rtz/github_vuln_research/my_semgrep_rules/PHP_all -r /home/rtz/github_vuln_research/my_semgrep_rules/php_semgrep_rules -s /home/rtz/github_vuln_research/my_semgrep_rules/PHP_all/php_semgrep_results -c /home/rtz/github_vuln_research/my_semgrep_rules/PHP_all/results.csv
+
+
 ```
 
 ## count the number of occurrences to remove most likely fps
@@ -48,11 +53,11 @@ code asd.txt
 
 ## generate rules
 ```bash
-cd /home/rtz/github_vuln_research/semgrep-rules/python ; find `pwd` -name *.yaml  | tee /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/full_list.txt > /dev/null
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/rule_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/list.txt  > /dev/null
-while read p ; do cp $p /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/list.txt 
-rm /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/full_list.txt /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules/rule_list.txt 
-cd /home/rtz/github_vuln_research/my_semgrep_rules/python_semgrep_rules
+cd /home/rtz/github_vuln_research/semgrep-rules/go ; find `pwd` -name *.yaml  | tee /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/full_list.txt > /dev/null
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/full_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt  > /dev/null
+while read p ; do cp $p /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt 
+rm /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/full_list.txt /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/rule_list.txt 
+cd /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules
 ```
 
 

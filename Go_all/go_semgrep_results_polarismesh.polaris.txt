@@ -1,0 +1,421 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/apiserver/grpcserver/base.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.grpc-server-insecure-connection
+        Found an insecure gRPC server without 'grpc.Creds()' or options with credentials. This
+        allows for a connection without encryption to this server. A malicious attacker could tamper
+        with the gRPC message, which could compromise the machine. Include credentials derived from
+        an SSL certificate in order to create a secure gRPC connection. You can create credentials
+        using 'credentials.NewServerTLSFromFile("cert.pem", "cert.key")'.
+
+        182┆ server := grpc.NewServer(opts...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/apiserver/xdsserverv3/server.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.grpc-server-insecure-connection
+        Found an insecure gRPC server without 'grpc.Creds()' or options with credentials. This
+        allows for a connection without encryption to this server. A malicious attacker could tamper
+        with the gRPC message, which could compromise the machine. Include credentials derived from
+        an SSL certificate in order to create a secure gRPC connection. You can create credentials
+        using 'credentials.NewServerTLSFromFile("cert.pem", "cert.key")'.
+
+        160┆ grpcServer := grpc.NewServer(grpcOptions...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/boltdb/codec.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.unsafe-reflect-by-name
+        If an attacker can supply values that the application then uses to determine which method or
+        field to invoke, the potential exists for the attacker to create control flow paths through
+        the application that were not intended by the application developers. This attack vector may
+        allow the attacker to bypass authentication or access control checks or otherwise cause the
+        application to behave in an unexpected manner.
+
+        298┆ fieldValue := into.FieldByName(field.Name)
+          ⋮┆----------------------------------------
+        382┆ fieldValue := toObj.FieldByName(field.Name)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/boltdb/handler.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.unsafe-reflect-by-name
+        If an attacker can supply values that the application then uses to determine which method or
+        field to invoke, the potential exists for the attacker to create control flow paths through
+        the application that were not intended by the application developers. This attack vector may
+        allow the attacker to bypass authentication or access control checks or otherwise cause the
+        application to behave in an unexpected manner.
+
+        255┆ field, ok := intoType.FieldByName(fieldName)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/circuitbreaker_config.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         77┆ str := `insert into circuitbreaker_rule
+         78┆ 		(id, version, name, namespace, business, department, comment, inbounds,
+         79┆ 		outbounds, token, owner, revision, ctime, mtime)
+         80┆ 		select '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s',
+         81┆ 		'%s', '%s', '%s', '%s', sysdate(), sysdate() from circuitbreaker_rule
+         82┆ 		where id = ? and version = 'master'`
+         83┆ str = fmt.Sprintf(str, cb.ID, cb.Version, cb.Name, cb.Namespace, cb.Business, cb.Department, cb.Comment,
+         84┆ 	cb.Inbounds, cb.Outbounds, cb.Token, cb.Owner, cb.Revision)
+         85┆ result, err := c.master.Exec(str, cb.ID)
+          ⋮┆----------------------------------------
+        120┆ str := `insert into circuitbreaker_rule_relation(service_id, rule_id, rule_version, flag, ctime, mtime)
+        121┆ 	select '%s', '%s', '%s', 0, sysdate(), sysdate() from service, circuitbreaker_rule
+        122┆ 	where service.id = ? and service.flag = 0
+        123┆ 	and circuitbreaker_rule.id = ? and circuitbreaker_rule.version = ?
+        124┆ 	and circuitbreaker_rule.flag = 0
+        125┆ 	on DUPLICATE key update
+        126┆ 	rule_id = ?, rule_version = ?, flag = 0, mtime = sysdate()`
+        127┆ str = fmt.Sprintf(str, cbr.ServiceID, cbr.RuleID, cbr.RuleVersion)
+        128┆ log.Infof("[Store][CircuitBreaker] exec release sql(%s)", str)
+        129┆ result, err := c.master.Exec(str, cbr.ServiceID, cbr.RuleID, cbr.RuleVersion, cbr.RuleID, cbr.RuleVersion)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/circuitbreaker_config_v2.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        234┆ str := queryCircuitBreakerRuleBriefSql + queryStr + ` order by mtime desc limit ?, ?`
+        235┆ 
+        236┆ rows, err := c.master.Query(str, args...)
+          ⋮┆----------------------------------------
+        359┆ str := queryCircuitBreakerRuleFullSql + queryStr + ` order by mtime desc limit ?, ?`
+        360┆ 
+        361┆ rows, err := c.master.Query(str, args...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/client.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        216┆ str := `update client set flag = 1, mtime = sysdate() where id in ( ` + PlaceholdersN(len(objects)) + `)`
+        217┆ _, err := tx.Exec(str, objects...)
+          ⋮┆----------------------------------------
+        232┆ str := `delete from client_stat where client_id in (` + PlaceholdersN(len(objects)) + `)`
+        233┆ _, err := tx.Exec(str, objects...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/config_file.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         58┆ querySql := cf.baseSelectConfigFileSql() + "where namespace = ? and `group` = ? and name = ? and flag = 0"
+         59┆ var rows *sql.Rows
+         60┆ var err error
+         61┆ if tx != nil {
+         62┆ 	rows, err = tx.GetDelegateTx().(*BaseTx).Query(querySql, namespace, group, name)
+         63┆ } else {
+         64┆ 	rows, err = cf.db.Query(querySql, namespace, group, name)
+         65┆ }
+          ⋮┆----------------------------------------
+         92┆ querySql := cf.baseSelectConfigFileSql() + "where namespace = ? and `group` = ? and flag = 0 order by id " +
+         93┆ 	" desc limit ?,?"
+         94┆ rows, err := cf.db.Query(querySql, namespace, group, offset, limit)
+          ⋮┆----------------------------------------
+        122┆ querySql := cf.baseSelectConfigFileSql() + "where `group` like ? and name like ? and flag = 0 " +
+        123┆ 	" order by id desc limit ?,?"
+        124┆ rows, err := cf.db.Query(querySql, group, name, offset, limit)
+          ⋮┆----------------------------------------
+        148┆ querySql := cf.baseSelectConfigFileSql() + "where namespace = ? and `group` like ? and name like ? " +
+        149┆ 	" and flag = 0 order by id desc limit ?,?"
+        150┆ rows, err := cf.db.Query(querySql, namespace, group, name, offset, limit)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/config_file_group.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         51┆ querySql := fg.genConfigFileGroupSelectSql() + " where namespace=? and name=?"
+         52┆ rows, err := fg.db.Query(querySql, namespace, name)
+          ⋮┆----------------------------------------
+         69┆ name = "%" + name + "%"
+         70┆ // 全部 namespace
+         71┆ if namespace == "" {
+         72┆ 	countSql := "select count(*) from config_file_group where name like ?"
+         73┆ 	var count uint32
+         74┆ 	err := fg.db.QueryRow(countSql, name).Scan(&count)
+         75┆ 	if err != nil {
+         76┆ 		return count, nil, err
+         77┆ 	}
+         78┆ 
+           [hid 12 additional lines, adjust with --max-lines-per-finding] 
+         79┆ s := fg.genConfigFileGroupSelectSql() + " where name like ? order by id desc limit ?,?"
+         80┆ rows, err := fg.db.Query(s, name, offset, limit)
+          ⋮┆----------------------------------------
+        100┆ s := fg.genConfigFileGroupSelectSql() + " where namespace=? and name like ? order by id desc limit ?,? "
+        101┆ rows, err := fg.db.Query(s, namespace, name, offset, limit)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/config_file_release.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         87┆ querySql := cfr.baseQuerySql() + "where namespace = ? and `group` = ? and file_name = ? and flag = 0"
+         88┆ 
+         89┆ if withAllFlag {
+         90┆ 	querySql = cfr.baseQuerySql() + "where namespace = ? and `group` = ? and file_name = ?"
+         91┆ }
+         92┆ 
+         93┆ var (
+         94┆ 	rows *sql.Rows
+         95┆ 	err  error
+         96┆ )
+           [hid 6 additional lines, adjust with --max-lines-per-finding] 
+        135┆ s := cfr.baseQuerySql() + " where modify_time > FROM_UNIXTIME(?)"
+        136┆ rows, err := cfr.db.Query(s, timeToTimestamp(modifyTime))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/config_file_release_history.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         63┆ querySql := rh.genSelectSql() + " where "
+         64┆ 
+         65┆ var queryParams []interface{}
+         66┆ if namespace != "" {
+         67┆ 	countSql += " namespace = ? and "
+         68┆ 	querySql += " namespace = ? and "
+         69┆ 	queryParams = append(queryParams, namespace)
+         70┆ }
+         71┆ if endId > 0 {
+         72┆ 	countSql += " id < ? and "
+           [hid 18 additional lines, adjust with --max-lines-per-finding] 
+        105┆ s := rh.genSelectSql() + "where namespace = ? and `group` = ? and file_name = ? order by id desc limit 1"
+        106┆ rows, err := rh.db.Query(s, namespace, group, fileName)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/config_file_tag.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         58┆ querySql := t.baseSelectSql() + " where namespace = ? and `group` like ? and file_name like ? "
+         59┆ 
+         60┆ var tagWhereSql []string
+         61┆ for i := 0; i < len(tags)/2; i++ {
+         62┆ 	tagWhereSql = append(tagWhereSql, "(?,?)")
+         63┆ }
+         64┆ tagIn := "and (`key`, `value`) in  (" + strings.Join(tagWhereSql, ",") + ")"
+         65┆ querySql = querySql + tagIn
+         66┆ 
+         67┆ params := []interface{}{namespace, group, fileName}
+           [hid 4 additional lines, adjust with --max-lines-per-finding] 
+         65┆ querySql = querySql + tagIn
+         66┆ 
+         67┆ params := []interface{}{namespace, group, fileName}
+         68┆ for _, tag := range tags {
+         69┆ 	params = append(params, tag)
+         70┆ }
+         71┆ rows, err := t.db.Query(querySql, params...)
+          ⋮┆----------------------------------------
+         85┆ querySql := t.baseSelectSql() + " where namespace = ? and `group` = ? and file_name = ?"
+         86┆ rows, err := t.db.Query(querySql, namespace, group, fileName)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/config_file_template.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         49┆ querySql := cf.baseSelectConfigFileTemplateSql() + " where name = ?"
+         50┆ rows, err := cf.db.Query(querySql, name)
+          ⋮┆----------------------------------------
+         67┆ querySql := cf.baseSelectConfigFileTemplateSql() + " order by id desc"
+         68┆ rows, err := cf.db.Query(querySql)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/fault_detect_config.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        304┆ str := queryFaultDetectBriefSql + queryStr + ` order by mtime desc limit ?, ?`
+        305┆ 
+        306┆ rows, err := f.master.Query(str, args...)
+          ⋮┆----------------------------------------
+        346┆ str := queryFaultDetectFullSql + queryStr + ` order by mtime desc limit ?, ?`
+        347┆ 
+        348┆ rows, err := f.master.Query(str, args...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/instance.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        163┆ mainStr := "delete from instance where flag = 1 and id in " + paramStr
+        164┆ if _, err := ins.master.Exec(mainStr, ids...); err != nil {
+        165┆ 	log.Errorf("[Store][database] clean instance main err: %s", err.Error())
+        166┆ 	return err
+        167┆ }
+          ⋮┆----------------------------------------
+        250┆ str := `update instance set flag = 1, mtime = sysdate() where id in ( ` + PlaceholdersN(len(objects)) + `)`
+        251┆ _, err := ins.master.Exec(str, objects...)
+          ⋮┆----------------------------------------
+        277┆ str := "select id, isolate from instance where flag = 0 and id in(" + PlaceholdersN(len(ids)) + ")"
+        278┆ args := make([]interface{}, 0, len(ids))
+        279┆ for key := range ids {
+        280┆ 	args = append(args, key)
+        281┆ }
+        282┆ instanceIsolate := make(map[string]bool, len(ids))
+        283┆ rows, err := ins.master.Query(str, args...)
+          ⋮┆----------------------------------------
+        307┆ str := `select instance.id, host, port, name, namespace, token, IFNULL(platform_id,"") from service, instance
+        308┆ 	 where instance.flag = 0 and service.flag = 0
+        309┆ 	 and service.id = instance.service_id and instance.id in (` + PlaceholdersN(len(ids)) + ")"
+        310┆ args := make([]interface{}, 0, len(ids))
+        311┆ for key := range ids {
+        312┆ 	args = append(args, key)
+        313┆ }
+        314┆ 
+        315┆ rows, err := ins.master.Query(str, args...)
+          ⋮┆----------------------------------------
+        364┆ str := genInstanceSelectSQL() + " where service_id = ? and host = ? and flag = 0"
+        365┆ rows, err := ins.master.Query(str, serviceID, host)
+          ⋮┆----------------------------------------
+        552┆ str := genInstanceSelectSQL() + " where instance.id = ?"
+        553┆ rows, err := ins.master.Query(str, instanceID)
+          ⋮┆----------------------------------------
+        604┆ str := genCompleteInstanceSelectSQL() + " where instance.mtime >= FROM_UNIXTIME(?)"
+        605┆ args := make([]interface{}, 0, len(serviceID)+1)
+        606┆ args = append(args, timeToTimestamp(mtime))
+        607┆ 
+        608┆ if len(serviceID) > 0 {
+        609┆ 	str += " and service_id in (" + PlaceholdersN(len(serviceID))
+        610┆ 	str += ")"
+        611┆ }
+        612┆ for _, id := range serviceID {
+        613┆ 	args = append(args, id)
+           [hid 3 additional lines, adjust with --max-lines-per-finding] 
+        670┆ str := genInstanceSelectSQL() + " where instance.mtime >= FROM_UNIXTIME(?)"
+        671┆ args := make([]interface{}, 0, len(serviceID)+1)
+        672┆ args = append(args, timeToTimestamp(mtime))
+        673┆ 
+        674┆ if firstUpdate {
+        675┆ 	str += " and flag != 1"
+        676┆ }
+        677┆ 
+        678┆ if len(serviceID) > 0 {
+        679┆ 	str += " and service_id in (" + PlaceholdersN(len(serviceID))
+           [hid 7 additional lines, adjust with --max-lines-per-finding] 
+        924┆ str := `delete from instance_metadata where id in (` + builder.String() + `)`
+        925┆ _, err := tx.Exec(str, ids...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/l5.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        106┆ str := getL5RouteSelectSQL() + " where Fflow > ?"
+        107┆ rows, err := l5.db.Query(str, flow)
+          ⋮┆----------------------------------------
+        118┆ str := getL5PolicySelectSQL() + " where Fflow > ?"
+        119┆ rows, err := l5.db.Query(str, flow)
+          ⋮┆----------------------------------------
+        130┆ str := getL5SectionSelectSQL() + " where Fflow > ?"
+        131┆ rows, err := l5.db.Query(str, flow)
+          ⋮┆----------------------------------------
+        142┆ str := getL5IPConfigSelectSQL() + " where Fflow > ?"
+        143┆ rows, err := l5.db.Query(str, flow)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/namespace.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         80┆ str := genNamespaceSelectSQL() + " where owner like '%?%'"
+         81┆ rows, err := ns.db.Query(str, owner)
+          ⋮┆----------------------------------------
+        124┆ str := genNamespaceSelectSQL() + " where mtime >= FROM_UNIXTIME(?)"
+        125┆ rows, err := ns.db.Query(str, timeToTimestamp(mtime))
+          ⋮┆----------------------------------------
+        174┆ str := genNamespaceSelectSQL() + " where name = ?"
+        175┆ rows, err := ns.db.Query(str, name)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/ratelimit_config.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        388┆ str = str + queryStr + ` order by ratelimit_config.mtime desc limit ?, ?`
+        389┆ 
+        390┆ rows, err := rls.db.Query(str, args...)
+          ⋮┆----------------------------------------
+        447┆ str = str + queryStr + ` order by ratelimit_config.mtime desc limit ?, ?`
+        448┆ 
+        449┆ rows, err := rls.db.Query(str, args...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/routing_config.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        210┆ str := genQueryRoutingConfigSQL() + filterStr + " order by routing_config.mtime desc limit ?, ?"
+        211┆ args = append(args, offset, limit)
+        212┆ rows, err := rs.master.Query(str, args...)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/routing_config_v2.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         84┆ insertSQL := "INSERT INTO routing_config_v2(id, namespace, name, policy, config, enable, " +
+         85┆ 	" priority, revision, description, ctime, mtime, etime) VALUES (?,?,?,?,?,?,?,?,?,sysdate(),sysdate(),%s)"
+         86┆ 
+         87┆ var enable int
+         88┆ if conf.Enable {
+         89┆ 	enable = 1
+         90┆ 	insertSQL = fmt.Sprintf(insertSQL, "sysdate()")
+         91┆ } else {
+         92┆ 	enable = 0
+         93┆ 	insertSQL = fmt.Sprintf(insertSQL, emptyEnableTime)
+           [hid 9 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/polarismesh.polaris/store/mysql/service.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        539┆ str := genServiceSelectSQL() + whereStr
+        540┆ 
+        541┆ filterStr, filterArgs := genServiceFilterSQL(sFilters)
+        542┆ if filterStr != "" {
+        543┆ 	str += " and " + filterStr
+        544┆ 	args = append(args, filterArgs...)
+        545┆ }
+        546┆ 
+        547┆ order := &Order{"service.mtime", "desc"}
+        548┆ page := &Page{offset, limit}
+           [hid 5 additional lines, adjust with --max-lines-per-finding] 
+        682┆ str := genServiceSelectSQL() + " from service where name = ? and namespace = ?"
+        683┆ rows, err := ss.master.Query(str, name, namespace)
+          ⋮┆----------------------------------------
+        703┆ str := genServiceSelectSQL() + " from service where service.id = ?"
+        704┆ rows, err := ss.master.Query(str, serviceID)
+          ⋮┆----------------------------------------
+       1226┆ addSql := "insert into owner_service_map(id,owner,service,namespace) values"
+       1227┆ 
+       1228┆ // 根据; ,进行分割
+       1229┆ owners := strings.FieldsFunc(owner, func(r rune) bool {
+       1230┆ 	return r == ';' || r == ','
+       1231┆ })
+       1232┆ args := make([]interface{}, 0)
+       1233┆ 
+       1234┆ if len(owners) >= 1 {
+       1235┆ 	for i := 0; i < len(owners); i++ {
+           [hid 10 additional lines, adjust with --max-lines-per-finding] 

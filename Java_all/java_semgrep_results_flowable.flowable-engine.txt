@@ -1,0 +1,404 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/.mvn/wrapper/MavenWrapperDownloader.java 
+     java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+         97┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+         98┆     if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
+         99┆         String username = System.getenv("MVNW_USERNAME");
+        100┆         char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
+        101┆         Authenticator.setDefault(new Authenticator() {
+        102┆             @Override
+        103┆             protected PasswordAuthentication getPasswordAuthentication() {
+        104┆                 return new PasswordAuthentication(username, password);
+        105┆             }
+        106┆         });
+           [hid 9 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/docs/docusaurus/docs/bpmn/ch05a-Spring-Boot.md 
+     java_semgrep_rules.spring-actuator-dangerous-endpoints-enabled
+        Spring Boot Actuators "flowable` to your `application.properties` (Note: The
+        `org.flowable.spring.boot.EndpointAutoConfiguration` class does not use the
+        `@ConditionalOnAvailableEndpoint` annotation to check whether the `flowable` endpoint is
+        both enabled and exposed like the `HealthEndpointAutoConfiguration` class. So the only thing
+        you need to do to use the `flowable` endpoint through the web is to add
+        `management.endpoints.web.exposure.include=flowable` or
+        `management.endpoints.web.exposure.include=*` to your configuration file.)." are enabled.
+        Depending on the actuators, this can pose a significant security risk. Please double-check
+        if the actuators are needed and properly secured.
+
+        517┆  ... management.endpoints.web.exposure.include=flowable` to your `application.properties` (Note: The `org.flowable.spring.boot.EndpointAutoConfiguration` class does  ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+          ⋮┆----------------------------------------
+     java_semgrep_rules.spring-actuator-dangerous-endpoints-enabled
+        Spring Boot Actuators "*` to your configuration file." are enabled. Depending on the
+        actuators, this can pose a significant security risk. Please double-check if the actuators
+        are needed and properly secured.
+
+        517┆  ... management.endpoints.web.exposure.include=*` to your configuration file.). ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/docs/userguide/src/zh_CN/bpmn/ch05a-Spring-Boot.adoc 
+     java_semgrep_rules.spring-actuator-dangerous-endpoints-enabled
+        Spring Boot Actuators "*` 即可）。
+
+        `curl " are enabled. Depending on the actuators, this can pose a significant security risk.
+        Please double-check if the actuators are needed and properly secured.
+
+        587┆  ...  ... [0m
+          [shortened a long line from output, adjust with --max-chars-per-line]
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-app-engine-rest/src/main/java/org/flowable/app/rest/service/api/repository/AppDefinitionResourceDataResource.java 
+     java_semgrep_rules.tainted-file-path
+        Detected user input controlling a file path. An attacker could control the location of this
+        file, to include going backwards in the directory with '../'. To address this, ensure that
+        user-controlled variables in file paths are sanitized. You may also consider using a utility
+        method such as org.apache.commons.io.FilenameUtils.getName(...) to only retrieve the file
+        name from the path.
+
+         86┆ final InputStream resourceStream = appRepositoryService.getResourceAsStream(
+         87┆         appDefinition.getDeploymentId(), appDefinition.getResourceName());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-app-engine-rest/src/main/java/org/flowable/app/rest/service/api/repository/AppDeploymentResourceDataResource.java 
+     java_semgrep_rules.tainted-file-path
+        Detected user input controlling a file path. An attacker could control the location of this
+        file, to include going backwards in the directory with '../'. To address this, ensure that
+        user-controlled variables in file paths are sanitized. You may also consider using a utility
+        method such as org.apache.commons.io.FilenameUtils.getName(...) to only retrieve the file
+        name from the path.
+
+         84┆ final InputStream resourceStream = appRepositoryService.getResourceAsStream(deploymentId, resourceName);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-app-rest/src/main/resources/flowable-default.properties 
+     java_semgrep_rules.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+          5┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-cmmn-rest/src/main/java/org/flowable/cmmn/rest/service/api/runtime/caze/BaseVariableResource.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        341┆ ObjectInputStream stream = new ObjectInputStream(file.getInputStream());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-cmmn-rest/src/main/java/org/flowable/cmmn/rest/service/api/runtime/task/TaskVariableBaseResource.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        174┆ ObjectInputStream stream = new ObjectInputStream(file.getInputStream());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-dmn-xml-converter/src/main/java/org/flowable/dmn/xml/converter/DmnXMLConverter.java 
+     java_semgrep_rules.owasp.java.xxe.javax.xml.stream.XMLInputFactory
+        XMLInputFactory being instantiated without calling the setProperty functions that are
+        generally used for disabling entity processing
+
+        166┆ XMLInputFactory xif = XMLInputFactory.newInstance();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-engine/src/main/java/org/flowable/engine/impl/bpmn/behavior/ShellActivityBehavior.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+        108┆ ProcessBuilder processBuilder = new ProcessBuilder(argList);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-engine/src/main/java/org/flowable/engine/impl/bpmn/diagram/ProcessDiagramLayoutFactory.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+        110┆ builder = factory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-engine/src/main/java/org/flowable/engine/impl/scripting/JuelScriptEngine.java 
+     java_semgrep_rules.el-injection
+        An expression is built with a dynamic value. The source of the value(s) should be verified
+        to avoid that unfiltered values fall into this risky code evaluation.
+
+         60┆ public class JuelScriptEngine extends AbstractScriptEngine implements Compilable {
+         61┆ 
+         62┆     private ScriptEngineFactory scriptEngineFactory;
+         63┆     private ExpressionFactory expressionFactory;
+         64┆ 
+         65┆     public JuelScriptEngine(ScriptEngineFactory scriptEngineFactory) {
+         66┆         this.scriptEngineFactory = scriptEngineFactory;
+         67┆         // Resolve the ExpressionFactory
+         68┆         expressionFactory = ExpressionFactoryResolver.resolveExpressionFactory();
+         69┆     }
+           [hid 268 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-engine-common/src/main/java/org/flowable/common/engine/impl/AbstractEngineConfigurator.java 
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.DocumentBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+        104┆ DocumentBuilderFactory docBuilderFactory = createDocumentBuilderFactory();
+        105┆ DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+        106┆ Document document = docBuilder.parse(inputStream);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-engine-common/src/main/java/org/flowable/common/engine/impl/db/AbstractSqlScriptBasedDbSchemaManager.java 
+     java_semgrep_rules.formatted-sql-string
+        Detected a formatted string in a SQL statement. This could lead to SQL injection if
+        variables in the SQL statement are not properly sanitized. Use a prepared statements
+        (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using
+        'connection.prepareStatement'.
+
+        325┆ jdbcStatement.execute(sqlStatement);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-engine-common/src/main/java/org/flowable/common/engine/impl/el/DefaultExpressionManager.java 
+     java_semgrep_rules.el-injection
+        An expression is built with a dynamic value. The source of the value(s) should be verified
+        to avoid that unfiltered values fall into this risky code evaluation.
+
+         46┆ public class DefaultExpressionManager implements ExpressionManager {
+         47┆ 
+         48┆     protected ExpressionFactory expressionFactory;
+         49┆     protected List<FlowableFunctionDelegate> functionDelegates;
+         50┆     protected BiFunction<String, String, FlowableFunctionDelegate> functionResolver;
+         51┆     protected List<FlowableAstFunctionCreator> astFunctionCreators;
+         52┆ 
+         53┆     protected ELContext parsingElContext;
+         54┆     protected Map<Object, Object> beans;
+         55┆ 
+           [hid 207 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-event-registry/src/main/java/org/flowable/eventregistry/impl/serialization/EventPayloadToXmlStringSerializer.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ docFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+docFactory.newDocumentBuilder();
+         44┆ DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-event-registry/src/main/java/org/flowable/eventregistry/impl/serialization/StringToXmlDocumentDeserializer.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+         35┆ DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.DocumentBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+         34┆ DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+         35┆ DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+         36┆ try (InputStream inputStream = new ByteArrayInputStream(convertEventToBytes(rawEvent))) {
+         37┆     Document document = documentBuilder.parse(inputStream);
+         38┆     return document;
+         39┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-http-common/src/main/java/org/flowable/http/common/impl/apache/ApacheHttpComponentsFlowableHttpClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+        120┆ new SSLConnectionSocketFactory(builder.build(), new HostnameVerifier() {
+        121┆ 
+        122┆     @Override
+        123┆     public boolean verify(String s, SSLSession sslSession) {
+        124┆         return true;
+        125┆     }
+        126┆ }));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-osgi/src/main/java/org/flowable/osgi/BpmnDeploymentListener.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+dbf.newDocumentBuilder();
+         72┆ DocumentBuilder db = dbf.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-osgi/src/main/java/org/flowable/osgi/BpmnTransformer.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+dbf.newDocumentBuilder();
+        175┆ DocumentBuilder db = dbf.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-rest/src/main/java/org/flowable/rest/service/api/runtime/process/BaseExecutionVariableResource.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        158┆ ObjectInputStream stream = new ObjectInputStream(file.getInputStream());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-rest/src/main/java/org/flowable/rest/service/api/runtime/task/TaskVariableBaseResource.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        175┆ ObjectInputStream stream = new ObjectInputStream(file.getInputStream());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-spring-boot/flowable-spring-boot-samples/flowable-spring-boot-sample-actuator/src/main/resources/application.properties 
+     java_semgrep_rules.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+          1┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable-variable-service/src/main/java/org/flowable/variable/service/impl/types/JPAEntityListVariableType.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        161┆ ObjectInputStream in = new ObjectInputStream(bais);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable5-engine/src/main/java/org/activiti/engine/impl/bpmn/behavior/ShellActivityBehavior.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+        102┆ ProcessBuilder processBuilder = new ProcessBuilder(argList);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable5-engine/src/main/java/org/activiti/engine/impl/bpmn/diagram/ProcessDiagramLayoutFactory.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+        106┆ builder = factory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable5-engine/src/main/java/org/activiti/engine/impl/el/ExpressionManager.java 
+     java_semgrep_rules.el-injection
+        An expression is built with a dynamic value. The source of the value(s) should be verified
+        to avoid that unfiltered values fall into this risky code evaluation.
+
+         49┆ public class ExpressionManager {
+         50┆ 
+         51┆     protected ExpressionFactory expressionFactory;
+         52┆     // Default implementation (does nothing)
+         53┆     protected ELContext parsingElContext = new ParsingElContext();
+         54┆     protected Map<Object, Object> beans;
+         55┆ 
+         56┆     public ExpressionManager() {
+         57┆         this(null);
+         58┆     }
+           [hid 74 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable5-engine/src/main/java/org/activiti/engine/impl/scripting/JuelScriptEngine.java 
+     java_semgrep_rules.el-injection
+        An expression is built with a dynamic value. The source of the value(s) should be verified
+        to avoid that unfiltered values fall into this risky code evaluation.
+
+         59┆ public class JuelScriptEngine extends AbstractScriptEngine implements Compilable {
+         60┆ 
+         61┆     private ScriptEngineFactory scriptEngineFactory;
+         62┆     private ExpressionFactory expressionFactory;
+         63┆ 
+         64┆     public JuelScriptEngine(ScriptEngineFactory scriptEngineFactory) {
+         65┆         this.scriptEngineFactory = scriptEngineFactory;
+         66┆         // Resolve the ExpressionFactory
+         67┆         expressionFactory = ExpressionFactoryResolver.resolveExpressionFactory();
+         68┆     }
+           [hid 267 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable5-engine/src/main/java/org/activiti/engine/impl/scripting/ScriptingEngines.java 
+     java_semgrep_rules.script-engine-injection
+        Detected potential code injection using ScriptEngine. Ensure user-controlled data cannot
+        enter '.eval()', otherwise, this is a code injection vulnerability.
+
+         84┆ protected Object evaluate(String script, String language, Bindings bindings) {
+         85┆     ScriptEngine scriptEngine = getEngineByName(language);
+         86┆     try {
+         87┆         return scriptEngine.eval(script, bindings);
+         88┆     } catch (ScriptException e) {
+         89┆         throw new ActivitiException("problem evaluating script: " + e.getMessage(), e);
+         90┆     }
+         91┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/flowable.flowable-engine/modules/flowable5-engine/src/main/java/org/activiti/engine/impl/variable/JPAEntityListVariableType.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        161┆ ObjectInputStream in = new ObjectInputStream(bais);

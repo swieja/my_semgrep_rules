@@ -1,0 +1,281 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/buildSrc/src/main/java/org/opensearch/gradle/ReaperService.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+        133┆ ProcessBuilder builder = new ProcessBuilder(
+        134┆     Jvm.current().getJavaExecutable().toString(), // same jvm as gradle
+        135┆     "-Xms4m",
+        136┆     "-Xmx16m", // no need for a big heap, just need to read some files and execute
+        137┆     "-jar",
+        138┆     jarPath.toString(),
+        139┆     inputDir.toString()
+        140┆ );
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/buildSrc/src/main/java/org/opensearch/gradle/testclusters/OpenSearchNode.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+        781┆ processBuilder.command(command);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/distribution/tools/plugin-cli/src/main/java/org/opensearch/plugins/InstallPluginCommand.java 
+     java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        417┆ @SuppressForbidden(reason = "Make HEAD request using URLConnection.connect()")
+        418┆ boolean urlExists(Terminal terminal, String urlString) throws IOException {
+        419┆     terminal.println(VERBOSE, "Checking if url exists: " + urlString);
+        420┆     URL url = new URL(urlString);
+        421┆     assert "https".equals(url.getProtocol()) : "Use of https protocol is required";
+        422┆     HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        423┆     urlConnection.addRequestProperty("User-Agent", "opensearch-plugin-installer");
+        424┆     urlConnection.setRequestMethod("HEAD");
+        425┆     urlConnection.connect();
+        426┆     return urlConnection.getResponseCode() == 200;
+           [hid 1 additional lines, adjust with --max-lines-per-finding] 
+        445┆ @SuppressForbidden(reason = "We use getInputStream to download plugins")
+        446┆ Path downloadZip(Terminal terminal, String urlString, Path tmpDir, boolean isBatch) throws IOException {
+        447┆     terminal.println(VERBOSE, "Retrieving zip from " + urlString);
+        448┆     URL url = new URL(urlString);
+        449┆     Path zip = Files.createTempFile(tmpDir, null, ".zip");
+        450┆     URLConnection urlConnection = url.openConnection();
+        451┆     urlConnection.addRequestProperty("User-Agent", "opensearch-plugin-installer");
+        452┆     try (
+        453┆         InputStream in = isBatch
+        454┆             ? urlConnection.getInputStream()
+           [hid 7 additional lines, adjust with --max-lines-per-finding] 
+        704┆ URL openUrl(String urlString) throws IOException {
+        705┆     URL checksumUrl = new URL(urlString);
+        706┆     HttpURLConnection connection = (HttpURLConnection) checksumUrl.openConnection();
+        707┆     if (connection.getResponseCode() == 404) {
+        708┆         return null;
+        709┆     }
+        710┆     return checksumUrl;
+        711┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/distribution/tools/upgrade-cli/src/main/java/org/opensearch/upgrade/DetectEsInstallationTask.java 
+     java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        124┆ @SuppressForbidden(reason = "Need to connect to http endpoint for elasticsearch.")
+        125┆ private boolean isRunning(final String url) {
+        126┆     try {
+        127┆         final URL esUrl = new URL(url);
+        128┆         final HttpURLConnection conn = (HttpURLConnection) esUrl.openConnection();
+        129┆         conn.setRequestMethod("GET");
+        130┆         conn.setConnectTimeout(1000);
+        131┆         conn.connect();
+        132┆         return conn.getResponseCode() == 200;
+        133┆     } catch (IOException e) {
+           [hid 3 additional lines, adjust with --max-lines-per-finding] 
+        138┆ @SuppressForbidden(reason = "Retrieve information on the installation.")
+        139┆ private Map<?, ?> fetchInfoFromUrl(final String url) {
+        140┆     try {
+        141┆         final URL esUrl = new URL(url);
+        142┆         final HttpURLConnection conn = (HttpURLConnection) esUrl.openConnection();
+        143┆         conn.setRequestMethod("GET");
+        144┆         conn.setConnectTimeout(1000);
+        145┆         conn.connect();
+        146┆ 
+        147┆         final StringBuilder json = new StringBuilder();
+           [hid 11 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/distribution/tools/upgrade-cli/src/main/java/org/opensearch/upgrade/InstallPluginsTask.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+         94┆ processBuilder.command("sh", "-c", command);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/libs/ssl-config/src/main/java/org/opensearch/common/ssl/TrustEverythingConfig.java 
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+         61┆ @Override
+         62┆ public void checkClientTrusted(X509Certificate[] x509Certificates, String s, Socket socket) {}
+          ⋮┆----------------------------------------
+         64┆ @Override
+         65┆ public void checkServerTrusted(X509Certificate[] x509Certificates, String s, Socket socket) {}
+          ⋮┆----------------------------------------
+         67┆ @Override
+         68┆ public void checkClientTrusted(X509Certificate[] x509Certificates, String s, SSLEngine sslEngine) {}
+          ⋮┆----------------------------------------
+         70┆ @Override
+         71┆ public void checkServerTrusted(X509Certificate[] x509Certificates, String s, SSLEngine sslEngine) {}
+          ⋮┆----------------------------------------
+         73┆ @Override
+         74┆ public void checkClientTrusted(X509Certificate[] x509Certificates, String s) {}
+          ⋮┆----------------------------------------
+         76┆ @Override
+         77┆ public void checkServerTrusted(X509Certificate[] x509Certificates, String s) {}
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/modules/lang-painless/src/main/java/org/opensearch/painless/action/PainlessExecuteAction.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        552┆ FilterScript.LeafFactory leafFactory = factory.newFactory(request.getScript().getParams(), context.lookup());
+          ⋮┆----------------------------------------
+        561┆ ScoreScript.LeafFactory leafFactory = factory.newFactory(request.getScript().getParams(), context.lookup());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/plugins/discovery-azure-classic/src/internalClusterTest/java/org/opensearch/discovery/azure/classic/AzureDiscoveryClusterFormationTests.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        177┆ XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/plugins/discovery-ec2/qa/amazon-ec2/src/yamlRestTest/java/org/opensearch/discovery/ec2/AmazonEC2Fixture.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        165┆ final XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newFactory();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/qa/wildfly/src/main/java/org/opensearch/wildfly/transport/RestHighLevelClientEmployeeResource.java 
+     java_semgrep_rules.default-resteasy-provider-abuse
+        When a Restful webservice endpoint isn't configured with a @Consumes  annotation, an
+        attacker could abuse the SerializableProvider by sending a  HTTP Request with a Content-Type
+        of application/x-java-serialized-object.  The body of that request would be processed by the
+        SerializationProvider  and could contain a malicious payload, which may lead to arbitrary
+        code  execution. Instead, add a @Consumes annotation to the function or class.
+
+         89┆ @PUT
+         90┆ @Path("/{id}")
+         91┆ @Produces(MediaType.APPLICATION_JSON)
+         92┆ public Response putEmployeeById(final @PathParam("id") Long id, final Employee employee) throws URISyntaxException, IOException {
+         93┆     Objects.requireNonNull(id);
+         94┆     Objects.requireNonNull(employee);
+         95┆     try (XContentBuilder builder = jsonBuilder()) {
+         96┆         builder.startObject();
+         97┆         {
+         98┆             builder.field("first_name", employee.getFirstName());
+           [hid 25 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/bootstrap/Spawner.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+        129┆ final ProcessBuilder pb = new ProcessBuilder(command);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/extensions/ExtensionsManager.java 
+     java_semgrep_rules.use-snakeyaml-constructor
+        Used SnakeYAML org.yaml.snakeyaml.Yaml() constructor with no arguments, which is vulnerable
+        to deserialization attacks. Use the one-argument Yaml(...) constructor instead, with
+        SafeConstructor or a custom Constructor as the argument.
+
+        558┆ Yaml yaml = new Yaml();
+        559┆ try (InputStream inputStream = Files.newInputStream(filePath)) {
+        560┆     Map<String, Object> obj = yaml.load(inputStream);
+        561┆     if (obj == null) {
+        562┆         inputStream.close();
+        563┆         throw new IOException("extensions.yml is empty");
+        564┆     }
+        565┆     List<HashMap<String, ?>> unreadExtensions = new ArrayList<>((Collection<HashMap<String, ?>>) obj.get("extensions"));
+        566┆     List<Extension> readExtensions = new ArrayList<Extension>();
+        567┆     for (HashMap<String, ?> extensionMap : unreadExtensions) {
+           [hid 32 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/index/query/InnerHitContextBuilder.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        128┆ FieldScript.LeafFactory fieldScript = factory.newFactory(field.script().getParams(), innerContext.lookup());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/index/query/ScriptQueryBuilder.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        163┆ FilterScript.LeafFactory filterScript = factory.newFactory(script.getParams(), context.lookup());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/index/query/functionscore/ScriptScoreFunctionBuilder.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        117┆ ScoreScript.LeafFactory searchScript = factory.newFactory(script.getParams(), context.lookup());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/index/query/functionscore/ScriptScoreQueryBuilder.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        190┆ ScoreScript.LeafFactory scoreScriptFactory = factory.newFactory(script.getParams(), context.lookup());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/search/SearchService.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+       1338┆ FieldScript.LeafFactory searchScript = factory.newFactory(field.script().getParams(), lookup);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/search/aggregations/metrics/ScriptedMetricAggregator.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        201┆ mapScript = mapScriptFactory.newFactory(
+        202┆     ScriptedMetricAggregatorFactory.deepCopyParams(mapScriptParamsForState, context),
+        203┆     aggState,
+        204┆     lookup
+        205┆ );
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/search/aggregations/metrics/TopHitsAggregationBuilder.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        652┆ FieldScript.LeafFactory searchScript = factory.newFactory(field.script().getParams(), queryShardContext.lookup());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/opensearch-project.OpenSearch/server/src/main/java/org/opensearch/search/sort/ScriptSortBuilder.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        355┆ final StringSortScript.LeafFactory searchScript = factory.newFactory(script.getParams(), context.lookup());
+          ⋮┆----------------------------------------
+        403┆ final NumberSortScript.LeafFactory numberSortScript = numberSortFactory.newFactory(script.getParams(), context.lookup());

@@ -1,2 +1,2 @@
-https://github.com/bram2w/baserow Baserow is an open source no-code database tool and Airtable alternative. This is a mirrored repository, the official one is hosted on https://gitlab.com/bramw/baserow.
+https://github.com/bram2w/baserow
 https://github.com/hap-wi/roxy-wi

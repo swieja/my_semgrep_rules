@@ -1,0 +1,77 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/clickvisual.clickvisual/api/internal/service/inquiry/clickhouse.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        127┆ _, err = c.db.Exec(fmt.Sprintf("CREATE DATABASE IF NOT EXISTS metrics ON CLUSTER '%s';", cluster))
+          ⋮┆----------------------------------------
+        160┆ _, err = c.db.Exec(fmt.Sprintf(`CREATE TABLE if NOT EXISTS metrics.samples ON CLUSTER '%s' AS metrics.samples_local
+        161┆ ENGINE = Distributed('%s', 'metrics', 'samples_local', sipHash64(name));`, cluster, cluster))
+          ⋮┆----------------------------------------
+        193┆ _, err := c.db.Exec(fmt.Sprintf("CREATE DATABASE IF NOT EXISTS metrics ON CLUSTER '%s';", cluster))
+          ⋮┆----------------------------------------
+        227┆ _, err = c.db.Exec(fmt.Sprintf(`CREATE TABLE if NOT EXISTS metrics.samples ON CLUSTER '%s' AS metrics.samples_local
+        228┆ ENGINE = Distributed('%s', 'metrics', 'samples_local', sipHash64(name));`, cluster, cluster))
+          ⋮┆----------------------------------------
+        459┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s ON CLUSTER '%s';", viewTableName, cluster))
+          ⋮┆----------------------------------------
+        465┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s;", viewTableName))
+          ⋮┆----------------------------------------
+        483┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s;", nameWithCluster))
+          ⋮┆----------------------------------------
+        502┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s.%s ON CLUSTER '%s';", database, table, cluster))
+          ⋮┆----------------------------------------
+        548┆ _, err = c.db.Exec(fmt.Sprintf("DROP DATABASE IF EXISTS %s;", name))
+          ⋮┆----------------------------------------
+        550┆ _, err = c.db.Exec(fmt.Sprintf("DROP DATABASE IF EXISTS %s ON CLUSTER '%s';", name, cluster))
+          ⋮┆----------------------------------------
+       1323┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s.%s ON CLUSTER '%s';", database, table, cluster))
+          ⋮┆----------------------------------------
+       1329┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s.%s;", database, table))
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.useless-if-body
+        Detected identical statements in the if body and the else body of an if-statement. This will
+        lead to the same code being executed no matter what the if-expression evaluates to. Instead,
+        remove the if statement.
+
+       1197┆ } else if ct.TimeFieldType == TableTypeFloat {
+       1198┆ 	timeTyp = "Float64"
+       1199┆ } else {
+       1200┆ 	// TODO more check
+       1201┆ 	timeTyp = "Float64"
+       1202┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/clickvisual.clickvisual/api/internal/service/inquiry/databend.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        717┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s.%s;", database, table))
+          ⋮┆----------------------------------------
+        923┆ _, err = c.db.Exec(fmt.Sprintf("DROP TABLE IF EXISTS %s;", viewTableName))
+          ⋮┆----------------------------------------
+        966┆ _, err = c.db.Exec(fmt.Sprintf("DROP DATABASE IF EXISTS %s;", name))
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.useless-if-body
+        Detected identical statements in the if body and the else body of an if-statement. This will
+        lead to the same code being executed no matter what the if-expression evaluates to. Instead,
+        remove the if statement.
+
+        266┆ } else if ct.TimeFieldType == TableTypeFloat {
+        267┆ 	timeTyp = "Float64"
+        268┆ } else {
+        269┆ 	// TODO more check
+        270┆ 	timeTyp = "Float64"
+        271┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/clickvisual.clickvisual/api/internal/service/inquiry/source/mysql.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+         37┆ rows, err := c.Query(fmt.Sprintf("SHOW FULL COLUMNS FROM %s FROM %s", table, database))

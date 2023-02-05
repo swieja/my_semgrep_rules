@@ -1,0 +1,34 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/k1LoW.tbls/cmd/root.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.dangerous-exec-command
+        Detected non-static command inside Command. Audit the input to 'exec.Command'. If unverified
+        user data can reach this call site, this is a code injection vulnerability. A malicious
+        actor can inject a malicious script to execute arbitrary code.
+
+        171┆ c := exec.Command(path, args...) // #nosec
+          ⋮┆----------------------------------------
+        221┆ out, err := exec.Command(subCmd, subCmdArgs...).Output() // #nosec
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/k1LoW.tbls/drivers/mysql/mysql.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        287┆ tableDefRows, err := m.db.Query(fmt.Sprintf("SHOW CREATE TABLE `%s`", tableName))
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/k1LoW.tbls/drivers/sqlite/sqlite.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.string-formatted-query
+        String-formatted SQL query detected. This could lead to SQL injection if the string is not
+        sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.
+
+        100┆ columnRows, err := l.db.Query(fmt.Sprintf("PRAGMA table_info(`%s`)", tableName))
+          ⋮┆----------------------------------------
+        145┆ foreignKeyRows, err := l.db.Query(fmt.Sprintf("PRAGMA foreign_key_list(`%s`)", tableName))
+          ⋮┆----------------------------------------
+        220┆ indexRows, err := l.db.Query(fmt.Sprintf("PRAGMA index_list(`%s`)", tableName))
+          ⋮┆----------------------------------------
+        253┆ row, err := l.db.Query(fmt.Sprintf("PRAGMA index_info(`%s`)", indexName))

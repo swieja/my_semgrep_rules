@@ -1,0 +1,682 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/.mvn/wrapper/MavenWrapperDownloader.java 
+     java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+        100┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+        101┆     URL website = new URL(urlString);
+        102┆     ReadableByteChannel rbc;
+        103┆     rbc = Channels.newChannel(website.openStream());
+        104┆     FileOutputStream fos = new FileOutputStream(destination);
+        105┆     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        106┆     fos.close();
+        107┆     rbc.close();
+        108┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java/de/metas/script/ScriptExecutor.java 
+     java_semgrep_rules.script-engine-injection
+        Detected potential code injection using ScriptEngine. Ensure user-controlled data cannot
+        enter '.eval()', otherwise, this is a code injection vulnerability.
+
+         58┆ public Object execute(final String script)
+         59┆ {
+         60┆ 	final ScriptEngine engine = getEngine();
+         61┆ 	try
+         62┆ 	{
+         63┆ 		final Object result = engine.eval(script);
+         64┆ 
+         65┆ 		if (throwExceptionIfResultNotEmpty)
+         66┆ 		{
+         67┆ 			final String errmsg = result == null ? null : result.toString();
+           [hid 15 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java/org/adempiere/ad/migration/executor/impl/SQLStatementMigrationStepExecutor.java 
+     java_semgrep_rules.formatted-sql-string
+        Detected a formatted string in a SQL statement. This could lead to SQL injection if
+        variables in the SQL statement are not properly sanitized. Use a prepared statements
+        (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using
+        'connection.prepareStatement'.
+
+        112┆ stmt.execute(sql);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java/org/adempiere/ad/migration/xml/XMLLoader.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ dbf.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+dbf.newDocumentBuilder();
+        109┆ final DocumentBuilder builder = dbf.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.DocumentBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+        105┆ final DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        106┆ dbf.setNamespaceAware(true);
+        107┆ dbf.setIgnoringElementContentWhitespace(true);
+        108┆ 
+        109┆ final DocumentBuilder builder = dbf.newDocumentBuilder();
+        110┆ final InputSource source = getInputSource();
+        111┆ 
+        112┆ final Document doc = builder.parse(source);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java/org/adempiere/ad/migration/xml/XMLWriter.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+         94┆ final DocumentBuilder builder = factory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java-legacy/org/adempiere/process/Export.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+        129┆ DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java-legacy/org/adempiere/process/rpl/XMLHelper.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+        131┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+        153┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.DocumentBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+        123┆ final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        124┆ // validate against XML Schema in dbsql2xml.xsd
+        125┆ // documentBuilderFactory.setNamespaceAware(true);
+        126┆ 
+        127┆ // INFO change validation to true. Someday when xsd file is complete...
+        128┆ documentBuilderFactory.setValidating(false);
+        129┆ documentBuilderFactory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+        130┆ // documentBuilderFactory.setAttribute(JAXP_SCHEMA_SOURCE, new File(pathToXsdFile));
+        131┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        132┆ final Document document = documentBuilder.parse(new File(pathToXmlFile));
+          ⋮┆----------------------------------------
+        145┆ final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        146┆ // validate against XML Schema in dbsql2xml.xsd
+        147┆ // documentBuilderFactory.setNamespaceAware(true);
+        148┆ 
+        149┆ // INFO change validation to true. Someday when xsd file is complete...
+        150┆ documentBuilderFactory.setValidating(false);
+        151┆ // documentBuilderFactory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
+        152┆ // documentBuilderFactory.setAttribute(JAXP_SCHEMA_SOURCE, new File(pathToXsdFile));
+        153┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        154┆ final Document document = documentBuilder.parse(new InputSource(new StringReader(str)));
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java-legacy/org/adempiere/process/rpl/exp/ExportHelper.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+        629┆ documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java-legacy/org/compiere/model/PO.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+       4799┆ final DocumentBuilder builder = factory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/base/src/main/java-legacy/org/compiere/print/PrintData.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+        622┆ DocumentBuilder builder = factory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.SAXParserFactory
+        SAXParserFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+        747┆ SAXParserFactory factory = SAXParserFactory.newInstance();
+          ⋮┆----------------------------------------
+        747┆ SAXParserFactory factory = SAXParserFactory.newInstance();
+        748┆ SAXParser parser = factory.newSAXParser();
+        749┆ parser.parse(input, handler);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/client/src/main/java/de/metas/i18n/TranslationImpExp.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+        159┆ final DocumentBuilder builder = factory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.SAXParserFactory
+        SAXParserFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+        114┆ final SAXParserFactory factory = SAXParserFactory.newInstance();
+          ⋮┆----------------------------------------
+        114┆ final SAXParserFactory factory = SAXParserFactory.newInstance();
+        115┆ // factory.setValidating(true);
+        116┆ final SAXParser parser = factory.newSAXParser();
+        117┆ parser.parse(in, handler);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/serverRoot/de.metas.adempiere.adempiere.serverRoot.base/src/main/java-legacy/org/adempiere/serverRoot/servlet/ServerMonitor.java 
+     java_semgrep_rules.httpservlet-path-traversal
+        Detected a potential path traversal. A malicious actor could control the location of this
+        file, to include going backwards in the directory with '../'. To address this, ensure that
+        user-controlled variables in file paths are sanitized. You may also consider using a utility
+        method such as org.apache.commons.io.FilenameUtils.getName(...) to only retrieve the file
+        name from the path.
+
+        400┆ File logFile = new File(logFileName);
+          ⋮┆----------------------------------------
+        403┆ logFile = logFile.getCanonicalFile();
+          ⋮┆----------------------------------------
+        446┆ final FileInputStream fis = new FileInputStream(logFile);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/serverRoot/de.metas.adempiere.adempiere.serverRoot.base/src/main/java-legacy/org/adempiere/serverRoot/util/WebUtil.java 
+     java_semgrep_rules.crlf-injection-logs
+        When data from an untrusted source is put into a logger and not neutralized correctly, an
+        attacker could forge log entries or include malicious content.
+
+         97┆ String data = request.getParameter(parameter);
+         98┆ if (data == null || data.length() == 0)
+         99┆ 	return data;
+        100┆ 
+        101┆ //	Convert
+        102┆ if (enc != null && !WebEnv.ENCODING.equals(enc))
+        103┆ {
+        104┆ 	try
+        105┆ 	{
+        106┆ 		String dataEnc = new String(data.getBytes(enc), WebEnv.ENCODING);
+           [hid 55 additional lines, adjust with --max-lines-per-finding] 
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.adempiere.adempiere/tools/src/main/java-legacy/org/apache/ecs/ConcreteElement.java 
+     java_semgrep_rules.object-deserialization
+        Found object deserialization using ObjectInputStream. Deserializing entire Java objects is
+        dangerous because malicious actors can create Java object streams with unintended
+        consequences. Ensure that the objects being deserialized are not user-controlled. If this
+        must be done, consider using HMACs to sign the data stream to make sure it is not tampered
+        with, or consider only transmitting object fields and populating a new object.
+
+        427┆ ObjectInputStream in = new ObjectInputStream(bin);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.banking/de.metas.banking.base/src/main/java-legacy/org/compiere/impexp/OFXBankStatementHandler.java 
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.SAXParserFactory
+        SAXParserFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+        187┆ SAXParserFactory factory = SAXParserFactory.newInstance();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.banking/de.metas.banking.camt53/src/main/java/de/metas/banking/camt53/BankStatementCamt53Service.java 
+     java_semgrep_rules.owasp.java.xxe.javax.xml.stream.XMLInputFactory
+        XMLInputFactory being instantiated without calling the setProperty functions that are
+        generally used for disabling entity processing
+
+        366┆ final XMLInputFactory xif = XMLInputFactory.newInstance();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.migration/de.metas.migration.base/src/main/java/de/metas/migration/executor/impl/PostgresqlNativeExecutor.java 
+     java_semgrep_rules.command-injection-process-builder
+        A formatted or concatenated string was detected as input to a ProcessBuilder call. This is
+        dangerous if a variable is controlled by user input and could result in a command injection.
+        Ensure your variables are not controlled by users or sufficiently sanitized.
+
+        198┆ final ProcessBuilder processBuilder = new ProcessBuilder(cmdarrayList);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.migration/de.metas.migration.cli/src/main/java/de/metas/migration/cli/rollout_migrate/DBVersionGetter.java 
+     java_semgrep_rules.formatted-sql-string
+        Detected a formatted string in a SQL statement. This could lead to SQL injection if
+        variables in the SQL statement are not properly sanitized. Use a prepared statements
+        (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using
+        'connection.prepareStatement'.
+
+         73┆ stmt.execute(CREATE_DB_VERSION_COLUMN_DDL);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.migration/de.metas.migration.cli/src/main/java/de/metas/migration/cli/workspace_migrate/XmlUtils.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+         50┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.DocumentBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+         49┆ final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+         50┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+         51┆ return documentBuilder.parse(in);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.payment.esr/src/main/java/de/metas/payment/esr/dataimporter/impl/camt54/ESRDataImporterCamt54.java 
+     java_semgrep_rules.owasp.java.xxe.javax.xml.stream.XMLInputFactory
+        XMLInputFactory being instantiated without calling the setProperty functions that are
+        generally used for disabling entity processing
+
+        159┆ final XMLInputFactory xif = XMLInputFactory.newInstance();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.printing/de.metas.printing.embedded-client/src/main/java/de/metas/printing/client/endpoint/LoopbackPrintConnectionEndpoint.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+        232┆ final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.procurement.base/src/main/java/de/metas/procurement/base/impl/WebuiPush.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+         95┆ final SyncObjectsFactory syncFactory = SyncObjectsFactory.newFactory();
+          ⋮┆----------------------------------------
+        123┆ final SyncObjectsFactory syncFactory = SyncObjectsFactory.newFactory();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.procurement.base/src/main/java/de/metas/procurement/base/rfq/PMMWebuiRfQResponsePublisherInstance.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+         62┆ private final transient SyncObjectsFactory syncObjectsFactory = SyncObjectsFactory.newFactory();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.procurement.base/src/main/java/de/metas/procurement/base/rfq/model/interceptor/PMMRfQEventListener.java 
+     java_semgrep_rules.xmlinputfactory-possible-xxe
+        XML external entities are not explicitly disabled for this XMLInputFactory. This could be
+        vulnerable to XML external entity vulnerabilities. Explicitly disable external entities by
+        setting "javax.xml.stream.isSupportingExternalEntities" to false.
+
+        115┆ final SyncObjectsFactory syncObjectsFactory = SyncObjectsFactory.newFactory();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.report/metasfresh-report-service-standalone/src/main/resources/application.properties 
+     java_semgrep_rules.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+         34┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.swat/de.metas.swat.base/src/main/java/de/metas/esb/util/CanonicalXSDGenerator.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+documentBuilderFactory.newDocumentBuilder();
+        156┆ documentBuilder = documentBuilderFactory.newDocumentBuilder();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.ui.web.base/src/main/java/de/metas/ui/web/debug/DebugRestController.java 
+     java_semgrep_rules.tainted-sql-string
+        User data flows into this manually-constructed SQL string. User data can be safely inserted
+        into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-
+        constructed SQL strings is a possible indicator of SQL injection, which could let an
+        attacker steal or manipulate data from the database. Instead, use prepared statements
+        (`connection.PreparedStatement`) or a safe library.
+
+        482┆ final String sql = "DELETE FROM " + I_T_WEBUI_ViewSelection.Table_Name
+        483┆ 		+ " WHERE " + I_T_WEBUI_ViewSelection.COLUMNNAME_UUID + "=" + DB.TO_STRING(viewId.getViewId())
+        484┆ 		+ " AND " + I_T_WEBUI_ViewSelection.COLUMNNAME_IntKey1 + "=" + DB.buildSqlList(rowIds.toIntSet());
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/de.metas.util/src/main/java/de/metas/util/xml/XmlIntrospectionUtil.java 
+     java_semgrep_rules.owasp.java.xxe.javax.xml.stream.XMLInputFactory
+        XMLInputFactory being instantiated without calling the setProperty functions that are
+        generally used for disabling entity processing
+
+         49┆ final XMLInputFactory f = XMLInputFactory.newInstance();
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/metasfresh-dist/base/src/main/resources/application.properties 
+     java_semgrep_rules.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+         14┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/backend/metasfresh-webui-api/src/main/resources/application.properties 
+     java_semgrep_rules.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+         81┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-edi/src/main/resources/application.properties 
+     java_semgrep_rules.spring-actuator-fully-enabled
+        Spring Boot Actuator is fully enabled. This exposes sensitive endpoints such as
+        /actuator/env, /actuator/logfile, /actuator/heapdump and others. Unless you have Spring
+        Security enabled or another means to protect these endpoints, this functionality is
+        available without authentication, causing a severe security risk.
+
+          9┆ management.endpoints.web.exposure.include=*
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/alberta/alberta-article-api/src/main/java/io/swagger/client/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1181┆ hostnameVerifier = new HostnameVerifier() {
+       1182┆     @Override
+       1183┆     public boolean verify(String hostname, SSLSession session) { return true; }
+       1184┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1172┆ @Override
+       1173┆ public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1174┆ @Override
+       1175┆ public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1176┆ @Override
+       1177┆ public X509Certificate[] getAcceptedIssuers() { return null; }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/alberta/alberta-document-api/src/main/java/io/swagger/client/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1181┆ hostnameVerifier = new HostnameVerifier() {
+       1182┆     @Override
+       1183┆     public boolean verify(String hostname, SSLSession session) { return true; }
+       1184┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1172┆ @Override
+       1173┆ public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1174┆ @Override
+       1175┆ public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1176┆ @Override
+       1177┆ public X509Certificate[] getAcceptedIssuers() { return null; }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/alberta/alberta-orders-api/src/main/java/io/swagger/client/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1161┆ hostnameVerifier = new HostnameVerifier() {
+       1162┆     @Override
+       1163┆     public boolean verify(String hostname, SSLSession session) { return true; }
+       1164┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1152┆ @Override
+       1153┆ public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1154┆ @Override
+       1155┆ public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1156┆ @Override
+       1157┆ public X509Certificate[] getAcceptedIssuers() { return null; }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/alberta/alberta-patient-api/src/main/java/io/swagger/client/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1181┆ hostnameVerifier = new HostnameVerifier() {
+       1182┆     @Override
+       1183┆     public boolean verify(String hostname, SSLSession session) { return true; }
+       1184┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1172┆ @Override
+       1173┆ public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1174┆ @Override
+       1175┆ public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1176┆ @Override
+       1177┆ public X509Certificate[] getAcceptedIssuers() { return null; }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/com-adekia-exchange/com.adekia.ext-amazon-sp/src/main/java/com/adekia/exchange/amazonsp/client/orders/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1238┆ hostnameVerifier = new HostnameVerifier() {
+       1239┆     @Override
+       1240┆     public boolean verify(String hostname, SSLSession session) { return true; }
+       1241┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1229┆ @Override
+       1230┆ public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1231┆ @Override
+       1232┆ public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1233┆ @Override
+       1234┆ public X509Certificate[] getAcceptedIssuers() { return null; }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/com-adekia-exchange/com.adekia.ext-amazon-sp/src/main/java/com/adekia/exchange/amazonsp/client/shipments/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1218┆ hostnameVerifier = new HostnameVerifier() {
+       1219┆     @Override
+       1220┆     public boolean verify(String hostname, SSLSession session) { return true; }
+       1221┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1209┆ @Override
+       1210┆ public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1211┆ @Override
+       1212┆ public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {}
+          ⋮┆----------------------------------------
+       1213┆ @Override
+       1214┆ public X509Certificate[] getAcceptedIssuers() { return null; }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/core/src/main/resources/application.properties 
+     java_semgrep_rules.spring-actuator-dangerous-endpoints-enabled
+        Spring Boot Actuators "info,health,mappings,metrics,shutdown,loggers" are enabled. Depending
+        on the actuators, this can pose a significant security risk. Please double-check if the
+        actuators are needed and properly secured.
+
+         36┆ management.endpoints.web.exposure.include=info,health,mappings,metrics,shutdown,loggers
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/de-metas-camel-leichundmehl/src/main/java/de/metas/camel/externalsystems/leichundmehl/to_leichundmehl/util/XMLUtil.java 
+     java_semgrep_rules.documentbuilderfactory-disallow-doctype-decl-missing
+        DOCTYPE declarations are enabled for this DocumentBuilderFactory. This is vulnerable to XML
+        external entity attacks. Disable this by setting the feature
+        "http://apache.org/xml/features/disallow-doctype-decl" to true. Alternatively, allow DOCTYPE
+        declarations and only prohibit external entities declarations. This can be done by setting
+        the features "http://xml.org/sax/features/external-general-entities" and
+        "http://xml.org/sax/features/external-parameter-entities" to false.
+
+         ▶▶┆ Autofix ▶ factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+factory.newDocumentBuilder();
+         72┆ final DocumentBuilder builder = factory.newDocumentBuilder();
+          ⋮┆----------------------------------------
+     java_semgrep_rules.owasp.java.xxe.javax.xml.parsers.DocumentBuilderFactory
+        DocumentBuilderFactory being instantiated without calling the setFeature functions that are
+        generally used for disabling entity processing
+
+         71┆ final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+         72┆ final DocumentBuilder builder = factory.newDocumentBuilder();
+         73┆ final Document document = builder.parse(input);
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/camel/de-metas-camel-externalsystems/ebay/ebay-api-client/src/main/java/de/metas/camel/externalsystems/ebay/api/invoker/ApiClient.java 
+     java_semgrep_rules.insecure-hostname-verifier
+        Insecure HostnameVerifier implementation detected. This will accept any SSL certificate with
+        any hostname, which creates the possibility for man-in-the-middle attacks.
+
+       1626┆ hostnameVerifier = new HostnameVerifier()
+       1627┆ {
+       1628┆ 	@Override
+       1629┆ 	public boolean verify(String hostname, SSLSession session)
+       1630┆ 	{
+       1631┆ 		return true;
+       1632┆ 	}
+       1633┆ };
+          ⋮┆----------------------------------------
+     java_semgrep_rules.insecure-trust-manager
+        Detected empty trust manager implementations. This is dangerous because it accepts any
+        certificate, enabling man-in-the-middle attacks. Consider using a KeyStore and
+        TrustManagerFactory instead. See https://stackoverflow.com/questions/2642777/trusting-all-
+        certificates-using-httpclient-over-https for more information.
+
+       1609┆ @Override
+       1610┆ public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
+       1611┆ {
+       1612┆ }
+          ⋮┆----------------------------------------
+       1614┆ @Override
+       1615┆ public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException
+       1616┆ {
+       1617┆ }
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Java_all/metasfresh.metasfresh/misc/services/procurement-webui/procurement-webui-backend/.mvn/wrapper/MavenWrapperDownloader.java 
+     java_semgrep_rules.owasp.java.ssrf.java.net.url
+        A parameter being passed directly into java.net.URL function most likely lead to SSRF.
+
+         97┆ private static void downloadFileFromURL(String urlString, File destination) throws Exception {
+         98┆     if (System.getenv("MVNW_USERNAME") != null && System.getenv("MVNW_PASSWORD") != null) {
+         99┆         String username = System.getenv("MVNW_USERNAME");
+        100┆         char[] password = System.getenv("MVNW_PASSWORD").toCharArray();
+        101┆         Authenticator.setDefault(new Authenticator() {
+        102┆             @Override
+        103┆             protected PasswordAuthentication getPasswordAuthentication() {
+        104┆                 return new PasswordAuthentication(username, password);
+        105┆             }
+        106┆         });
+           [hid 9 additional lines, adjust with --max-lines-per-finding] 

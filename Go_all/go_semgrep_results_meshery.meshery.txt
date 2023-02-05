@@ -1,0 +1,270 @@
+
+Findings:
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/install/docker-extension/vm/proxy/proxy.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        224┆ req.AddCookie(&http.Cookie{
+        225┆ 	Name:     "token",
+        226┆ 	Value:    string(p.token),
+        227┆ 	Path:     "/",
+        228┆ 	HttpOnly: true,
+        229┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        230┆ req.AddCookie(&http.Cookie{
+        231┆ 	Name:     "meshery-provider",
+        232┆ 	Value:    "Meshery",
+        233┆ 	Path:     "/",
+        234┆ 	HttpOnly: true,
+        235┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        236┆ req.AddCookie(&http.Cookie{
+        237┆ 	Name:     "meshery.layer5.io_ref",
+        238┆ 	Value:    "/",
+        239┆ 	Path:     "/",
+        240┆ 	HttpOnly: true,
+        241┆ })
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/mesheryctl/pkg/utils/auth.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.avoid-bind-to-all-interfaces
+        Detected a network listener listening on 0.0.0.0 or an empty string.  This could
+        unexpectedly expose the server publicly as it binds to all available interfaces.  Instead,
+        specify another IP address that is not 0.0.0.0 nor the empty string.
+
+        231┆ listener, err := net.Listen("tcp4", ":0")
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        154┆ req.AddCookie(&http.Cookie{
+        155┆ 	Name:     tokenName,
+        156┆ 	Value:    tokenObj[tokenName],
+        157┆ 	HttpOnly: true,
+        158┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        159┆ req.AddCookie(&http.Cookie{
+        160┆ 	Name:     providerName,
+        161┆ 	Value:    tokenObj[providerName],
+        162┆ 	HttpOnly: true,
+        163┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        429┆ req.AddCookie(&http.Cookie{
+        430┆ 	Name:     tokenName,
+        431┆ 	Value:    token,
+        432┆ 	HttpOnly: true,
+        433┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        434┆ req.AddCookie(&http.Cookie{
+        435┆ 	Name:     "meshery-provider",
+        436┆ 	Value:    provider,
+        437┆ 	HttpOnly: true,
+        438┆ })
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/mesheryctl/pkg/utils/scripts.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.dangerous-exec-command
+        Detected non-static command inside Command. Audit the input to 'exec.Command'. If unverified
+        user data can reach this call site, this is a code injection vulnerability. A malicious
+        actor can inject a malicious script to execute arbitrary code.
+
+         20┆ generateCFG := exec.Command("bash", "-c", script)
+          ⋮┆----------------------------------------
+        114┆ generateCFG := exec.Command("sh", "-c", script)
+          ⋮┆----------------------------------------
+        140┆ generateCFG := exec.Command("bash", "-c", script)
+          ⋮┆----------------------------------------
+        170┆ generateCFG := exec.Command("sh", "-c", script)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/handlers/common_handlers.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+         41┆ http.SetCookie(w, &http.Cookie{
+         42┆ 	Name:     h.config.ProviderCookieName,
+         43┆ 	Value:    p.Name(),
+         44┆ 	Expires:  time.Now().Add(-time.Hour),
+         45┆ 	Path:     "/",
+         46┆ 	HttpOnly: true,
+         47┆ })
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/handlers/provider_handler.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+         23┆ http.SetCookie(w, &http.Cookie{
+         24┆ 	Name:     h.config.ProviderCookieName,
+         25┆ 	Value:    p.Name(),
+         26┆ 	Path:     "/",
+         27┆ 	HttpOnly: true,
+         28┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+         79┆ http.SetCookie(w, &http.Cookie{
+         80┆ 	Name:     h.config.ProviderCookieName,
+         81┆ 	Value:    "Meshery",
+         82┆ 	Path:     "/",
+         83┆ 	HttpOnly: true,
+         84┆ })
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/helpers/load_test_interface.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.dangerous-exec-command
+        Detected non-static command inside Command. Audit the input to 'exec.Command'. If unverified
+        user data can reach this call site, this is a code injection vulnerability. A malicious
+        actor can inject a malicious script to execute arbitrary code.
+
+        191┆ cmd := exec.Command(command)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/default_local_provider.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.potential-dos-via-decompression-bomb
+        Detected a possible denial-of-service via a zip bomb attack. By limiting the max bytes read,
+        you can mitigate this attack. `io.CopyN()` can specify a size. Refer to https://bomb.codes/
+        to learn more about this attack and other ways to mitigate it.
+
+         ▶▶┆ Autofix ▶ s/(.*)(Copy|CopyBuffer)\((.*?),(.*?)(\)|,.*\))/\1CopyN(\3, \4, 1024*1024*256)/g
+       1419┆ if _, err := io.Copy(outFile, tarReader); err != nil {
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/meshery_application_persister.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         40┆ query = query.Where("(lower(meshery_applications.name) like ?)", like)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/meshery_filter_persister.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         42┆ query = query.Where("(lower(meshery_filters.name) like ?)", like)
+          ⋮┆----------------------------------------
+         73┆ query = query.Where("(lower(meshery_filters.name) like ?)", like)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/meshery_k8scontext_persister.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         40┆ query = query.Where("(lower(name) like ?)", like)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/meshery_pattern_persister.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         41┆ query = query.Where("(lower(meshery_patterns.name) like ?)", like)
+          ⋮┆----------------------------------------
+         72┆ query = query.Where("(lower(meshery_patterns.name) like ?)", like)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/pattern_resource_persister.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         73┆ query = query.Where("(lower(pattern_resources.name) like ?)", like)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/performance_profile_persister.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.pg-orm-sqli
+        Detected string concatenation with a non-literal variable in a go-pg ORM SQL statement. This
+        could lead to SQL injection if the variable is user-controlled and not properly sanitized.
+        In order to prevent SQL injection, do not use strings concatenated with user-controlled
+        input. Instead, use parameterized statements.
+
+         49┆ query = query.Where("(lower(performance_profiles.name) like ?)", like)
+
+
+  /home/rtz/github_vuln_research/my_semgrep_rules/Go_all/repos_dir/meshery.meshery/server/models/remote_provider.go 
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.cookie-missing-secure
+        A session cookie was detected without setting the 'Secure' flag. The 'secure' flag for
+        cookies prevents the client from transmitting the cookie over insecure channels such as
+        HTTP. Set the 'Secure' flag by setting 'Secure' to 'true' in the Options struct.
+
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        263┆ http.SetCookie(w, &http.Cookie{
+        264┆ 	Name:     l.RefCookieName,
+        265┆ 	Value:    "/",
+        266┆ 	Expires:  time.Now().Add(l.LoginCookieDuration),
+        267┆ 	Path:     "/",
+        268┆ 	HttpOnly: true,
+        269┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        407┆ cReq.AddCookie(&http.Cookie{
+        408┆ 	Name:  "session_cookie",
+        409┆ 	Value: sessionCookie.Value,
+        410┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+        414┆ cReq.AddCookie(&http.Cookie{Name: "return_to", Value: "provider_ui"})
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+       2812┆ ck := &http.Cookie{
+       2813┆ 	Name:     tokenName,
+       2814┆ 	Value:    string(tokenString),
+       2815┆ 	Path:     "/",
+       2816┆ 	HttpOnly: true,
+       2817┆ }
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+       2820┆ http.SetCookie(w, &http.Cookie{
+       2821┆ 	Name:     "session_cookie",
+       2822┆ 	Value:    sessionCookie,
+       2823┆ 	Path:     "/",
+       2824┆ 	HttpOnly: true,
+       2825┆ })
+          ⋮┆----------------------------------------
+         ▶▶┆ Autofix ▶ s/(Secure\s*:\s+)false/\1true/g
+       2856┆ http.SetCookie(w, &http.Cookie{
+       2857┆ 	Name:     tokenName,
+       2858┆ 	Value:    newts,
+       2859┆ 	Path:     "/",
+       2860┆ 	HttpOnly: true,
+       2861┆ })
+          ⋮┆----------------------------------------
+     home.rtz.github_vuln_research.my_semgrep_rules.go_semgrep_rules.tainted-url-host
+        User data flows into the host portion of this manually-constructed URL. This could allow an
+        attacker to send data to their own server, potentially exposing sensitive data such as
+        cookies or authorization information sent with this request. They could also probe internal
+        servers or other resources that the server runnig this code can access. (This is called
+        server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an
+        allowlist for approved hosts hardcode the correct host.
+
+        257┆ tu = "http://" + r.Host + "/api/user/token" // Hard coding the path because this is what meshery expects
