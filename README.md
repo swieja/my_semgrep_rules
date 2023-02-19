@@ -47,7 +47,7 @@ python3 find_repos_and_add_desc.py \
     -s 20000
 ```
 
-
+`remove_unwanted_rules.py` removes rules that detect low and mid seveirty vulnerabilities such as xss, csrf, tls attack etc.
 
 ## Additonal commands
 Read CSV in terminal:
@@ -64,8 +64,8 @@ mv go_semgrep* /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
 
 cd /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
 fgrep home.rtz.github_vuln_research.my_semgrep_rules. * > tmp.txt
-/home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/count_words.sh tmp.txt > asd.txt 
-code asd.txt
+/home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/count_words.sh tmp.txt > pmt.txt 
+code pmt.txt
 ```
 
 
