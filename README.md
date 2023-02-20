@@ -3,9 +3,6 @@ A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/re
 
 This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
 
-testing:
-`python3 -m semgrep --config /home/rtz/github_vuln_research/my_semgrep_rules/java/find-sql-string-concatenation.yaml /home/rtz/github_vuln_research/vespa`
-
 stolen semgrep rules include:
 - classic rce
 - seralization
@@ -13,6 +10,9 @@ stolen semgrep rules include:
 - ssrf
 - sqli
 
+source: \
+https://github.com/returntocorp/semgrep-rules \
+https://semgrep.dev/explore
 ## General Use
 ```console
 python3 generateReport.py -l text_file_with_urls_of_repos \
