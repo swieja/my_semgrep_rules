@@ -1,1 +1,13 @@
 .token
+csharp_semgrep_rules
+find_repos_and_add_desc.py
+generateReport.py
+go_semgrep_rules
+java_semgrep_rules
+js_semgrep_rules
+kubernetes_semgrep_rules
+loop_run.py
+php_semgrep_rules
+python_semgrep_rules
+remove_unwanted_rules.py
+ruby_semgrep_rules
