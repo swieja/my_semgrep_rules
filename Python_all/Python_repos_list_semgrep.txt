@@ -1,2 +1,0 @@
-https://github.com/bram2w/baserow
-https://github.com/hap-wi/roxy-wi
