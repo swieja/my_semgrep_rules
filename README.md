@@ -3,9 +3,9 @@ A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/re
 
 This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
 
-stolen semgrep rules include:
-- classic rce
-- seralization
+stolen semgrep rules mostly include:
+- classic rce attack
+- deseralization
 - lfi
 - ssrf
 - sqli
