@@ -38,8 +38,7 @@ if __name__ == "__main__":
     args = get_args(sys.argv[0])
     s = requests.Session()
     
-    filePath = args.listOfRepos
-    with open(filePath, "r") as f:
+    with open(args.listOfRepos, "r") as f:
         repoList = f.read().split("\n")
 
     headers = {
@@ -91,6 +90,6 @@ if __name__ == "__main__":
         cmd = f"rm -rf {args.directoryRepos}/{fullNameRepo}"
         subprocess.run(cmd,shell=True)
 
-        #print(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
-        sleep(5)
+        print(f"{URL},Java,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
+        sleep(15)
         
