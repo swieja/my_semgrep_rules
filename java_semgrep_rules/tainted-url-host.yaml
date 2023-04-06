@@ -30,13 +30,13 @@ rules:
     impact: MEDIUM
     likelihood: MEDIUM
     confidence: MEDIUM
-    deepsemgrep: true
+    interfile: true
   mode: taint
   pattern-sources:
   - patterns:
     - pattern-either:
       - pattern-inside: |
-          $METHODNAME(..., @$REQ($LOOKUP) $TYPE $SOURCE,...) {
+          $METHODNAME(..., @$REQ(...) $TYPE $SOURCE,...) {
             ...
           }
       - pattern-inside: |
@@ -46,7 +46,7 @@ rules:
     - metavariable-regex:
         metavariable: $REQ
         regex: (RequestBody|PathVariable|RequestParam|RequestHeader|CookieValue)
-    - pattern: $SOURCE
+    - focus-metavariable: $SOURCE
   pattern-sinks:
   - pattern-either:
     - pattern: new URL($ONEARG)

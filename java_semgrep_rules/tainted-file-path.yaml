@@ -24,13 +24,13 @@ rules:
     impact: HIGH
     likelihood: MEDIUM
     confidence: HIGH
-    deepsemgrep: true
+    interfile: true
   mode: taint
   pattern-sources:
   - patterns:
     - pattern-either:
       - pattern-inside: |
-          $METHODNAME(..., @$REQ($LOOKUP) $TYPE $SOURCE,...) {
+          $METHODNAME(..., @$REQ(...) $TYPE $SOURCE,...) {
             ...
           }
       - pattern-inside: |
@@ -40,7 +40,7 @@ rules:
     - metavariable-regex:
         metavariable: $REQ
         regex: (RequestBody|PathVariable|RequestParam|RequestHeader|CookieValue|ModelAttribute)
-    - pattern: $SOURCE
+    - focus-metavariable: $SOURCE
   pattern-sinks:
   - patterns:
     - pattern-either:
