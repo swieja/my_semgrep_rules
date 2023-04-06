@@ -14,7 +14,7 @@ source: \
 https://github.com/returntocorp/semgrep-rules \
 https://semgrep.dev/explore
 ## General Use
-Generate list of URL you are interested in using [repo-find](https://github.com/jkob-sec/repo-find) or use an existing list. \ 
+Generate list of URL you are interested in using [repo-find](https://github.com/jkob-sec/repo-find) or use an existing list.
 ```console
 python3 generateReport.py -l urls_of_github_repos \
  -d temp_repos_directory \
