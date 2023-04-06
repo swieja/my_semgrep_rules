@@ -1,15 +1,16 @@
-import sys
-import re
+import subprocess
 import requests
 import json
-import subprocess
-from os import environ
+import sys
+import re
+import os 
+
 from time import sleep
 from argparse import ArgumentParser, RawTextHelpFormatter
 
 
 try: 
-    ACCESS_TOKEN = environ["GITHUB_ACCESS_TOKEN"]
+    ACCESS_TOKEN = os.environ["GITHUB_ACCESS_TOKEN"]
 except KeyError:
     print("No GITHUB_ACCESS_TOKEN environment variable.")
     sys.exit(1)
@@ -22,6 +23,8 @@ def getFindingCount(stderr):
         findingCount = re.findall(r"files.*?(\d+)\s",match.group())
         return findingCount[0]
     
+1
+
 def get_args(prog):
     helpm = f"Example: \r\n{prog} -l ~/list_of_repos.txt -d ~/java_cloned_repos_dir -r ~/semgrep_java_rules_dir -s ~/java_semgrep_results -c ~/report.csv"
     parser = ArgumentParser(epilog=helpm,formatter_class=RawTextHelpFormatter)
@@ -32,11 +35,58 @@ def get_args(prog):
     parser.add_argument('-c','--csv',dest="csvStore",action='store',type=str,required=True)
     return parser.parse_args()
 
+def checkArgs():
+    args = get_args(sys.argv[0])
 
+    if not os.path.exists(args.directoryRepos):
+        print(f"Didn't find {args.directoryRepos}, creating it")
+        os.makedirs(args.directoryRepos)
+    elif os.path.exists(args.directoryRepos):
+        pass
+    else:
+        print("Something went wrong, permission issues?")
+        sys.exit()
+    
+    if not os.path.exists(args.listOfRepos):
+        print(f"Didn't find {args.listOfRepos}, provide a valid path to list of repos.")
+        sys.exit()
+
+    if not os.path.exists(args.directoryRules):
+        print(f"Didn't find {args.directoryRules}, provide a valid path to directory with semgrep rules.")
+        sys.exit()
+    elif os.path.isdir(args.directoryRules):
+        if not os.listdir(args.directoryRules):
+            print(f"Directory {args.directoryRules} is empty.")
+            sys.exit()
+    else:
+        print(f"{args.directoryRules} is not a directory.")
+        sys.exit()
+    
+
+    if not os.path.exists(args.semgrepResults):
+        print(f"Didn't find {args.semgrepResults}, creating it")
+        os.makedirs(args.semgrepResults)
+    elif os.path.exists(args.semgrepResults):
+        pass
+    else:
+        print("Something went wrong, permission issues?")
+        sys.exit()
+
+    if not os.access(args.semgrepResults,os.W_OK):
+        print(f"Current user doesn't have write access to {args.semgrepResults}.")
+        sys.exit()
+
+    if not os.access(os.path.dirname(args.csvStore), os.W_OK):
+        print(f"The current user doesn't have write access to {os.path.dirname(args.csvStore)}.")
+        sys.exit()   
+    
+    
 
 if __name__ == "__main__":
     args = get_args(sys.argv[0])
     s = requests.Session()
+
+    checkArgs()
     
     with open(args.listOfRepos, "r") as f:
         repoList = f.read().split("\n")
@@ -45,6 +95,7 @@ if __name__ == "__main__":
         "Accept" : "application/vnd.github+json",
         "Authorization" : f"Bearer {ACCESS_TOKEN}",
         "X-GitHub-Api-Version":"2022-11-28"}
+    
     
 
     for URL in repoList:

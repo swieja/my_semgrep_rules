@@ -4,7 +4,7 @@ A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/re
 This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
 
 stolen semgrep rules mostly include:
-- classic rce attack
+- classic rce attack (command injection)
 - deseralization
 - lfi
 - ssrf
@@ -14,21 +14,22 @@ source: \
 https://github.com/returntocorp/semgrep-rules \
 https://semgrep.dev/explore
 ## General Use
+Generate list of URL you are interested in using [repo-find](https://github.com/jkob-sec/repo-find) or use an existing list. \ 
 ```console
-python3 generateReport.py -l text_file_with_urls_of_repos \
+python3 generateReport.py -l urls_of_github_repos \
  -d temp_repos_directory \
- -r directory_with_rules \
+ -r directory_with_semgrep_rules \
  -s semgrep_results_directory \
  -c results_in_csv_format
 ```
 
-For example: 
+For example:
 ```console
 python3 generateReport.py -l custom_repos/list_of_repos_java.txt \ 
- -d custom_repos/repos_dir \
+ -d repos_directory \
  -r java_semgrep_rules \
- -s custom_repos/java_semgrep_results \
- -c custom_repos/results.csv
+ -s java_semgrep_results \
+ -c results.csv
 ```
 
 This repo also includes modified python script that adds description for manual sorting:
