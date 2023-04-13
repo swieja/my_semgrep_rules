@@ -48,7 +48,9 @@ python3 find_repos_and_add_desc.py \
     -s 20000
 ```
 
-`remove_unwanted_rules.py` removes rules that detect low and mid severity vulnerabilities such as xss, csrf, tls attack etc.
+`remove_unwanted_rules.py` removes rules that detect low and mid severity vulnerabilities such as xss, csrf, tls attacks etc.
+
+`makeAll.py` clones semgrep rules repository and copies security rules to given directory,
 
 ## Additonal commands
 Read CSV in terminal:
