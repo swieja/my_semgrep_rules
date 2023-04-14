@@ -76,7 +76,8 @@ if __name__ == "__main__":
         for root, dirs, files in os.walk(fullPath):
             for file in files:
                 fullPath = os.path.join(root,file)
-                if file.endswith(".yaml") and "correctness" not in fullPath:
-                    copy(fullPath,storePath)
+                if file.endswith(".yaml") and "security" in fullPath:
+                    print(os.path.join(root,file))
+                    #copy(fullPath,storePath)
 
     print(f"Rules have been successsfully stored in {args.storeRules}.")
