@@ -77,7 +77,6 @@ if __name__ == "__main__":
             for file in files:
                 fullPath = os.path.join(root,file)
                 if file.endswith(".yaml") and "security" in fullPath:
-                    print(os.path.join(root,file))
-                    #copy(fullPath,storePath)
+                    copy(fullPath,storePath)
 
     print(f"Rules have been successsfully stored in {args.storeRules}.")
