@@ -58,7 +58,7 @@ if __name__ == "__main__":
 # csharp, go, java, javascript, php, python, ruby.
     for rulesPath in ["csharp", "go", "java", "javascript", "php", "python", "ruby"]:
         if not os.path.isdir(TEMPORARY_STORAGE + rulesPath):
-            sys.exit(f"{TEMPORARY_STORAGE + rulesPath} doesn't exists.")
+            sys.exit(f"{TEMPORARY_STORAGE + rulesPath} doesn't exist.")
         else:
             print(f"{rulesPath} exists.")
 
