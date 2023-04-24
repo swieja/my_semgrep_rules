@@ -33,10 +33,7 @@ cd ~/semgrep-rules/go ; find `pwd` -name *.yaml  | tee ~/go_semgrep_rules/full_l
 
 python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py ~/go_semgrep_rules/full_list.txt | tee ~/go_semgrep_rules/list.txt > /dev/null
 
-
 while read p ; do cp $p ~/go_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt
-
-
 
 rtz@debian:~/go_semgrep_rules$ ls -la 
 total 156
