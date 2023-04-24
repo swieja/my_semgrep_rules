@@ -13,24 +13,75 @@ stolen semgrep rules mostly include:
 source: \
 https://github.com/returntocorp/semgrep-rules \
 https://semgrep.dev/explore
-## General Use
-Generate list of URL you are interested in using [repo-find](https://github.com/jkob-sec/repo-find) or use an existing list.
+## How to use
+1. Generate list of repos using [repo-find](https://github.com/jkob-sec/repo-find) or use an existing list.
+
 ```console
-python3 generateReport.py -l urls_of_github_repos \
- -d temp_repos_directory \
- -r directory_with_semgrep_rules \
- -s semgrep_results_directory \
- -c results_in_csv_format
+python3 find_repos.py -q "stars:500..1000 language:Java created:>2017-10-11 sort:updated" -f ~/repo_list_java.txt -s 10000 -d
 ```
+
+2. Clone [semgrep-rules](https://github.com/returntocorp/semgrep-rules), copy .yaml rules to desired directory and remove unwanted rules (low/medium severity)
+
+remove_unwanted_rules.py
+```python
+[...]
+if not any (string in file_contents.lower() for string in ["xss","csrf","redirect","category: correctness","category: best-practice","this rule has been deprecated","improper encoding or escaping of output"]):
+```
+
+```console
+cd ~/semgrep-rules/go ; find `pwd` -name *.yaml  | tee ~/go_semgrep_rules/full_list.txt > /dev/null
+
+python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py ~/go_semgrep_rules/full_list.txt | tee ~/go_semgrep_rules/list.txt > /dev/null
+
+
+while read p ; do cp $p ~/go_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt
+
+
+
+rtz@debian:~/go_semgrep_rules$ ls -la 
+total 156
+drwxr-xr-x  2 rtz rtz 4096 Apr  6 04:24 .
+drwxr-xr-x 24 rtz rtz 4096 Apr 14 05:57 ..
+-rw-r--r--  1 rtz rtz  642 Apr  6 04:24 bad_tmp.yaml
+-rw-r--r--  1 rtz rtz 1025 Apr  6 04:24 bind_all.yaml
+-rw-r--r--  1 rtz rtz 1044 Apr  6 04:24 cookie-missing-secure.yaml
+-rw-r--r--  1 rtz rtz 1238 Apr  6 04:24 dangerous-command-write.yaml
+-rw-r--r--  1 rtz rtz 2439 Apr  6 04:24 dangerous-exec-cmd.yaml
+[...]
+```
+
+3. Run generateReport.py, it will:
+- clone the repository,
+- run semgrep using given config (directory with rules)
+- store reports in given directory
+- store results in csv format in specified path
+
+```console
+python3 generateReport.py -l ~/repo_list \
+ -d ~/tmp_repo_dir \
+ -r ~/semgrep_rules_dir \
+ -s ~/semgrep_results_dir \
+ -c ~/semgrep_results_csv
+```
+`-l/--list` - file with a list of repositories \
+`-d/--directory` - temporary directory where repository will be cloned \
+`-r/--rules` - directory with semgrep rules  \
+`-s/--save` - directory where semgrep results for each repo will be stored \
+`-c/--csv` - name of a files with semgrep results in csv format  \
 
 For example:
 ```console
-python3 generateReport.py -l custom_repos/list_of_repos_java.txt \ 
- -d repos_directory \
- -r java_semgrep_rules \
- -s java_semgrep_results \
- -c results.csv
+python3 generateReport.py -l ~/java_repos.txt \ 
+ -d ~/java_tmp_repo \
+ -r ~/java_semgrep_rules \
+ -s ~/java_semgrep_results \
+ -c ~/results.csv
 ```
+
+tba
+
+
+## Other scripts
 
 This repo also includes modified python script that adds description for manual sorting:
 ```console
@@ -44,7 +95,7 @@ For example:
 ```console
 python3 find_repos_and_add_desc.py \
     -q "NOT in:descritpion library NOT in:readme exercise stars:500..1000 language:Java created:>2017-01-01 sort:updated" \
-    -f /home/rtz/github_vuln_research/my_semgrep_rules/java_all/java_repos_list_semgrep.txt \
+    -f repo_list_java.txt \
     -s 20000
 ```
 
