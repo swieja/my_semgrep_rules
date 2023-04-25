@@ -3,12 +3,8 @@ A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/re
 
 This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
 
-stolen semgrep rules mostly include:
-- classic rce attack (command injection)
-- deseralization
-- lfi
-- ssrf
-- sqli
+Stolen semgrep rules mostly include high severity vulnerabilities such as RCE, SQLi, deserialization etc.
+There are some low severity rules due to general filtering.
 
 source: \
 https://github.com/returntocorp/semgrep-rules \
