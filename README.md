@@ -29,11 +29,15 @@ if not any (string in file_contents.lower() for string in ["xss","csrf","redirec
 ```
 
 ```console
+cd ~
+mkdir go_semgrep_rules
+git clone https://github.com/returntocorp/semgrep-rules.git
+
 cd ~/semgrep-rules/go ; find `pwd` -name *.yaml  | tee ~/go_semgrep_rules/full_list.txt > /dev/null
 
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py ~/go_semgrep_rules/full_list.txt | tee ~/go_semgrep_rules/list.txt > /dev/null
+python3 remove_unwanted_rules.py ~/go_semgrep_rules/full_list.txt | tee ~/go_semgrep_rules/list.txt > /dev/null
 
-while read p ; do cp $p ~/go_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt
+while read p ; do cp $p ~/go_semgrep_rules/; done < ~/go_semgrep_rules/list.txt
 
 rtz@debian:~/go_semgrep_rules$ ls -la 
 total 156
@@ -48,10 +52,10 @@ drwxr-xr-x 24 rtz rtz 4096 Apr 14 05:57 ..
 ```
 
 3. Run generateReport.py, it will:
-- clone the repository,
-- run semgrep using given config (directory with rules)
-- store reports in given directory
-- store results in csv format in specified path
+- clone the repository from list,
+- run semgrep using given config (directory with rules),
+- store reports in given directory,
+- store results in csv format in specified path.
 
 ```console
 python3 generateReport.py -l ~/repo_list \
@@ -74,10 +78,21 @@ python3 generateReport.py -l ~/java_repos.txt \
  -s ~/java_semgrep_results \
  -c ~/results.csv
 ```
+```console
+rtz@debian:~/Java_repos_all_example$ ls -la 
+total 116
+drwxr-xr-x  2 rtz rtz  4096 Feb  5 05:42 .
+drwxr-xr-x 24 rtz rtz  4096 Apr 25 12:29 ..
+-rw-r--r--  1 rtz rtz   170 Feb  5 05:33 java_repos.txt
+-rw-r--r--  1 rtz rtz  5956 Feb  5 05:42 java_semgrep_results_someRepoOne.txt
+-rw-r--r--  1 rtz rtz 26685 Feb  5 05:42 java_semgrep_results_someRepoTwo.txt
+-rw-r--r--  1 rtz rtz 44561 Feb  5 05:42 java_semgrep_results_someRepoThree.txt
+-rw-r--r--  1 rtz rtz   247 Feb  5 05:41 results.csv
+```
 
 ## Other stuff
 
-This repo also includes modified python script that adds description for manual sorting:
+This repo also includes modified find_repos.py that adds description for manual sorting:
 ```console
 python3 find_repos_and_add_desc.py \
     -q github_search_query \
