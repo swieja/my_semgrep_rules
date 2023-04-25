@@ -1,5 +1,5 @@
 # vr semgrep
-A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/repo-find) and semgrep stolen from [semgrep-rules](https://github.com/returntocorp/semgrep-rules) for vulnerability research in  open source projects on github. 
+A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/repo-find) and semgrep rules stolen from [semgrep-rules](https://github.com/returntocorp/semgrep-rules) for vulnerability research in open source projects on github or just code static analysis.
 
 This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
 
@@ -23,16 +23,18 @@ remove_unwanted_rules.py
 if not any (string in file_contents.lower() for string in ["xss","csrf","redirect","category: correctness","category: best-practice","this rule has been deprecated","improper encoding or escaping of output"]):
 ```
 
-```console
+```bash
 cd ~
 mkdir go_semgrep_rules
 git clone https://github.com/returntocorp/semgrep-rules.git
 
-cd ~/semgrep-rules/go ; find `pwd` -name *.yaml  | tee ~/go_semgrep_rules/full_list.txt > /dev/null
+find ~/semgrep-rules/go -name "*.yaml"  | tee ~/go_semgrep_rules/full_list.txt > /dev/null
 
-python3 remove_unwanted_rules.py ~/go_semgrep_rules/full_list.txt | tee ~/go_semgrep_rules/list.txt > /dev/null
+python3 my_semgrep_rules/remove_unwanted_rules.py ~/go_semgrep_rules/full_list.txt | tee ~/go_semgrep_rules/list.txt > /dev/null
 
 while read p ; do cp $p ~/go_semgrep_rules/; done < ~/go_semgrep_rules/list.txt
+
+cd ~/go_semgrep_rules/
 
 rtz@debian:~/go_semgrep_rules$ ls -la 
 total 156
