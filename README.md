@@ -1,10 +1,9 @@
-# Project notes
+# vr semgrep
 A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/repo-find) and semgrep stolen from [semgrep-rules](https://github.com/returntocorp/semgrep-rules) for vulnerability research in  open source projects on github. 
 
 This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
 
-Stolen semgrep rules mostly include high severity vulnerabilities such as RCE, SQLi, deserialization etc.
-There are some low severity rules due to general filtering.
+Most of the stolen Semgrep rules include high severity vulnerabilities such as RCE, SQLi, deserialization, etc. There are also some low severity rules, which are excluded due to general filtering.
 
 source: \
 https://github.com/returntocorp/semgrep-rules \
