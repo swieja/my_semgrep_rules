@@ -64,7 +64,7 @@ python3 generateReport.py -l ~/repo_list \
 `-d/--directory` - temporary directory where repository will be cloned \
 `-r/--rules` - directory with semgrep rules  \
 `-s/--save` - directory where semgrep results for each repo will be stored \
-`-c/--csv` - semgrep results in csv format  \
+`-c/--csv` - semgrep results in csv format
 
 For example:
 ```console
@@ -75,10 +75,7 @@ python3 generateReport.py -l ~/java_repos.txt \
  -c ~/results.csv
 ```
 
-tba
-
-
-## Other scripts
+## Other stuff
 
 This repo also includes modified python script that adds description for manual sorting:
 ```console
@@ -96,18 +93,15 @@ python3 find_repos_and_add_desc.py \
     -s 20000
 ```
 
-`remove_unwanted_rules.py` removes rules that detect low and mid severity vulnerabilities such as xss, csrf, tls attacks etc.
-
 `makeAll.py` clones semgrep rules repository and copies security rules to given directory.
 
-## Additonal commands
-Read CSV in terminal:
+### Read CSV in terminal:
 ```
 column -s, -t < repos_report.csv | less -#2 -N -S 
 ```
 
 
-### count the number of occurrences to remove FPs
+### Count the number of occurrences to remove FPs
 ```bash
 cd /home/rtz/github_vuln_research/my_semgrep_rules/
 mkdir /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
@@ -118,16 +112,3 @@ fgrep home.rtz.github_vuln_research.my_semgrep_rules. * > tmp.txt
 /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/count_words.sh tmp.txt > pmt.txt 
 code pmt.txt
 ```
-
-
-### generate rules from semgrep-rules repo
-```bash
-cd /home/rtz/github_vuln_research/semgrep-rules/go ; find `pwd` -name *.yaml  | tee /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/full_list.txt > /dev/null
-python3 /home/rtz/github_vuln_research/my_semgrep_rules/remove_unwanted_rules.py /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/full_list.txt | tee /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt  > /dev/null
-
-while read p ; do cp $p /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/; done < /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/list.txt 
-rm /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/full_list.txt /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules/rule_list.txt 
-
-cd /home/rtz/github_vuln_research/my_semgrep_rules/go_semgrep_rules
-```
-
