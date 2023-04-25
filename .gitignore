@@ -1,16 +1,1 @@
-.gitignore
 .token
-csharp_all
-csharp_repos
-custom_repos
-Go_all
-go_repos
-Java_all
-java_repos
-PHP_all
-php_repos
-Python_all
-python_repos
-Ruby_all
-ruby_repos
-mine.sh
