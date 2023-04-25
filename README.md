@@ -64,7 +64,7 @@ python3 generateReport.py -l ~/repo_list \
 `-d/--directory` - temporary directory where repository will be cloned \
 `-r/--rules` - directory with semgrep rules  \
 `-s/--save` - directory where semgrep results for each repo will be stored \
-`-c/--csv` - name of a files with semgrep results in csv format  \
+`-c/--csv` - semgrep results in csv format  \
 
 For example:
 ```console
