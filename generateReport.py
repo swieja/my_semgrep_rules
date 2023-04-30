@@ -135,9 +135,6 @@ if __name__ == "__main__":
         print(f"Saving csv: {args.csvStore}")
         #save to csv
         with open(f"{args.csvStore}","a") as file:
-            #{'message': 'Bad credentials', 'documentation_url': 'https://docs.github.com/rest'}
-            if "Bad credentials" not in str(data['stargazers_count']):    
-                sys.exit("Token expired or is invalid.")
             file.write(f"{URL},PHP,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
         
         print(f"Deleting the directory: {args.directoryRepos}/{fullNameRepo}")
