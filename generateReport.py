@@ -135,7 +135,7 @@ if __name__ == "__main__":
         print(f"Saving csv: {args.csvStore}")
         #save to csv
         with open(f"{args.csvStore}","a") as file:
-            file.write(f"{URL},PHP,{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
+            file.write(f"{URL},{str(data['language'])},{str(data['stargazers_count'])},{str(data['size'])},{str(findingCount)}\n")
         
         print(f"Deleting the directory: {args.directoryRepos}/{fullNameRepo}")
         cmd = f"rm -rf {args.directoryRepos}/{fullNameRepo}"
