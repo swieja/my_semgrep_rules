@@ -1,9 +1,9 @@
 # vr semgrep
 The main goal of this project is to automate static code analysis primarily in GitHub open source repositories with a focus on high-severity vulnerabilities such as remote code execution, broken authentication, XXE, LFI, and others.
 
-This tool requires the installation of the Semgrep CLI, which can be found at https://semgrep.dev/docs/getting-started/. /
+This tool requires the installation of the Semgrep CLI, which can be found at https://semgrep.dev/docs/getting-started/.
 
-The filtered Semgrep rules in this repository were borrowed from https://github.com/returntocorp/semgrep-rules . 
+The filtered Semgrep rules in this repository were borrowed from https://github.com/returntocorp/semgrep-rules. 
 
 source: \
 https://github.com/returntocorp/semgrep-rules \
