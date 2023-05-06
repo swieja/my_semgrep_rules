@@ -1,21 +1,21 @@
 # vr semgrep
-A set of scripts and stuff to utilize [repo-find](https://github.com/jkob-sec/repo-find) and semgrep rules stolen from [semgrep-rules](https://github.com/returntocorp/semgrep-rules) for vulnerability research in open source projects on github or just code static analysis.
+The main goal of this project is to automate static code analysis primarily in GitHub open source repositories with a focus on high-severity vulnerabilities such as remote code execution, broken authentication, XXE, LFI, and others.
 
-This requires [semgrep CLI](https://semgrep.dev/docs/getting-started/) to be installed:
+This tool requires the installation of the Semgrep CLI, which can be found at https://semgrep.dev/docs/getting-started/. /
 
-Most of the stolen Semgrep rules include high severity vulnerabilities such as RCE, SQLi, deserialization, etc. There are also some low severity rules, which are excluded due to general filtering.
+The filtered Semgrep rules in this repository were borrowed from https://github.com/returntocorp/semgrep-rules . 
 
 source: \
 https://github.com/returntocorp/semgrep-rules \
 https://semgrep.dev/explore
 ## How to use
-1. Generate list of repos using [repo-find](https://github.com/jkob-sec/repo-find) or use an existing list.
+1. To create a list of repos, you can use my tool [repo-find](https://github.com/jkob-sec/repo-find) or choose to use an existing list.
 
 ```console
 python3 find_repos.py -q "stars:500..1000 language:Java created:>2017-10-11 sort:updated" -f ~/repo_list_java.txt -s 10000 -d
 ```
 
-2. Clone [semgrep-rules](https://github.com/returntocorp/semgrep-rules), copy .yaml rules to desired directory and remove unwanted rules (low/medium severity).
+2. Clone [semgrep-rules](https://github.com/returntocorp/semgrep-rules), copy .yaml rules to desired directory and remove unwanted rules (low impact/likelihood).
 
 remove_unwanted_rules.py
 ```python
@@ -48,11 +48,11 @@ drwxr-xr-x 24 rtz rtz 4096 Apr 14 05:57 ..
 [...]
 ```
 
-3. Run generateReport.py, it will:
-- clone the repository from list,
-- run semgrep using given config (directory with rules),
-- store reports in given directory,
-- store results in csv format in specified path.
+3. Run generateReport.py, it performs the following actions:
+- Clones the repository from the provided list.
+- Runs Semgrep using the specified configuration (directory with rules).
+- Stores the generated reports in the designated directory.
+- Saves the results in CSV format at the specified path.
 
 ```console
 python3 generateReport.py -l ~/repo_list \
@@ -61,9 +61,9 @@ python3 generateReport.py -l ~/repo_list \
  -s ~/semgrep_results_dir \
  -c ~/semgrep_results_csv
 ```
-`-l/--list` - file with a list of repositories \
-`-d/--directory` - temporary directory where repository will be cloned \
-`-r/--rules` - directory with semgrep rules  \
+`-l/--list` - Specify the path to a file contaning a list of repositories to analyze \
+`-d/--directory` - Specify the temporary directory where the repositories will be cloned \
+`-r/--rules` - Specify the directory con  \
 `-s/--save` - directory where semgrep results for each repo will be stored \
 `-c/--csv` - semgrep results in csv format
 
@@ -89,7 +89,7 @@ drwxr-xr-x 24 rtz rtz  4096 Apr 25 12:29 ..
 
 ## Other stuff
 
-This repo also includes modified find_repos.py that adds description for manual sorting:
+This repo includes modified find_repos.py that adds description of a repository for manual sorting:
 ```console
 python3 find_repos_and_add_desc.py \
     -q github_search_query \
@@ -105,22 +105,9 @@ python3 find_repos_and_add_desc.py \
     -s 20000
 ```
 
-`makeAll.py` clones semgrep rules repository and copies security rules to given directory.
+`makeAll.py` clones semgrep rules repository and copies all security rules to given directory.
 
 ### Read CSV in terminal:
 ```
-column -s, -t < repos_report.csv | less -#2 -N -S 
-```
-
-
-### Count the number of occurrences to remove FPs
-```bash
-cd /home/rtz/github_vuln_research/my_semgrep_rules/
-mkdir /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
-mv go_semgrep* /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
-
-cd /home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/go
-fgrep home.rtz.github_vuln_research.my_semgrep_rules. * > tmp.txt
-/home/rtz/github_vuln_research/my_semgrep_rules/custom_repos/count_words.sh tmp.txt > pmt.txt 
-code pmt.txt
+column -s, -t < results.csv | less -#2 -N -S 
 ```
