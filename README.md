@@ -20,7 +20,14 @@ python3 find_repos.py -q "stars:500..1000 language:Java created:>2017-10-11 sort
 remove_unwanted_rules.py
 ```python
 [...]
-if not any (string in file_contents.lower() for string in ["xss","csrf","redirect","category: correctness","category: best-practice","this rule has been deprecated","improper encoding or escaping of output"]):
+blacklist_keywords = [
+    "xss","csrf","redirect","category: correctness","category: best-practice",
+    "this rule has been deprecated","improper encoding or escaping of output",
+    "cryptographic failures","improper certificate valbrokation","insecure-resteasy-deserialization",
+    "incorrect type conversion or cast","inadequate encryption strength"]
+
+[...]
+    if not (re.search(r'likelihood: LOW', file_contents) and re.search(r'impact: LOW', file_contents)):
 ```
 
 ```bash
