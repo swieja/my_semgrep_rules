@@ -1,36 +1,34 @@
 rules:
 - id: disabled-cert-validation
-  message: >-
-    Certificate verification has been explicitly disabled. This
-    permits insecure connections to insecure servers. Re-enable
-    certification validation.
+  patterns:
+  - pattern-either:
+    - pattern: urllib3.PoolManager(..., cert_reqs=$REQS, ...)
+    - pattern: urllib3.ProxyManager(..., cert_reqs=$REQS, ...)
+    - pattern: urllib3.HTTPSConnectionPool(..., cert_reqs=$REQS, ...)
+    - pattern: urllib3.connectionpool.HTTPSConnectionPool(..., cert_reqs=$REQS, ...)
+    - pattern: urllib3.connection_from_url(..., cert_reqs=$REQS, ...)
+    - pattern: urllib3.proxy_from_url(..., cert_reqs=$REQS, ...)
+    - pattern: $CONTEXT.wrap_socket(..., cert_reqs=$REQS, ...)
+    - pattern: ssl.wrap_socket(..., cert_reqs=$REQS, ...)
+  - metavariable-regex:
+      metavariable: $REQS
+      regex: (NONE|CERT_NONE|CERT_OPTIONAL|ssl\.CERT_NONE|ssl\.CERT_OPTIONAL|\'NONE\'|\"NONE\"|\'OPTIONAL\'|\"OPTIONAL\")
+  message: certificate verification explicitly disabled, insecure connections possible
   metadata:
     cwe:
     - 'CWE-295: Improper Certificate Validation'
     owasp:
     - A03:2017 - Sensitive Data Exposure
     - A07:2021 - Identification and Authentication Failures
-    references:
-    - https://stackoverflow.com/questions/41740361/is-it-safe-to-disable-ssl-certificate-verification-in-pythonss-requests-lib
     category: security
     technology:
-    - requests
+    - python
+    references:
+    - https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures
     subcategory:
-    - audit
-    likelihood: LOW
-    impact: LOW
-    confidence: LOW
+    - vuln
+    likelihood: HIGH
+    impact: MEDIUM
+    confidence: MEDIUM
   languages: [python]
   severity: ERROR
-  pattern-either:
-  - pattern: requests.put(..., verify=False, ...)
-  - pattern: requests.patch(..., verify=False, ...)
-  - pattern: requests.delete(..., verify=False, ...)
-  - pattern: requests.head(..., verify=False, ...)
-  - pattern: requests.options(..., verify=False, ...)
-  - pattern: requests.request(..., verify=False, ...)
-  - pattern: requests.get(..., verify=False, ...)
-  - pattern: requests.post(..., verify=False, ...)
-  fix-regex:
-    regex: verify(\s)*=(\s)*False
-    replacement: verify=True

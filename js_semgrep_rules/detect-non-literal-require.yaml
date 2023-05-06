@@ -1,7 +1,9 @@
 rules:
 - id: detect-non-literal-require
   message: >-
-    This rule is deprecated.
+    Detected the use of require(variable). Calling require with a non-literal
+    argument might allow an attacker to load and run arbitrary code, or
+    access arbitrary files.
   metadata:
     cwe:
     - "CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')"
@@ -14,14 +16,18 @@ rules:
     technology:
     - javascript
     subcategory:
-    - audit
-    likelihood: LOW
-    impact: LOW
+    - vuln
+    likelihood: MEDIUM
+    impact: MEDIUM
     confidence: LOW
   languages:
   - javascript
   - typescript
   severity: WARNING
-  patterns:
-  - pattern: a()
-  - pattern: b()
+  mode: taint
+  pattern-sources:
+  - patterns:
+    - pattern-inside: function ... (..., $ARG,...) {...}
+    - focus-metavariable: $ARG
+  pattern-sinks:
+  - pattern: require(...)
